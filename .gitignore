@@ -1,0 +1,25 @@
+# 建置產物
+dist/
+build/
+*.egg-info/
+
+# harness adapter 產物（依 runtime 產生，不納入版控）
+dist/adapters/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# 測試 / 暫存輸出
+.pytest_cache/
+tmp/
+*.tmp
+
+# 作業系統
+.DS_Store
+
+# slides-kit 的第三方依賴（唯一依賴 pptxgenjs，可由 package-lock.json 重建）
+# slides-kit 在 v4.0 中是 legacy / reference renderer，實際流程走 Python 圖片組裝。
+node_modules/

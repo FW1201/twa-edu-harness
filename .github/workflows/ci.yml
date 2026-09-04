@@ -1,0 +1,76 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-skills:
+    name: Skill 結構驗證
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pyyaml
+
+      # 數量一律從檔案系統推導，絕不硬編碼。
+      # 舊 repo 的 CI 把「16 個 Skills」寫死在 echo 裡，於是數字永遠對不上。
+      - name: 統計 Skills 數量
+        id: count
+        run: |
+          COUNT=$(find skills -mindepth 2 -maxdepth 2 -name SKILL.md | wc -l | tr -d ' ')
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+          echo "偵測到 $COUNT 支 Skills"
+
+      - name: 每個 skill 目錄都必須有 SKILL.md
+        run: |
+          fail=0
+          for d in skills/*/; do
+            if [ ! -f "$d/SKILL.md" ]; then
+              echo "::error::$d 缺少 SKILL.md"; fail=1
+            fi
+          done
+          exit $fail
+
+      - name: frontmatter 必填欄位與 name 一致性
+        run: python scripts/verify_skill_frontmatter.py
+
+      - name: 相對連結不得斷鏈或逸出 repo 根
+        run: python scripts/verify_skill_links.py
+
+      - name: README 數量與實際一致
+        run: |
+          COUNT="${{ steps.count.outputs.count }}"
+          grep -q "Skills-${COUNT}-" README.md \
+            || { echo "::error::README badge 與實際 $COUNT 支不符"; exit 1; }
+          for d in skills/*/; do
+            n=$(basename "$d")
+            grep -q "$n" README.md || { echo "::error::README 未列出 $n"; exit 1; }
+          done
+          echo "README 與 $COUNT 支 Skills 一致"
+
+      - run: echo "=== 全部 ${{ steps.count.outputs.count }} 支 Skills 通過結構驗證 ==="
+
+  compile-scripts:
+    name: 生成腳本語法檢查
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+
+      # 動態列舉，不硬編碼腳本清單。
+      # 舊 repo 的 CI 寫死呼叫 tw-edu-slides-creator/scripts/generate_slides.py，
+      # 該檔於 2026-05-11 被刪除後 CI 就永遠是紅的。
+      - name: 列舉並編譯所有腳本
+        run: |
+          mapfile -t scripts < <(find skills -path '*/scripts/*.py' | sort)
+          echo "偵測到 ${#scripts[@]} 支 Python 腳本"
+          python -m py_compile "${scripts[@]}"
+          echo "全部通過語法檢查"
