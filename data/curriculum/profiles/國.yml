@@ -1,0 +1,11 @@
+# 國語文領綱的抽取設定
+#
+# 逐行抽取：學習表現與學習內容在 PDF 中是簡單的兩欄表，
+# 文字抽取即可取得完整敘述。
+domain: 國語文
+prefix: 國
+strategy: lines
+stageKind: roman          # 代碼中段是羅馬數字（Ⅰ–Ⅴ）
+patterns:
+  performance: '^(?:◎)?(\d+)-([ⅠⅡⅢⅣⅤIV]+)-(\d+)\s*(.*)$'
+  content:     '^(?:◎)?([A-Z][a-z]?)-([ⅠⅡⅢⅣⅤIV]+)-(\d+)\s*(.*)$'

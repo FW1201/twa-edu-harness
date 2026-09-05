@@ -74,7 +74,8 @@ def test_content_exists(code):
     "7-Ⅳ-1",      # 學習表現只有 1–6 類
     "1-Ⅵ-1",      # 學習階段只有 Ⅰ–Ⅴ
     "1-Ⅳ-999",    # 序號不存在
-    "數-J-A1",    # 其他領域尚未載入
+    "數-U-A3",    # 數學高中階段是 數S-U-A3（含 S），這是實際發生過的錯誤
+    "社-J-A1",    # 社會領域尚未載入
     "",
     "亂寫",
 ])
@@ -121,10 +122,11 @@ def test_description_matches_official(code, expected):
 
 
 # ── 查詢 ─────────────────────────────────────────────
-def test_competencies_per_level():
+@pytest.mark.parametrize("domain", ["國語文", "數學"])
+def test_competencies_per_level(domain):
     for level in ("E", "J", "U"):
-        items = list_competencies(domain="國語文", level=level)
-        assert len(items) == 9, f"{level} 階段應有三面九項共 9 條"
+        items = list_competencies(domain=domain, level=level)
+        assert len(items) == 9, f"{domain} {level} 階段應有三面九項共 9 條"
 
 
 def test_bd_starts_at_stage_three():
@@ -165,14 +167,49 @@ def test_lookup_limit():
 
 def test_store_totals():
     store = default_store()
-    assert store.domains == ["國語文"]
-    assert len(store) > 300
+    assert store.domains == ["國語文", "數學"]
+    assert len(store) > 700
     kinds = {k: 0 for k in ("competency", "performance", "content")}
     for ind in store.all():
         kinds[ind.kind] += 1
-    assert kinds["competency"] == 27      # 9 項 × 3 階段
-    assert kinds["performance"] > 150
-    assert kinds["content"] > 150
+    assert kinds["competency"] == 54      # 兩領域 × 9 項 × 3 階段
+    assert kinds["performance"] > 280
+    assert kinds["content"] > 390
+
+
+# ── 數學：代碼格式與國語文完全不同 ──────────────────────
+@pytest.mark.parametrize("code,kind", [
+    ("數-E-A1", "competency"), ("數-J-A2", "competency"),
+    ("數S-U-A1", "competency"),
+    ("n-Ⅰ-1", "performance"), ("n-Ⅳ-1", "performance"),
+    ("s-Ⅰ-1", "performance"), ("a-Ⅳ-1", "performance"),
+    ("N-1-1", "content"), ("A-7-1", "content"), ("S-9-1", "content"),
+])
+def test_math_indicators(code, kind):
+    ind = get_by_code(code)
+    assert ind is not None, f"{code} 應存在於數學領綱"
+    assert ind.kind == kind
+    assert ind.domain == "數學"
+
+
+def test_math_content_uses_grade_not_stage():
+    """數學的學習內容用年級數字（N-1-1 是 1 年級），不是學習階段羅馬數字。"""
+    ind = get_by_code("N-1-1")
+    assert ind.stage == "1"
+    assert ind.level == "E"
+    assert get_by_code("A-10-1").level == "U"
+
+
+def test_math_performance_roman_tolerance():
+    """數學領綱的羅馬數字全用拉丁字母（n-IV-1），儲存時正規化。"""
+    assert get_by_code("n-IV-1") is get_by_code("n-Ⅳ-1")
+
+
+def test_domains_are_isolated():
+    """不同領域的代碼不該互相汙染。"""
+    assert get_by_code("國-J-B1").domain == "國語文"
+    assert get_by_code("數-J-B1").domain == "數學"
+    assert get_by_code("N-1-1").domain == "數學"
 
 
 def test_every_indicator_has_description():
@@ -181,7 +218,18 @@ def test_every_indicator_has_description():
 
 
 def test_level_derived_from_stage():
-    mapping = {"Ⅰ": "E", "Ⅱ": "E", "Ⅲ": "E", "Ⅳ": "J", "Ⅴ": "U"}
+    """階段 → 教育階段的推導要一致。
+
+    兩種階段表示法並存：國語文用學習階段羅馬數字，
+    數學的學習內容用年級數字（1–12）。
+    """
+    roman = {"Ⅰ": "E", "Ⅱ": "E", "Ⅲ": "E", "Ⅳ": "J", "Ⅴ": "U"}
+    grade = {**{str(g): "E" for g in range(1, 7)},
+             **{str(g): "J" for g in range(7, 10)},
+             **{str(g): "U" for g in range(10, 13)}}
     for ind in default_store().all():
-        if ind.stage:
-            assert ind.level == mapping[ind.stage], ind.code
+        if not ind.stage:
+            continue
+        expected = roman.get(ind.stage) or grade.get(ind.stage)
+        assert expected is not None, f"{ind.code} 的階段 `{ind.stage}` 無法對應"
+        assert ind.level == expected, ind.code
