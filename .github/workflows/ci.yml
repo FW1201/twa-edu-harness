@@ -37,6 +37,13 @@ jobs:
       # 人會忘記，所以交給 CI 記住。
       - name: 受限的上游名稱
         run: python scripts/verify_no_vendor_names.py
+
+      # 課綱代碼會被寫進教案送交課發會。修正前抽驗 10 筆課綱對應全部有誤
+      # （4 筆代碼不存在、6 筆敘述是編的），這道 gate 讓那個狀態無法再出現。
+      - name: 課綱代碼與敘述
+        run: |
+          pip install -e ./python
+          python scripts/verify_curriculum_codes.py
       - name: README 清單一致性
         run: python scripts/gen_skill_index.py --check
 
@@ -105,3 +112,19 @@ jobs:
             python "$f" --help > /dev/null || { echo "::error::$f"; exit 1; }
           done
           echo "18 支腳本在 fallback 模式下正常"
+
+  curriculum:
+    name: 課綱查詢測試
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+      - run: |
+          pip install pytest
+          pip install -e ./python
+      - name: 指標查詢正確性（含反例）
+        run: cd python && python -m pytest tests/ -q
+      - name: MCP server selftest
+        run: python -c "from twa_curriculum_mcp.server import selftest; raise SystemExit(selftest())"

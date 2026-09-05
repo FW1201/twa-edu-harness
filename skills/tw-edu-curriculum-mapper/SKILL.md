@@ -22,6 +22,7 @@ metadata:
   subjects: [全領域]
   outputs: [xlsx]
   shared:
+    - curriculum-lookup
     - concept-alignment
     - grade-adapter
     - guided-collection
@@ -29,6 +30,16 @@ metadata:
 ---
 
 # 課程地圖生成器
+
+## 課綱代碼查核（必要）
+
+**在寫出任何 108 課綱代碼之前，先完成 `../../shared/curriculum-lookup.md` 的查核流程。**
+
+有 `twa-curriculum` MCP 時，把要寫進文件的每個代碼送 `curriculum_verify`，
+使用回傳的官方敘述，不要改寫。沒有 MCP 時，在產出中標注代碼未經查核。
+
+實測顯示未經查核的產出，課綱對應有極高比例是錯的（10 筆抽驗全錯）。
+教案會被送交課發會——不確定的代碼寧可留白。
 
 ## 哲學定位
 協助教師將「課程直覺」轉化為可視化的結構，作為課程審視與討論的基礎。

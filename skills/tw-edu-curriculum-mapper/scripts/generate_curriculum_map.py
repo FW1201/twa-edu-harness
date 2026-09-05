@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# <!-- curriculum-domain: 國語文 -->
 """課程地圖 Excel 生成腳本"""
 import argparse
 from openpyxl import Workbook
@@ -84,8 +85,8 @@ def create_overview_sheet(wb, subject, grade, semester, units):
             unit,
             f"《{unit}》核心概念與技能教學",
             "4",
-            "語-J-B1：閱讀理解與表達",
-            "5-Ⅳ-2：分析篇章結構",
+            "國-J-B1：閱讀理解與表達",
+            "5-Ⅳ-2：理解各類文本的句子、段落與主要概念，指出寫作的目的與觀點。",
             "學習單、口頭問答",
             "品德教育（品）",
         ]

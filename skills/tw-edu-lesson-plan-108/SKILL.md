@@ -23,6 +23,7 @@ metadata:
   subjects: [全領域]
   outputs: [docx]
   shared:
+    - curriculum-lookup
     - concept-alignment
     - grade-adapter
     - guided-collection
@@ -30,6 +31,16 @@ metadata:
 ---
 
 # 臺灣 108 課綱素養導向教案生成器 v2.0
+
+## 課綱代碼查核（必要）
+
+**在寫出任何 108 課綱代碼之前，先完成 `../../shared/curriculum-lookup.md` 的查核流程。**
+
+有 `twa-curriculum` MCP 時，把要寫進文件的每個代碼送 `curriculum_verify`，
+使用回傳的官方敘述，不要改寫。沒有 MCP 時，在產出中標注代碼未經查核。
+
+實測顯示未經查核的產出，課綱對應有極高比例是錯的（10 筆抽驗全錯）。
+教案會被送交課發會——不確定的代碼寧可留白。
 
 ## 哲學定位
 「**教師素養為主、AI 為輔**」——本工具產出的是可供教師調整的教案草稿，

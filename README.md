@@ -23,6 +23,17 @@ npx skills add FW1201/twa-edu-harness --all -a claude-code
 pip install -r requirements.txt
 ```
 
+**強烈建議一併掛上課綱查詢 MCP**，讓模型能查證課綱代碼而不是憑印象寫：
+
+```bash
+pip install -e ./python[mcp]
+# 在 MCP 設定中加入：python -m twa_curriculum_mcp.server
+```
+
+沒有它時，技能會在產出中標注「課綱代碼未經查核」。
+原因見 [`docs/teacher-walkthrough.md`](docs/teacher-walkthrough.md)——
+修正前抽驗 10 筆課綱對應，**全部有誤**。
+
 單獨安裝一支：
 
 ```bash
@@ -142,7 +153,9 @@ npx skills add FW1201/twa-edu-harness/skills/tw-edu-lesson-plan-108 -a claude-co
 skills/tw-edu-*/       21 支教學技能（模型按需載入）
 shared/                跨技能共用協議（概念對齊、學段適配、引導式收集、MCP 策略）
 python/twa_edu_core/   共用程式碼（Word 版面、色票、CJK 字型）
+python/twa_curriculum/ 108 課綱查詢 + MCP server
 agents/                技能召喚的 subagent 定義
+data/curriculum/       108 課綱權威資料（由領綱 PDF 抽取）
 harness/               Bundle 層宣告（中性 schema）
 presets/               Agent Preset：persona + 能力邊界
 scripts/               驗證閘門（gates）

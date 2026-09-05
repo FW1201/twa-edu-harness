@@ -7,3 +7,6 @@ openpyxl>=3.1.0         # .xlsx 課程地圖 / 評量表
 reportlab>=4.0.0        # PDF 輸出（CJK 字型：STSong-Light）
 matplotlib>=3.8.0       # 研究視覺化圖表（CJK 字型：Noto Sans CJK JP）
 PyYAML>=6.0             # frontmatter 與 smoke.yml 解析
+
+# 只有重建課綱資料時需要（scripts/build_curriculum_data.py）
+pdfplumber>=0.11.0
