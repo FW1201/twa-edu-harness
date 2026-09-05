@@ -4,6 +4,46 @@
 
 ---
 
+## [4.0.0] — 2026-09-05
+
+Preset 層。完整的 Agent 人格與能力邊界。
+
+### Added
+
+- **`presets/twa-teacher/`** — K-12 教師模式。全部 21 支技能；persona 要求
+  108 課綱脈絡、繁體中文、**不要一次問超過三個問題**、執行技能前先完成概念對齊、
+  **不確定的指標代碼就不要寫**。
+- **`presets/twa-researcher/`** — 研究者模式。文獻查核 / 研究視覺化 / 學習歷程。
+- **`DENIED.md`** — 每個 preset 逐項寫明為何否決某項能力、什麼情況下可重新考慮。
+  `verify_bundle_schema.py` 強制檢查 `deny` 的每一項都要有交代，否則 CI 紅。
+- **`docs/teacher-walkthrough.md`** — 一次完整備課的實際產出與量測數字。
+
+### Preset 的設計原則：限制跟能力一樣重要
+
+`twa-teacher` 禁用 `runtime-self-modify`（等同 shell 存取，教師無法評估風險）、
+`subagent`（教案生成無可平行化的部分，且成本對教師不透明）、
+`persistent-terminal`、`plan-mode`、`lsp`。
+
+`twa-researcher` **開放** `subagent`——引用批次查核天生可平行，而使用者對成本有預期。
+這個差異是刻意的，兩邊的 `DENIED.md` 都有記錄，避免未來被當成不一致而「修正」。
+
+### 已知限制：Preset 層尚未實機驗證
+
+開發機沒有 harness runtime，persona 與能力邊界**無法實測**。
+本版驗證的是技能層——教師在 Claude Code 實際會遇到的流程
+（見 `docs/teacher-walkthrough.md`：四份文件、45/39/39/39 KB、12/6/3/2 個表格）。
+
+### ⚠️ 課綱代碼目前無法驗證真偽
+
+教案產出的 `語-J-B1`、`5-Ⅳ-2` 等代碼來自技能 `references/` 的 markdown，
+是模型讀進 context 再寫出來的。**沒有任何閘門能檢查代碼是否真的存在於領綱。**
+模型幻覺一個格式正確但不存在的代碼，產出看起來完全一樣，而教師會把教案送交課發會。
+
+`persona.md` 要求「不確定的指標代碼就不要寫」，但那是靠指示，不是靠機制。
+這正是 P4 課綱 Capability Seam 要解決的問題。
+
+---
+
 ## [4.0.0-rc.1] — 2026-09-05
 
 Bundle 層。以自訂的中性 schema 宣告本 repo 對外提供什麼，不綁定任何特定 runtime。

@@ -27,8 +27,8 @@ contributes:
     - ./skills
   sharedDirs:
     - ./shared
-  # presetDirs 於 P3 建立 presets/ 後再加入。
-  # 宣告不存在的目錄會讓 verify_bundle_schema.py 直接紅——這是刻意的。
+  presetDirs:
+    - ./presets
   agentDirs:
     - ./agents
   pythonPackages:

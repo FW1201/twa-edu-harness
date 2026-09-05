@@ -1,0 +1,40 @@
+schemaVersion: 1
+name: twa-researcher
+displayName: 研究者模式
+description: >-
+  學術研究支援。文獻查核（多源交叉驗證、批次並行）、研究流程圖與概念框架視覺化、
+  學習歷程檔案。與教師模式的差別是開放 subagent 以支援批次查核。
+order: 20
+locale: zh-TW
+persona: ./persona.md
+
+skills:
+  include:
+    - "tw-edu-citation-checker"
+    - "tw-edu-research-viz"
+    - "tw-edu-learning-portfolio"
+
+capabilities:
+  allow:
+    - file-read
+    - file-write
+    - file-search
+    - shell
+    - web-search
+    - web-fetch       # 查核文獻要讀出版商頁面與 DOI 解析結果
+    - ask-user
+    - todo
+    - skill-catalog
+    - subagent        # 批次查核靠這項；教師 preset 不開
+  deny:
+    - runtime-self-modify
+    - persistent-terminal
+    - plan-mode
+    - lsp
+
+context:
+  compaction: true
+  toolResultPruning:
+    thresholdChars: 8192
+    headChars: 4096
+    tailChars: 1024

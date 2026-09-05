@@ -1,6 +1,6 @@
 {
   "name": "twa-edu-harness",
-  "version": "4.0.0-rc.1",
+  "version": "4.0.0",
   "description": "臺灣 K-12 教育 Agent Harness — 108 課綱素養導向教學技能套組",
   "license": "MIT",
   "author": "吳奇 Kevin Wu",

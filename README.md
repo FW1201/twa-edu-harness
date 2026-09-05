@@ -16,8 +16,11 @@ Skill 名稱維持 `tw-edu-*` 不變，既有的呼叫方式與教學講義完�
 
 ## 安裝
 
+### 方式一：Claude Code（推薦，也是目前唯一經過實測的方式）
+
 ```bash
 npx skills add FW1201/twa-edu-harness --all -a claude-code
+pip install -r requirements.txt
 ```
 
 單獨安裝一支：
@@ -26,11 +29,25 @@ npx skills add FW1201/twa-edu-harness --all -a claude-code
 npx skills add FW1201/twa-edu-harness/skills/tw-edu-lesson-plan-108 -a claude-code
 ```
 
-Python 依賴（產出 `.docx` / `.pptx` / `.xlsx` 需要）：
+### 方式二：Bundle（掛載到 harness runtime）
 
-```bash
-pip install -r requirements.txt
-```
+`harness/bundle.yml` 以中性 schema 宣告本 repo 貢獻的目錄，
+由 `scripts/gen_harness_adapter.py` 產生特定 runtime 的設定。
+
+⚠️ **對應表尚未填寫，尚未實機驗證。** 詳見
+[`docs/harness-install.md`](docs/harness-install.md)。
+
+### 方式三：Preset（完整的 Agent 人格與能力邊界）
+
+| Preset | 給誰 | 技能 | 特點 |
+|---|---|---|---|
+| `twa-teacher` | K-12 教師 | 全部 21 支 | 關閉自我修改、子代理、持久終端機 |
+| `twa-researcher` | 研究者 | 查核 / 視覺化 / 學習歷程 | 開放子代理以支援批次查核 |
+
+每個 preset 的 `DENIED.md` 逐項寫明**為什麼**否決某項能力——
+限制跟能力一樣是設計的一部分。
+
+⚠️ 同樣尚未實機驗證（需要 harness runtime）。
 
 ---
 
@@ -127,12 +144,14 @@ shared/                跨技能共用協議（概念對齊、學段適配、引
 python/twa_edu_core/   共用程式碼（Word 版面、色票、CJK 字型）
 agents/                技能召喚的 subagent 定義
 harness/               Bundle 層宣告（中性 schema）
+presets/               Agent Preset：persona + 能力邊界
 scripts/               驗證閘門（gates）
 .agents/notes/         決策紀錄
 ```
 
-Bundle 層的安裝方式與目前狀態見 [`docs/harness-install.md`](docs/harness-install.md)；
-從 v3.x 遷移見 [`docs/MIGRATION-v3-to-v4.md`](docs/MIGRATION-v3-to-v4.md)。
+- Bundle / Preset 的安裝方式與目前狀態：[`docs/harness-install.md`](docs/harness-install.md)
+- 從 v3.x 遷移：[`docs/MIGRATION-v3-to-v4.md`](docs/MIGRATION-v3-to-v4.md)
+- 一次完整備課的實際產出：[`docs/teacher-walkthrough.md`](docs/teacher-walkthrough.md)
 
 規範與開發約定見 [`AGENTS.md`](AGENTS.md)。
 

@@ -1,0 +1,39 @@
+schemaVersion: 1
+name: twa-teacher
+displayName: 教師模式
+description: >-
+  臺灣 K-12 教師的備課夥伴。內建 108 課綱素養導向教學設計、素養命題、評量規準、
+  學習單、教學簡報、班級經營與親師溝通共 21 項技能，輸出 .docx / .pptx / .xlsx。
+order: 10
+locale: zh-TW
+persona: ./persona.md
+
+skills:
+  include:
+    - "tw-edu-*"
+
+capabilities:
+  allow:
+    - file-read
+    - file-write
+    - file-search
+    - shell           # 生成腳本要靠這項才產得出文件
+    - web-search
+    - web-fetch
+    - ask-user        # 引導式資訊收集協議依賴這項
+    - todo
+    - skill-catalog
+  deny:
+    - runtime-self-modify
+    - subagent
+    - persistent-terminal
+    - plan-mode
+    - lsp
+
+context:
+  # 備課對話很長：一份教案要來回確認年級、節數、教學目標、評量方式。
+  compaction: true
+  toolResultPruning:
+    thresholdChars: 8192
+    headChars: 4096
+    tailChars: 1024
