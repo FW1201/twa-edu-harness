@@ -126,9 +126,13 @@ skills/tw-edu-*/       21 支教學技能（模型按需載入）
 shared/                跨技能共用協議（概念對齊、學段適配、引導式收集、MCP 策略）
 python/twa_edu_core/   共用程式碼（Word 版面、色票、CJK 字型）
 agents/                技能召喚的 subagent 定義
+harness/               Bundle 層宣告（中性 schema）
 scripts/               驗證閘門（gates）
 .agents/notes/         決策紀錄
 ```
+
+Bundle 層的安裝方式與目前狀態見 [`docs/harness-install.md`](docs/harness-install.md)；
+從 v3.x 遷移見 [`docs/MIGRATION-v3-to-v4.md`](docs/MIGRATION-v3-to-v4.md)。
 
 規範與開發約定見 [`AGENTS.md`](AGENTS.md)。
 
@@ -151,9 +155,13 @@ python scripts/verify_core_api.py            # twa_edu_core API 相容性
 python scripts/verify_no_vendored_utils.py   # 禁止重複共用程式碼
 python scripts/verify_agent_deps.py          # subagent 依賴隨附
 python scripts/verify_agent_notes.py         # 決策紀錄格式
+python scripts/verify_bundle_schema.py       # bundle / preset schema
+python scripts/verify_no_vendor_names.py     # 受限的上游名稱
 python scripts/gen_skill_index.py --check    # README 清單一致性
 python scripts/smoke_test_scripts.py         # 實際跑出文件
 ```
+
+或一次跑完：`npm run gates && npm run smoke`
 
 新增技能的規格見 [`AGENTS.md`](AGENTS.md) 與 `.agents/skills/twa-skill-author/`。
 

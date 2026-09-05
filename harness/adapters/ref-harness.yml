@@ -1,0 +1,40 @@
+# ref-harness 對應表
+#
+# ⚠️ 本檔的 runtime 插件名尚未填寫，因為開發機上沒有 ref-harness 環境，
+#    無法驗證。**不要憑印象填**——填錯的結果是 bundle 安裝後靜默失效。
+#
+# 取得環境後的填寫步驟：
+#   1. 查閱該 runtime 的插件清單，找出對應每項能力的插件識別名
+#   2. 填進下方 `pluginName`
+#   3. 跑 `python scripts/gen_harness_adapter.py --target ref-harness`
+#   4. 實機安裝驗證，然後把結果記進 .agents/notes/
+#
+# 在填寫完成之前，generator 會產出設定檔但明確標示為未驗證草稿。
+
+schemaVersion: 1
+target: ref-harness
+status: unmapped        # unmapped | draft | verified
+
+# 本 repo 的中性能力 → 該 runtime 的插件名
+capabilityMap:
+  file-read:            { pluginName: null }
+  file-write:           { pluginName: null }
+  file-search:          { pluginName: null }
+  shell:                { pluginName: null }
+  web-search:           { pluginName: null }
+  web-fetch:            { pluginName: null }
+  ask-user:             { pluginName: null }
+  todo:                 { pluginName: null }
+  skill-catalog:        { pluginName: null }
+  runtime-self-modify:  { pluginName: null }
+  subagent:             { pluginName: null }
+  persistent-terminal:  { pluginName: null }
+  plan-mode:            { pluginName: null }
+  lsp:                  { pluginName: null }
+
+# 技能目錄的掛載方式
+skillProvider:
+  pluginName: null
+  configKeys:
+    providerName: null   # 該插件用哪個欄位接收 provider 名稱
+    skillDirs: null      # 該插件用哪個欄位接收技能目錄清單

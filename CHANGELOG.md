@@ -4,6 +4,37 @@
 
 ---
 
+## [4.0.0-rc.1] — 2026-09-05
+
+Bundle 層。以自訂的中性 schema 宣告本 repo 對外提供什麼，不綁定任何特定 runtime。
+
+### Added
+
+- **`harness/bundle.yml`** — 貢獻的 skill / shared / agent / python 目錄宣告；
+  **`harness/capabilities.yml`** — 中性能力詞彙（`file-read` / `shell` /
+  `web-search`…），與任何 runtime 的插件名脫鉤；兩者各有 JSON Schema。
+- **`harness/adapters/ref-harness.yml`** — 中性能力 → runtime 插件名的對應表。
+- **`scripts/gen_harness_adapter.py`** — 依對應表產生 runtime 設定，輸出到
+  `dist/`（不納入版控）。對應表未填寫時，產物明確標示為未驗證草稿。
+- **`scripts/verify_bundle_schema.py`** — schema 合規、宣告的路徑真的存在、
+  preset 的能力名稱在詞彙表內、`deny` 的每一項在 `DENIED.md` 都有交代。
+- **`scripts/verify_no_vendor_names.py`** — 掃描全 repo 禁止出現受限的上游名稱。
+  受限字串以 base64 存放，讓 gate 本身不含明文。
+- `package.json`（中性 keywords，`files` 白名單）、`docs/harness-install.md`、
+  `docs/MIGRATION-v3-to-v4.md`。
+- CI 的結構驗證 job 擴為 **9 道 gate**。
+
+### 目前狀態：Bundle 層尚未實機驗證
+
+`harness/adapters/ref-harness.yml` 的 `status` 是 `unmapped`。開發機沒有該
+runtime 環境，**無法確認插件的實際識別名**，因此對應表刻意留空而非憑印象填寫——
+填錯的後果是安裝後靜默失效，比留白更糟。
+
+在對應表填妥並實機驗證之前，不宣稱本 repo 可在該 runtime 安裝。
+驗收清單見 `.agents/skills/twa-release-check/`。
+
+---
+
 ## [4.0.0-beta.1] — 2026-09-05
 
 結構重整。建立可擴充的基座與七道驗證閘門。

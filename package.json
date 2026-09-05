@@ -1,0 +1,42 @@
+{
+  "name": "twa-edu-harness",
+  "version": "4.0.0-rc.1",
+  "description": "臺灣 K-12 教育 Agent Harness — 108 課綱素養導向教學技能套組",
+  "license": "MIT",
+  "author": "吳奇 Kevin Wu",
+  "homepage": "https://github.com/FW1201/twa-edu-harness#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FW1201/twa-edu-harness.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FW1201/twa-edu-harness/issues"
+  },
+  "keywords": [
+    "agent-skills",
+    "claude-skills",
+    "agent-harness",
+    "education",
+    "taiwan",
+    "k12",
+    "lesson-plan",
+    "assessment"
+  ],
+  "files": [
+    "harness/",
+    "skills/",
+    "shared/",
+    "agents/",
+    "python/",
+    "AGENTS.md",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "gates": "python scripts/verify_skill_frontmatter.py && python scripts/verify_skill_links.py && python scripts/verify_core_api.py && python scripts/verify_no_vendored_utils.py && python scripts/verify_agent_deps.py && python scripts/verify_agent_notes.py && python scripts/verify_bundle_schema.py && python scripts/verify_no_vendor_names.py && python scripts/gen_skill_index.py --check",
+    "smoke": "python scripts/smoke_test_scripts.py",
+    "build:standalone": "python scripts/build_standalone_skills.py --out dist/skills",
+    "build:adapter": "python scripts/gen_harness_adapter.py --target ref-harness"
+  }
+}

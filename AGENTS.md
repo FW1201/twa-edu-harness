@@ -116,8 +116,13 @@ python scripts/verify_agent_deps.py          # SKILL.md 召喚的 subagent 要�
 python scripts/verify_agent_notes.py         # 決策紀錄的路徑與 Status 一致
 python scripts/gen_skill_index.py --check    # README 清單與實際目錄一致
 python scripts/smoke_test_scripts.py         # 動態列舉並實際產出文件
+python scripts/verify_bundle_schema.py       # bundle / preset schema 與路徑存在
+python scripts/verify_no_vendor_names.py     # 受限的上游名稱
 python scripts/build_standalone_skills.py    # 內聯版建置
+python scripts/gen_harness_adapter.py        # runtime 設定產生（輸出到 dist/）
 ```
+
+`npm run gates` 可一次跑完所有驗證。
 
 **核心原則：所有檢查一律動態列舉檔案系統，禁止硬編碼清單。**
 舊 repo 的 CI 把腳本路徑與 skill 數量寫死，腳本被刪除後 CI 永遠是紅的，於是沒人看 CI，於是問題持續累積。這是本 repo 存在的直接原因。

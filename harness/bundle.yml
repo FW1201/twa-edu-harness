@@ -1,0 +1,47 @@
+# twa-edu-harness Bundle 宣告
+#
+# 這是本 repo 對外提供什麼的單一真源，格式為自訂的中性 schema。
+# 要接上特定的 harness runtime 時，用 scripts/gen_harness_adapter.py
+# 依 harness/adapters/<target>.yml 的對應表產生該 runtime 的設定檔，
+# 輸出到 dist/（不納入版控）。
+#
+# 為什麼不直接寫 runtime 的設定格式：見
+# .agents/notes/implemented/architecture/2026-09-05-runtime-neutral-bundle.md
+
+schemaVersion: 1
+
+id: twa-edu-harness
+displayName: 臺灣 K-12 教育 Agent Harness
+description: >-
+  108 課綱素養導向的教學技能套組。涵蓋教學設計、素養命題、評量規準、
+  學習單、班級經營與親師溝通，輸出 .docx / .pptx / .xlsx 教學文件。
+locale: zh-TW
+license: MIT
+
+# provider 名稱必須全域唯一。多個 bundle 同時掛載時，撞名的後果是
+# 其中一個的技能被靜默覆蓋。
+providerName: twa-edu
+
+contributes:
+  skillDirs:
+    - ./skills
+  sharedDirs:
+    - ./shared
+  # presetDirs 於 P3 建立 presets/ 後再加入。
+  # 宣告不存在的目錄會讓 verify_bundle_schema.py 直接紅——這是刻意的。
+  agentDirs:
+    - ./agents
+  pythonPackages:
+    - ./python
+
+requires:
+  python: ">=3.9"
+  # 純 Markdown + Python，沒有 TypeScript build。
+  # 從原始碼安裝時不需要額外的建置授權。
+  build: false
+  pythonPackages:
+    - python-docx>=1.1.0
+    - python-pptx>=0.6.23
+    - openpyxl>=3.1.0
+    - matplotlib>=3.8.0
+    - reportlab>=4.0.0

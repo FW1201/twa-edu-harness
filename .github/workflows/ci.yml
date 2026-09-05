@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: '3.11'
-      - run: pip install pyyaml python-docx
+      - run: pip install pyyaml python-docx jsonschema
 
       # 每一道 gate 各自一個 step，這樣 CI 頁面直接看得出是哪一項失敗。
       - name: Frontmatter 契約 v1
@@ -30,6 +30,13 @@ jobs:
         run: python scripts/verify_agent_deps.py
       - name: Agent Note 格式
         run: python scripts/verify_agent_notes.py
+      - name: Bundle / Preset schema
+        run: python scripts/verify_bundle_schema.py
+
+      # 架構參考自上游專案，但依擁有者要求不得在 repo 內出現其名稱或套件名。
+      # 人會忘記，所以交給 CI 記住。
+      - name: 受限的上游名稱
+        run: python scripts/verify_no_vendor_names.py
       - name: README 清單一致性
         run: python scripts/gen_skill_index.py --check
 

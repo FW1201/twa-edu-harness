@@ -1,0 +1,58 @@
+# 中性能力詞彙表
+#
+# Preset 用這些名稱宣告「這個 Agent 能做什麼、不能做什麼」。
+# 名稱刻意與任何特定 harness runtime 的插件名脫鉤——runtime 的 API 會變、
+# 會有相容性破壞，但「能不能讀檔」這件事不會變。
+# 實際的對應由 harness/adapters/<target>.yml 提供。
+
+schemaVersion: 1
+
+capabilities:
+  file-read:
+    summary: 讀取工作目錄下的檔案
+    risk: low
+  file-write:
+    summary: 建立與修改檔案
+    risk: medium
+    note: 教學文件的產出仰賴這項；沒有它技能只能輸出對話文字。
+  file-search:
+    summary: 依檔名或內容搜尋檔案
+    risk: low
+  shell:
+    summary: 執行一次性 shell 指令
+    risk: high
+    note: 技能的生成腳本靠這項執行。無法在關閉的情況下產出 .docx / .pptx。
+  web-search:
+    summary: 網路搜尋
+    risk: low
+  web-fetch:
+    summary: 讀取指定網址的內容
+    risk: medium
+  ask-user:
+    summary: 中途向使用者提問
+    risk: low
+    note: 引導式資訊收集協議依賴這項。
+  todo:
+    summary: 維護任務清單
+    risk: low
+  skill-catalog:
+    summary: 讓模型看見並載入技能
+    risk: low
+    note: 沒有這項，21 支技能等於沒安裝。
+
+  # ── 以下預設不給，理由寫在各 preset 的 DENIED.md ──
+  runtime-self-modify:
+    summary: 對執行中的 runtime 求值任意程式碼
+    risk: critical
+  subagent:
+    summary: 委派工作給子代理
+    risk: medium
+  persistent-terminal:
+    summary: 維持有狀態的終端機工作階段
+    risk: high
+  plan-mode:
+    summary: 計畫模式與執行模式的切換
+    risk: low
+  lsp:
+    summary: 語言伺服器（程式碼分析）
+    risk: low

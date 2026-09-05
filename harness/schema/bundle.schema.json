@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/FW1201/twa-edu-harness/harness/schema/bundle.schema.json",
+  "title": "twa-edu-harness bundle 宣告",
+  "type": "object",
+  "required": ["schemaVersion", "id", "displayName", "providerName", "contributes"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "type": "integer", "const": 1 },
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "displayName": { "type": "string", "minLength": 1 },
+    "description": { "type": "string" },
+    "locale": { "type": "string" },
+    "license": { "type": "string" },
+    "providerName": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "全域唯一。撞名會讓其中一個 bundle 的技能被靜默覆蓋。"
+    },
+    "contributes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "skillDirs":      { "$ref": "#/$defs/pathList" },
+        "sharedDirs":     { "$ref": "#/$defs/pathList" },
+        "presetDirs":     { "$ref": "#/$defs/pathList" },
+        "agentDirs":      { "$ref": "#/$defs/pathList" },
+        "pythonPackages": { "$ref": "#/$defs/pathList" }
+      }
+    },
+    "requires": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "python": { "type": "string" },
+        "build": { "type": "boolean" },
+        "pythonPackages": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  },
+  "$defs": {
+    "pathList": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^\\./" }
+    }
+  }
+}
