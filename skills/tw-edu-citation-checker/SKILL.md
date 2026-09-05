@@ -9,9 +9,24 @@ description: >
   「APA格式」「MLA格式」「引用正確嗎」「幫我查一下這個文獻」
   「格式查驗」「文獻清單」「參考書目」「bibliography」「references」時觸發。
 version: 1.0.0
-author: 奇老師・數位敘事力社群
 allowed-tools: "Bash, Read, Write, WebSearch"
 disable-model-invocation: true
+
+author: 奇老師・數位敘事力社群
+license: MIT
+
+whenToUse: >
+  適用於查核既有引用的真實性與格式。3 筆以上會並行召喚 citation-checker-worker（定義在本 repo 的 agents/，需另行安裝）。
+  本技能不生成引用，只查核。
+
+metadata:
+  role: researcher
+  category: 學術支援
+  stage: [U]
+  subjects: [學術寫作]
+  shared:
+    - concept-alignment
+    - guided-collection
 ---
 
 # 學術文獻嚴格查核與格式驗證系統 v1.0

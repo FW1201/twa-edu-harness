@@ -2,7 +2,12 @@
 """素養導向學習單生成腳本"""
 import argparse, sys
 sys.path.insert(0, '.')
-from tw_edu_doc_utils import *
+try:
+    from twa_edu_core import *
+except ImportError:  # 未安裝 twa-edu-core 時，從 repo 內的 python/ 載入
+    import sys, pathlib
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[3] / "python"))
+    from twa_edu_core import *
 
 def add_worksheet_header(doc, subject, grade, topic, purpose_label):
     tbl = doc.add_table(rows=2, cols=4)

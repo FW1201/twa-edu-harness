@@ -24,12 +24,17 @@
 ## 2. 三層架構
 
 ```
-Preset 層   presets/twa-teacher/       完整 Agent：persona + 能力 + 邊界
-Bundle 層   harness/bundle.yml         中性封裝，可被 harness runtime 安裝
+Preset 層   presets/twa-teacher/       完整 Agent：persona + 能力 + 邊界（P3）
+Bundle 層   harness/bundle.yml         中性封裝，可被 harness runtime 安裝（P2）
 Skill 層    skills/tw-edu-*/SKILL.md   模型按需載入的任務指令
             shared/                    跨 skill 共用協議
             python/twa_edu_core/       共用程式碼
+            agents/                    技能召喚的 subagent 定義
 ```
+
+> ⚠️ 參考架構一律稱 `ref-harness`。**本 repo 與所有對外文件不得出現該上游專案的
+> 名稱或套件名**，Bundle / Preset 使用自訂的中性 schema。理由見
+> `.agents/notes/implemented/architecture/2026-09-05-runtime-neutral-bundle.md`。
 
 ### 責任邊界
 
@@ -90,7 +95,11 @@ skills/<name>/
 | 主要輸出格式 | `.docx` / `.pptx` / `.xlsx` / `.pdf` |
 | 語言 | 繁體中文（台灣用語），技術術語用英文 |
 
-共用實作一律 `from twa_edu_core...` import，**不得**在 `skills/*/scripts/` 內複製工具檔。
+共用實作一律 `from twa_edu_core import *`，**不得**在 `skills/*/scripts/` 內複製工具檔
+或重新實作 `set_cell_bg()` 這類函式。
+
+用 matplotlib 產圖時，繪圖前先呼叫 `register_cjk_fonts()`，且不要在 `ax.text()`
+指定 `fontfamily`——指定拉丁字型會讓所有中文變成空白方框。
 
 ---
 
@@ -99,8 +108,15 @@ skills/<name>/
 CI 的每一道 gate 都可在本機單獨執行：
 
 ```bash
-python scripts/verify_skill_frontmatter.py   # frontmatter 契約
+python scripts/verify_skill_frontmatter.py   # frontmatter 契約 v1（預設嚴格）
 python scripts/verify_skill_links.py         # 相對連結不斷鏈、不逸出 repo 根
+python scripts/verify_core_api.py            # twa_edu_core 對舊介面的相容性
+python scripts/verify_no_vendored_utils.py   # 禁止重複的共用程式碼
+python scripts/verify_agent_deps.py          # SKILL.md 召喚的 subagent 要隨附
+python scripts/verify_agent_notes.py         # 決策紀錄的路徑與 Status 一致
+python scripts/gen_skill_index.py --check    # README 清單與實際目錄一致
+python scripts/smoke_test_scripts.py         # 動態列舉並實際產出文件
+python scripts/build_standalone_skills.py    # 內聯版建置
 ```
 
 **核心原則：所有檢查一律動態列舉檔案系統，禁止硬編碼清單。**

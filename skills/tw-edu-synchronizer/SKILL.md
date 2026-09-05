@@ -8,9 +8,20 @@ description: >
   「設定我的教學情境」「個人化教學設定」「讓工具更符合我的學校」時觸發。
   分類：K-12 教學（tw-edu-*）
 version: 1.0.0
-author: 奇老師・數位敘事力社群
 allowed-tools: "Bash, Read, Write"
 disable-model-invocation: true
+
+author: 奇老師・數位敘事力社群
+license: MIT
+
+whenToUse: >
+  適用於首次設定或變更個人教學情境（學校、年段、慣用格式），產出 teacher-profile.md 供其他技能讀取。這是設定工具，不產出教學文件，不應在備課過程中被自動觸發。
+
+metadata:
+  role: teacher
+  category: 套組設定
+  stage: [E, J, U]
+  subjects: [套組設定]
 ---
 
 # K-12 教學套組客製化工具 v1.0
@@ -24,11 +35,12 @@ disable-model-invocation: true
 
 ## Step 0：讀取所有 tw-edu-* Skills 的 frontmatter
 
-讀取以下 Skills 的可客製化參數（16 個核心教學 Skills）：
-- `../tw-edu-lesson-plan-108/SKILL.md`
-- `../tw-edu-exam-generator/SKILL.md`
-- `../tw-edu-worksheet-creator/SKILL.md`
-- （以及所有其他 tw-edu-* Skills）
+**列舉**同層目錄中所有 `tw-edu-*/SKILL.md`，讀取各自的可客製化參數。
+
+不要硬寫技能清單或數量——套組會增減，寫死的清單一定會過期
+（v3.x 的文件就同時存在 16 / 18 / 19 / 24 四個互相矛盾的數字）。
+技能安裝後彼此是同層目錄，因此 `../tw-edu-*/SKILL.md` 可正確解析；
+若某支技能未安裝，略過即可，不需報錯。
 
 ---
 

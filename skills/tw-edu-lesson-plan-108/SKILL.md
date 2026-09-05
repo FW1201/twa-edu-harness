@@ -7,9 +7,26 @@ description: >
   「lesson plan」「備課」「教學設計」時觸發。
   支援所有學習領域：國語文、英語、數學、社會、自然、藝術、體育、綜合、資訊。
 version: 2.1.0
-author: 奇老師・數位敘事力社群
 allowed-tools: "Bash, Read, Write, WebSearch"
-disable-model-invocation: true
+
+author: 奇老師・數位敘事力社群
+license: MIT
+
+whenToUse: >
+  適用於單課或單一單元的教學設計。若要規劃整學期或跨年級的課程地圖，改用 tw-edu-curriculum-mapper；若要的是專題式學習，改用 tw-edu-pbl-designer；
+  若要跨領域整合，改用 tw-edu-interdisciplinary。
+
+metadata:
+  role: teacher
+  category: 課程設計
+  stage: [E, J, U]
+  subjects: [全領域]
+  outputs: [docx]
+  shared:
+    - concept-alignment
+    - grade-adapter
+    - guided-collection
+    - mcp-strategy
 ---
 
 # 臺灣 108 課綱素養導向教案生成器 v2.0

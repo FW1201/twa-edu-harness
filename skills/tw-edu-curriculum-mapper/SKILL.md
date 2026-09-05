@@ -6,9 +6,26 @@ description: >
   當使用者提及「課程地圖」「學習表現對應」「課綱對應」「課程規劃」
   「學期課程」「課程架構」「學習地圖」「學年計畫」時觸發。
 version: 1.0.0
-author: 奇老師・數位敘事力社群
 allowed-tools: "Bash, Read, Write"
 disable-model-invocation: true
+
+author: 奇老師・數位敘事力社群
+license: MIT
+
+whenToUse: >
+  適用於整學期／整學年的課程地圖與課綱代碼對應，輸出 .xlsx。單一節課的教學設計改用 tw-edu-lesson-plan-108。
+
+metadata:
+  role: teacher
+  category: 課程設計
+  stage: [E, J, U]
+  subjects: [全領域]
+  outputs: [xlsx]
+  shared:
+    - concept-alignment
+    - grade-adapter
+    - guided-collection
+    - mcp-strategy
 ---
 
 # 課程地圖生成器

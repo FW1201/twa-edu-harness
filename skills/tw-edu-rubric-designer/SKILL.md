@@ -7,6 +7,24 @@ description: >
 version: 1.0.0
 allowed-tools: "Bash, Read, Write"
 disable-model-invocation: true
+
+author: 奇老師・數位敘事力社群
+license: MIT
+
+whenToUse: >
+  適用於表現任務的評分規準（整體式／分析式）。要出題改用 tw-edu-exam-generator；要寫學生評語改用 tw-edu-feedback-writer。
+
+metadata:
+  role: teacher
+  category: 評量命題
+  stage: [E, J, U]
+  subjects: [全領域]
+  outputs: [docx]
+  shared:
+    - concept-alignment
+    - grade-adapter
+    - guided-collection
+    - mcp-strategy
 ---
 
 # 評量規準設計工具

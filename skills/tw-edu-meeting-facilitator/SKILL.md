@@ -7,9 +7,24 @@ description: >
   當使用者提及「PLC」「課發會」「會議記錄」「教師社群」「備課會議」
   「教學研討」「共備」「專業社群」「行政會議」「教師會議」「開會」時觸發。
 version: 2.1.0
-author: 奇老師・數位敘事力社群
 allowed-tools: "Bash, Read, Write"
 disable-model-invocation: true
+
+author: 奇老師・數位敘事力社群
+license: MIT
+
+whenToUse: >
+  適用於 PLC、課發會、共同備課的議程與會議記錄。單向的公文書改用 tw-edu-school-document。
+
+metadata:
+  role: teacher
+  category: 班級行政
+  stage: [E, J, U]
+  subjects: [學校行政]
+  outputs: [docx]
+  shared:
+    - concept-alignment
+    - guided-collection
 ---
 
 # 教師會議全流程輔助系統 v2.1

@@ -31,6 +31,8 @@ def main() -> int:
         text = md.read_text(encoding="utf-8")
         targets = {t for pat in PATTERNS for t in pat.findall(text)}
         for target in sorted(targets):
+            if any(ch in target for ch in "*?["):
+                continue  # glob 樣式（例如 ../tw-edu-*/SKILL.md）不是實際路徑
             checked += 1
             resolved = (md.parent / target).resolve()
             rel = md.relative_to(repo_root) if md.is_absolute() else md
@@ -39,9 +41,15 @@ def main() -> int:
                 errors.append(f"{rel}: `{target}` 指向不存在的檔案")
                 continue
 
-            boundary = md.parent.resolve() if args.standalone else repo_root
+            if args.standalone:
+                # 技能安裝後彼此是同層目錄，指向姊妹技能是合法的；
+                # 不合法的是指向 skill 集合之外的東西（例如 repo 的 shared/）。
+                boundary = md.parent.parent.resolve()
+                where = "技能集合"
+            else:
+                boundary = repo_root
+                where = "repo 根"
             if boundary not in resolved.parents:
-                where = "skill 目錄" if args.standalone else "repo 根"
                 errors.append(f"{rel}: `{target}` 逸出 {where}（→ {resolved}）")
 
     if errors:

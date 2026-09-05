@@ -8,6 +8,24 @@ description: >
 version: 1.0.0
 allowed-tools: "Bash, Read, Write"
 disable-model-invocation: true
+
+author: 奇老師・數位敘事力社群
+license: MIT
+
+whenToUse: >
+  適用於高中生的學習歷程檔案（大學申請入學用）。教師端的學生評語改用 tw-edu-feedback-writer。
+
+metadata:
+  role: student
+  category: 學生表現
+  stage: [U]
+  subjects: [全領域]
+  outputs: [docx]
+  shared:
+    - concept-alignment
+    - grade-adapter
+    - guided-collection
+    - mcp-strategy
 ---
 
 # 學習歷程檔案輔助工具

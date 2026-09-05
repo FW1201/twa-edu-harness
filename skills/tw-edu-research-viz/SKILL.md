@@ -9,9 +9,24 @@ description: >
   「系統性文獻回顧」「SLR 流程」「PRISMA」時觸發。
   適用情境：碩博士論文、期刊論文、研討會論文、研究計畫書。
 version: 1.0.0
-author: 奇老師・數位敘事力社群
 allowed-tools: "Bash, Read, Write, WebSearch"
 disable-model-invocation: true
+
+author: 奇老師・數位敘事力社群
+license: MIT
+
+whenToUse: >
+  適用於研究流程圖與概念框架的視覺化（PRISMA、研究架構）。教學用的資訊圖表改用 tw-edu-slides-creator。
+
+metadata:
+  role: researcher
+  category: 學術支援
+  stage: [U]
+  subjects: [學術寫作]
+  outputs: [png]
+  shared:
+    - concept-alignment
+    - guided-collection
 ---
 
 # 學術論文資料視覺化工具 v1.0

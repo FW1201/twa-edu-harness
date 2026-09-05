@@ -8,6 +8,24 @@ description: >
 version: 1.0.0
 allowed-tools: "Bash, Read, Write"
 disable-model-invocation: true
+
+author: 奇老師・數位敘事力社群
+license: MIT
+
+whenToUse: >
+  適用於同一節課要照顧不同程度或特殊需求的學生（UDL、三層次任務）。若只需要一般教案，改用 tw-edu-lesson-plan-108。
+
+metadata:
+  role: teacher
+  category: 課程設計
+  stage: [E, J, U]
+  subjects: [全領域]
+  outputs: [docx]
+  shared:
+    - concept-alignment
+    - grade-adapter
+    - guided-collection
+    - mcp-strategy
 ---
 
 # 差異化教學設計工具

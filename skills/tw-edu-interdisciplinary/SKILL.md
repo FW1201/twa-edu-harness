@@ -7,6 +7,24 @@ description: >
 version: 1.0.0
 allowed-tools: "Bash, Read, Write"
 disable-model-invocation: true
+
+author: 奇老師・數位敘事力社群
+license: MIT
+
+whenToUse: >
+  適用於彈性學習課程與校本課程的跨領域整合設計。單科教案改用 tw-edu-lesson-plan-108；以成品發表為核心的長期專題改用 tw-edu-pbl-designer。
+
+metadata:
+  role: teacher
+  category: 課程設計
+  stage: [E, J, U]
+  subjects: [全領域]
+  outputs: [docx]
+  shared:
+    - concept-alignment
+    - grade-adapter
+    - guided-collection
+    - mcp-strategy
 ---
 
 # 跨領域課程設計工具

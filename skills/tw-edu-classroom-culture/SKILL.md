@@ -8,6 +8,24 @@ description: >
 version: 1.0.0
 allowed-tools: "Bash, Read, Write"
 disable-model-invocation: true
+
+author: 奇老師・數位敘事力社群
+license: MIT
+
+whenToUse: >
+  適用於班規、積極行為支持方案、班級氣氛經營。與家長的個別溝通改用 tw-edu-parent-communication。
+
+metadata:
+  role: teacher
+  category: 班級行政
+  stage: [E, J, U]
+  subjects: [班級經營]
+  outputs: [docx]
+  shared:
+    - concept-alignment
+    - grade-adapter
+    - guided-collection
+    - mcp-strategy
 ---
 
 # 班級經營與文化建立工具

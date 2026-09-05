@@ -1,0 +1,8 @@
+# smoke test：最小參數 + 產出斷言。
+# 新增腳本卻沒寫這個檔，smoke gate 會直接紅——
+# 這是為了避免重演「CI 引用已刪除腳本」那類問題。
+- script: generate_formative.py
+  args: ["--subject", "自然", "--grade", "國小五年級", "--topic", "光的折射"]
+  output_ext: docx
+  min_bytes: 20000
+  min_tables: 2

@@ -6,7 +6,24 @@ description: >
   「活動學習單」「課堂學習單」「設計學習單」時觸發。
 version: 1.0.0
 allowed-tools: "Bash, Read, Write"
-disable-model-invocation: true
+
+author: 奇老師・數位敘事力社群
+license: MIT
+
+whenToUse: >
+  適用於課堂使用的學習單（提問鷹架、圖表填寫）。要評分的作業請搭配 tw-edu-rubric-designer；整份試卷改用 tw-edu-exam-generator。
+
+metadata:
+  role: teacher
+  category: 教材資源
+  stage: [E, J, U]
+  subjects: [全領域]
+  outputs: [docx]
+  shared:
+    - concept-alignment
+    - grade-adapter
+    - guided-collection
+    - mcp-strategy
 ---
 
 # 學習單生成工具

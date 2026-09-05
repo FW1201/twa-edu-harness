@@ -7,6 +7,24 @@ description: >
 version: 1.0.0
 allowed-tools: "Bash, Read, Write"
 disable-model-invocation: true
+
+author: 奇老師・數位敘事力社群
+license: MIT
+
+whenToUse: >
+  適用於課堂中的形成性評量工具（出口票、KWL、概念圖、診斷測驗）。總結性的整份試卷改用 tw-edu-exam-generator。
+
+metadata:
+  role: teacher
+  category: 評量命題
+  stage: [E, J, U]
+  subjects: [全領域]
+  outputs: [docx]
+  shared:
+    - concept-alignment
+    - grade-adapter
+    - guided-collection
+    - mcp-strategy
 ---
 
 # 形成性評量工具生成器

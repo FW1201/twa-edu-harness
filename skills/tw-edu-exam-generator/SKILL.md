@@ -7,9 +7,23 @@ description: >
   「測驗」「素養題」「情境題」「期中考」「期末考」「練習卷」時觸發。
   支援科目：國語文、數學、英語、社會、自然、生活科技、健體、藝文。
 version: 2.1.0
-author: 奇老師・數位敘事力社群
 allowed-tools: "Bash, Read, Write, WebSearch"
-disable-model-invocation: true
+
+author: 奇老師・數位敘事力社群
+license: MIT
+
+whenToUse: >
+  適用於定期評量／段考的整份素養導向試卷。課堂中的即時檢核改用 tw-edu-formative-assessment；評分標準改用 tw-edu-rubric-designer。
+
+metadata:
+  role: teacher
+  category: 評量命題
+  stage: [E, J, U]
+  subjects: [全領域]
+  outputs: [docx]
+  shared:
+    - concept-alignment
+    - grade-adapter
 ---
 
 # 臺灣 108 課綱素養情境命題系統 v2.1

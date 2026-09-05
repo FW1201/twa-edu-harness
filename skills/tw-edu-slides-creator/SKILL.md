@@ -6,7 +6,6 @@ description: |
   保留台灣教學脈絡、年級自適應、Bloom 分層、108 課綱、課堂活動與教學 QA。
   觸發詞：簡報、投影片、PPT、slides、上課簡報、教學簡報、課程簡報、做一份簡報。
 version: 4.0.0
-author: 奇老師・數位敘事力社群
 allowed-tools: "Read, Write, Edit, Bash, Task"
 tags: [education, slides, pptx, Taiwan, K-12, codex-ppt-style, image-deck]
 references:
@@ -19,6 +18,18 @@ references:
   - references/palette-library.md
   - references/layout-grid.md
   - references/slide_design_principles.md
+
+author: 奇老師・數位敘事力社群
+license: MIT
+
+whenToUse: >
+  適用於上課用的教學簡報，輸出 .pptx。純文字講義改用 tw-edu-worksheet-creator。
+
+metadata:
+  role: teacher
+  category: 教材資源
+  stage: [E, J, U]
+  subjects: [全領域]
 ---
 
 # tw-edu-slides-creator v4.0

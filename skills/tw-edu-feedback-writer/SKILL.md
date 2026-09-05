@@ -8,6 +8,21 @@ description: >
 version: 1.0.0
 allowed-tools: "Bash, Read, Write"
 disable-model-invocation: true
+
+author: 奇老師・數位敘事力社群
+license: MIT
+
+whenToUse: >
+  適用於針對學生作品撰寫回饋評語，支援批次。要先有評分標準請搭配 tw-edu-rubric-designer；寫給家長的訊息改用 tw-edu-parent-communication。
+
+metadata:
+  role: teacher
+  category: 學生表現
+  stage: [E, J, U]
+  subjects: [全領域]
+  outputs: [docx]
+  shared:
+    - concept-alignment
 ---
 
 # 學生回饋評語生成工具

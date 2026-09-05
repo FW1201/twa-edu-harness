@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "twa-edu-core"
+version = "1.0.0"
+description = "twa-edu-harness 教學技能的共用程式碼（Word 版面、色票、CJK 字型）"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "吳奇 Kevin Wu" }]
+dependencies = ["python-docx>=1.1.0"]
+
+[project.urls]
+Homepage = "https://github.com/FW1201/twa-edu-harness"
+
+[tool.setuptools.packages.find]
+include = ["twa_edu_core*"]

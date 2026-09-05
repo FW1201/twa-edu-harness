@@ -1,13 +1,23 @@
 #!/usr/bin/env python3
 """PRISMA 2020 系統性文獻回顧流程圖生成腳本"""
 import argparse, sys
-sys.path.insert(0, '.')
-from tw_edu_doc_utils import *
+try:
+    from twa_edu_core import *
+except ImportError:  # 未安裝 twa-edu-core 時，從 repo 內的 python/ 載入
+    import sys, pathlib
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[3] / "python"))
+    from twa_edu_core import *
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
+
+# 必須在繪圖前註冊，否則圖中所有中文都會渲染成空白方框（tofu）。
+_cjk_font = register_cjk_fonts()
+if _cjk_font is None:
+    print("[警告] 找不到中文字型，圖中的中文會顯示為方框。"
+          "建議安裝 Noto Sans CJK。", file=sys.stderr)
 
 def generate_prisma(identified, duplicates, screened_excl, fulltext_excl, included, output):
     fig, ax = plt.subplots(1, 1, figsize=(10, 14))
@@ -30,7 +40,7 @@ def generate_prisma(identified, duplicates, screened_excl, fulltext_excl, includ
         ax.add_patch(rect)
         ax.text(x + w/2, y + h/2, text, ha='center', va='center',
                 fontsize=fontsize, color=fc, fontweight='bold',
-                fontfamily='DejaVu Sans', wrap=True, multialignment='center')
+                wrap=True, multialignment='center')
 
     def arrow(ax, x1, y1, x2, y2):
         ax.annotate('', xy=(x2, y2), xytext=(x1, y1),
@@ -41,7 +51,7 @@ def generate_prisma(identified, duplicates, screened_excl, fulltext_excl, includ
                               facecolor=bg, edgecolor='#E74C3C', linewidth=1, linestyle='--')
         ax.add_patch(rect)
         ax.text(x + w/2, y + h/2, text, ha='center', va='center',
-                fontsize=8.5, color='#922B21', fontfamily='DejaVu Sans',
+                fontsize=8.5, color='#922B21',
                 multialignment='center')
 
     # 標題

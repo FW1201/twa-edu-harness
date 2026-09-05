@@ -7,8 +7,51 @@ on:
     branches: [main]
 
 jobs:
-  validate-skills:
-    name: Skill 結構驗證
+  gates:
+    name: 結構驗證
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+      - run: pip install pyyaml python-docx
+
+      # 每一道 gate 各自一個 step，這樣 CI 頁面直接看得出是哪一項失敗。
+      - name: Frontmatter 契約 v1
+        run: python scripts/verify_skill_frontmatter.py
+      - name: 相對連結
+        run: python scripts/verify_skill_links.py
+      - name: twa_edu_core API 相容性
+        run: python scripts/verify_core_api.py
+      - name: 禁止重複的共用工具
+        run: python scripts/verify_no_vendored_utils.py
+      - name: Subagent 依賴隨附
+        run: python scripts/verify_agent_deps.py
+      - name: Agent Note 格式
+        run: python scripts/verify_agent_notes.py
+      - name: README 清單一致性
+        run: python scripts/gen_skill_index.py --check
+
+  smoke:
+    name: 生成腳本 Smoke Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+      - run: |
+          pip install -r requirements.txt
+          pip install -e ./python
+
+      # 腳本從檔案系統動態列舉，測試參數由各 skill 的 scripts/smoke.yml 提供。
+      # 不硬編碼清單——v3.x 的 CI 寫死腳本路徑，其中一支被刪除後 CI 就永遠是紅的。
+      - name: 動態列舉並實際執行所有生成腳本
+        run: python scripts/smoke_test_scripts.py
+
+  standalone:
+    name: 單支安裝建置驗證
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -17,46 +60,21 @@ jobs:
           python-version: '3.11'
       - run: pip install pyyaml
 
-      # 數量一律從檔案系統推導，絕不硬編碼。
-      # 舊 repo 的 CI 把「16 個 Skills」寫死在 echo 裡，於是數字永遠對不上。
-      - name: 統計 Skills 數量
-        id: count
+      # 單支安裝時 shared/ 不存在，協議必須已內聯進 SKILL.md。
+      - name: 建置內聯版
+        run: python scripts/build_standalone_skills.py --out dist/skills
+      - name: 驗證內聯版無外部依賴
+        run: python scripts/verify_skill_links.py --root dist/skills --standalone
+      - name: 確認四份協議真的在檔案裡
         run: |
-          COUNT=$(find skills -mindepth 2 -maxdepth 2 -name SKILL.md | wc -l | tr -d ' ')
-          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
-          echo "偵測到 $COUNT 支 Skills"
-
-      - name: 每個 skill 目錄都必須有 SKILL.md
-        run: |
-          fail=0
-          for d in skills/*/; do
-            if [ ! -f "$d/SKILL.md" ]; then
-              echo "::error::$d 缺少 SKILL.md"; fail=1
-            fi
+          f=dist/skills/tw-edu-lesson-plan-108/SKILL.md
+          for t in 概念對齊協議 學段適配協議 引導式資訊收集協議 "MCP 使用策略"; do
+            grep -q "$t" "$f" || { echo "::error::內聯版缺少 $t"; exit 1; }
           done
-          exit $fail
+          echo "四份協議齊全"
 
-      - name: frontmatter 必填欄位與 name 一致性
-        run: python scripts/verify_skill_frontmatter.py
-
-      - name: 相對連結不得斷鏈或逸出 repo 根
-        run: python scripts/verify_skill_links.py
-
-      - name: README 數量與實際一致
-        run: |
-          COUNT="${{ steps.count.outputs.count }}"
-          grep -q "Skills-${COUNT}-" README.md \
-            || { echo "::error::README badge 與實際 $COUNT 支不符"; exit 1; }
-          for d in skills/*/; do
-            n=$(basename "$d")
-            grep -q "$n" README.md || { echo "::error::README 未列出 $n"; exit 1; }
-          done
-          echo "README 與 $COUNT 支 Skills 一致"
-
-      - run: echo "=== 全部 ${{ steps.count.outputs.count }} 支 Skills 通過結構驗證 ==="
-
-  compile-scripts:
-    name: 生成腳本語法檢查
+  core-install-modes:
+    name: twa_edu_core 兩種安裝模式
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -65,12 +83,18 @@ jobs:
           python-version: '3.11'
       - run: pip install -r requirements.txt
 
-      # 動態列舉，不硬編碼腳本清單。
-      # 舊 repo 的 CI 寫死呼叫 tw-edu-slides-creator/scripts/generate_slides.py，
-      # 該檔於 2026-05-11 被刪除後 CI 就永遠是紅的。
-      - name: 列舉並編譯所有腳本
+      # 腳本必須在「已安裝套件」與「僅有 repo 內 python/」兩種情境都能跑。
+      - name: 模式 A — pip install -e
         run: |
-          mapfile -t scripts < <(find skills -path '*/scripts/*.py' | sort)
-          echo "偵測到 ${#scripts[@]} 支 Python 腳本"
-          python -m py_compile "${scripts[@]}"
-          echo "全部通過語法檢查"
+          pip install -e ./python
+          for f in $(find skills -path '*/scripts/generate_*.py' | sort); do
+            python "$f" --help > /dev/null || { echo "::error::$f"; exit 1; }
+          done
+          echo "18 支腳本在已安裝模式下正常"
+      - name: 模式 B — sys.path fallback
+        run: |
+          pip uninstall -y twa-edu-core
+          for f in $(find skills -path '*/scripts/generate_*.py' | sort); do
+            python "$f" --help > /dev/null || { echo "::error::$f"; exit 1; }
+          done
+          echo "18 支腳本在 fallback 模式下正常"

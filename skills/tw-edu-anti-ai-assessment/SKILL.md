@@ -8,9 +8,25 @@ description: >
   「學生都用ChatGPT交作業」「評量設計」「真實性評量」「無法複製貼上的題目」
   「AI代寫的問題」「學習評量改革」「真正測能力」時觸發。
 version: 1.1.0
-author: 奇老師・數位敘事力社群
 allowed-tools: "Bash, Read, Write, WebSearch"
 disable-model-invocation: true
+
+author: 奇老師・數位敘事力社群
+license: MIT
+
+whenToUse: >
+  適用於檢視既有評量是否容易被 AI 代做，並提出矯正方案。從零出題改用 tw-edu-exam-generator。
+
+metadata:
+  role: teacher
+  category: 評量命題
+  stage: [J, U]
+  subjects: [全領域]
+  outputs: [docx]
+  shared:
+    - concept-alignment
+    - grade-adapter
+    - guided-collection
 ---
 
 # 抗 AI 評量矯正系統 v1.0

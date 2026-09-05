@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 """驗證所有 SKILL.md 的 frontmatter。
 
-分兩級：
-  ERROR   — 現在就必須成立的規則，違反則 CI 紅。
-  WARNING — frontmatter 契約 v1 的目標欄位，P1 補齊；補齊後加 --strict 升為 ERROR。
+21 支技能已於 P1 全數補齊契約 v1，因此預設就是嚴格模式。
+`--lenient` 只保留給遷移中的分支：把契約欄位的缺漏降為 warning。
 
-這樣新 repo 第一天 CI 就是綠的。CI 一旦長期是紅的就沒人看，
-沒人看就擋不住問題——這正是舊 repo 走上的路。
+CI 一旦長期是紅的就沒人看，沒人看就擋不住問題——這正是舊 repo 走上的路。
+所以規則要嚴，但每次收緊之前要先讓現況通過。
 """
 from __future__ import annotations
 import argparse, re, sys
@@ -87,8 +86,8 @@ def check(skill_dir: Path, errors: list[str], warnings: list[str]) -> None:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--strict", action="store_true",
-                    help="把 WARNING 視為 ERROR（契約 v1 補齊後啟用）")
+    ap.add_argument("--lenient", action="store_true",
+                    help="把契約 v1 的缺漏降為 WARNING（僅供遷移中的分支使用）")
     args = ap.parse_args()
 
     dirs = sorted(p for p in Path("skills").iterdir() if (p / "SKILL.md").is_file())
@@ -101,7 +100,7 @@ def main() -> int:
     for d in dirs:
         check(d, errors, warnings)
 
-    if args.strict:
+    if not args.lenient:
         errors.extend(warnings)
         warnings = []
 

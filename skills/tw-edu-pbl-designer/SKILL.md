@@ -7,6 +7,24 @@ description: >
 version: 1.0.0
 allowed-tools: "Bash, Read, Write"
 disable-model-invocation: true
+
+author: 奇老師・數位敘事力社群
+license: MIT
+
+whenToUse: >
+  適用於數週以上、以驅動問題與最終成品為核心的專題式學習。單課教案改用 tw-edu-lesson-plan-108。
+
+metadata:
+  role: teacher
+  category: 課程設計
+  stage: [E, J, U]
+  subjects: [全領域]
+  outputs: [docx]
+  shared:
+    - concept-alignment
+    - grade-adapter
+    - guided-collection
+    - mcp-strategy
 ---
 
 # PBL 專題式學習設計工具

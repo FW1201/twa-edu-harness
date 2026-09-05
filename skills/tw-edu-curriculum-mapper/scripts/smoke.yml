@@ -1,0 +1,7 @@
+# smoke test：最小參數 + 產出斷言。
+# 新增腳本卻沒寫這個檔，smoke gate 會直接紅——
+# 這是為了避免重演「CI 引用已刪除腳本」那類問題。
+- script: generate_curriculum_map.py
+  args: ["--subject", "國語文", "--grade", "國中八年級", "--semester", "上學期"]
+  output_ext: xlsx
+  min_bytes: 8000

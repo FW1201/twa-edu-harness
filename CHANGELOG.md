@@ -4,6 +4,61 @@
 
 ---
 
+## [4.0.0-beta.1] — 2026-09-05
+
+結構重整。建立可擴充的基座與七道驗證閘門。
+
+### Added
+
+- **`python/twa_edu_core/`** — 取代 15 份內容完全相同的 `tw_edu_doc_utils.py`。
+  拆為 `theme`（色票）、`fonts`（Word 東亞字型 + matplotlib/ReportLab 的 CJK 註冊）、
+  `docx_utils`（儲存格、表格、章節標題、封面頁、A4 版面、頁首頁尾）。
+  `from twa_edu_core import *` 的輸出集合與舊 `tw_edu_doc_utils` **完全一致**，
+  由 `verify_core_api.py` 凍結驗證。
+- **`agents/`** — 隨附技能召喚的 subagent 定義。`tw-edu-citation-checker` 的批次
+  並行模式依賴 `citation-checker-worker`，而該定義原本只存在於作者本機的
+  `~/.claude/agents/`，不會隨 `npx skills add` 安裝，使用者端會靜默失效。
+- **七道閘門**：frontmatter 契約、相對連結、core API 相容性、禁止重複共用碼、
+  subagent 依賴、Agent Note 格式、README 清單一致性。
+- **`smoke_test_scripts.py`** — 動態列舉 `skills/*/scripts/generate_*.py`，
+  依各自的 `smoke.yml` 實際執行並驗證產出大小與表格數。18 支腳本全部涵蓋。
+- **`build_standalone_skills.py`** — 發版時把 `shared/` 協議內聯進 SKILL.md，
+  輸出 `dist/skills/`，使單支 `npx skills add` 也能完整運作。內聯版經
+  `verify_skill_links.py --standalone` 驗證為零外部相對依賴。
+- **`.agents/notes/`** — 6 篇決策紀錄；`.agents/skills/` — 兩支維護用 meta-skill。
+- CI 擴充為 4 個 job，新增「twa_edu_core 兩種安裝模式」驗證
+  （`pip install -e` 與純 `sys.path` fallback 都要能跑）。
+
+### Changed
+
+- 21 支 SKILL.md 補齊 **frontmatter 契約 v1**：`license`、`whenToUse`、`metadata`
+  （21 支原本全缺）、`author`（原本缺 12 支）。`description` 負責召回，
+  `whenToUse` 負責精確度——寫明「什麼時候不要用我、該用哪一支」。
+- `verify_skill_frontmatter.py` 預設改為嚴格模式（`--lenient` 保留給遷移中的分支）。
+- **`disable-model-invocation` 分批移除**：`lesson-plan-108`、`exam-generator`、
+  `worksheet-creator` 三支先移除，觀察兩週確認無誤觸發後再推廣。
+  `tw-edu-synchronizer` 永遠保留 `true`——設定工具不該被模型在備課途中自作主張叫起來。
+- `tw-edu-synchronizer` 的 Step 0 改為動態列舉同層 `tw-edu-*/SKILL.md`，
+  移除寫死的三條路徑與過期的「16 個核心教學 Skills」。
+
+### Fixed
+
+- **`tw-edu-research-viz` 的 PRISMA 圖中文全部渲染成空白方框**。根因有二：
+  腳本完全沒有設定 matplotlib 的 CJK 字型，且在 `ax.text()` 硬寫
+  `fontfamily='DejaVu Sans'`（純拉丁字型）覆蓋掉一切。已接上
+  `register_cjk_fonts()` 並移除硬寫字型，中文正常顯示。
+- 移除 `generate_prisma.py` 會污染 `sys.path` 的 `sys.path.insert(0, '.')`。
+- 刪除 `tw-edu-citation-checker` 的孤兒 `tw_edu_doc_utils.py`（無任何腳本使用）。
+
+### 已知待辦（P2）
+
+`tw-edu-lesson-plan-108` 與 `tw-edu-differentiated` 在腳本內**行內重新實作**了
+`twa_edu_core` 已提供的邏輯（函式名與參數皆不同）。直接替換會改變既有教案的版面，
+暫列為 `verify_no_vendored_utils.py` 的既存例外，收斂條件見
+`.agents/notes/proposed/architecture/2026-09-05-inline-docx-helpers.md`。
+
+---
+
 ## [4.0.0-alpha.1] — 2026-09-05
 
 `FW1201/tw-edu-skills` 的後繼專案。**Skill 名稱維持 `tw-edu-*` 不變**，

@@ -8,9 +8,25 @@ description: >
   「教學工具開發」「幫我做一個能分享的教學頁面」「部署到網路」時觸發。
   技術棧：React + Tailwind CSS → Vercel（優先）或 GitHub Pages
 version: 1.0.0
-author: 奇老師・數位敘事力社群
 allowed-tools: "Bash, Read, Write, WebSearch"
 disable-model-invocation: true
+
+author: 奇老師・數位敘事力社群
+license: MIT
+
+whenToUse: >
+  適用於需要互動的小工具（測驗、遊戲、計時器、隨機分組），輸出可分享的網頁。靜態教材改用 tw-edu-worksheet-creator 或 tw-edu-slides-creator。
+
+metadata:
+  role: teacher
+  category: 教材資源
+  stage: [E, J, U]
+  subjects: [全領域]
+  outputs: [html]
+  shared:
+    - concept-alignment
+    - grade-adapter
+    - guided-collection
 ---
 
 # 教學小程式開發 + 自動部署 v1.0

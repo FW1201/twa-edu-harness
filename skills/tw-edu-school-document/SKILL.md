@@ -8,6 +8,24 @@ description: >
 version: 1.0.0
 allowed-tools: "Bash, Read, Write"
 disable-model-invocation: true
+
+author: 奇老師・數位敘事力社群
+license: MIT
+
+whenToUse: >
+  適用於校內行政文書（簽呈、計畫書、成果報告、研習申請）。給家長的文件改用 tw-edu-parent-communication；會議議程與記錄改用 tw-edu-meeting-facilitator。
+
+metadata:
+  role: teacher
+  category: 班級行政
+  stage: [E, J, U]
+  subjects: [學校行政]
+  outputs: [docx]
+  shared:
+    - concept-alignment
+    - grade-adapter
+    - guided-collection
+    - mcp-strategy
 ---
 
 # 校園行政文書生成工具

@@ -124,10 +124,19 @@ pip install -r requirements.txt
 ```
 skills/tw-edu-*/       21 支教學技能（模型按需載入）
 shared/                跨技能共用協議（概念對齊、學段適配、引導式收集、MCP 策略）
+python/twa_edu_core/   共用程式碼（Word 版面、色票、CJK 字型）
+agents/                技能召喚的 subagent 定義
 scripts/               驗證閘門（gates）
+.agents/notes/         決策紀錄
 ```
 
 規範與開發約定見 [`AGENTS.md`](AGENTS.md)。
+
+### 單支安裝的處理
+
+四份共用協議在 repo 內是單一真源（`shared/`），但 `npx skills add` 單獨安裝一支技能時
+不會把它們帶過去。發版時由 `scripts/build_standalone_skills.py` 把協議內聯進
+`dist/skills/` 的 SKILL.md，因此單支安裝也能完整運作。
 
 ---
 
@@ -136,12 +145,17 @@ scripts/               驗證閘門（gates）
 送 PR 前先在本機跑過閘門：
 
 ```bash
-python scripts/verify_skill_frontmatter.py
-python scripts/verify_skill_links.py
-python scripts/gen_skill_index.py --check
+python scripts/verify_skill_frontmatter.py   # frontmatter 契約 v1
+python scripts/verify_skill_links.py         # 相對連結不斷鏈
+python scripts/verify_core_api.py            # twa_edu_core API 相容性
+python scripts/verify_no_vendored_utils.py   # 禁止重複共用程式碼
+python scripts/verify_agent_deps.py          # subagent 依賴隨附
+python scripts/verify_agent_notes.py         # 決策紀錄格式
+python scripts/gen_skill_index.py --check    # README 清單一致性
+python scripts/smoke_test_scripts.py         # 實際跑出文件
 ```
 
-新增技能的規格見 [`AGENTS.md`](AGENTS.md) 的「Skill 開發規範」。
+新增技能的規格見 [`AGENTS.md`](AGENTS.md) 與 `.agents/skills/twa-skill-author/`。
 
 ---
 
