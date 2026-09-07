@@ -12,7 +12,7 @@ import json
 import sys
 from typing import Any
 
-from twa_curriculum import default_store
+from twa_curriculum import AmbiguousCode, default_store
 
 TOOLS: list[dict[str, Any]] = [
     {
@@ -30,6 +30,13 @@ TOOLS: list[dict[str, Any]] = [
                     "type": "string",
                     "description": "指標代碼，如 國-J-B1、5-Ⅳ-2、Ab-Ⅳ-1。"
                                    "羅馬數字可用 Ⅳ 或 IV。",
+                },
+                "domain": {
+                    "type": "string",
+                    "description": "領域/科目，如 國語文。學習表現與學習內容的"
+                                   "代碼不帶領域前綴，跨領域會撞號"
+                                   "（1-Ⅱ-1 在國語文是聆聽、在英語文是聽辨字母），"
+                                   "因此**務必指定**。",
                 }
             },
         },
@@ -66,6 +73,8 @@ TOOLS: list[dict[str, Any]] = [
             "required": ["codes"],
             "properties": {
                 "codes": {"type": "array", "items": {"type": "string"}},
+                "domain": {"type": "string",
+                           "description": "領域/科目。代碼跨領域會撞號，務必指定。"},
             },
         },
     },
@@ -76,7 +85,14 @@ def handle(name: str, args: dict[str, Any]) -> dict[str, Any]:
     store = default_store()
 
     if name == "curriculum_get":
-        ind = store.get(args["code"])
+        try:
+            ind = store.get(args["code"], args.get("domain"))
+        except AmbiguousCode as exc:
+            return {
+                "ambiguous": True, "code": exc.code, "domains": exc.domains,
+                "message": "此代碼在多個領域都存在，意義不同。"
+                           "請加上 domain 參數重查——不要自行選一個。",
+            }
         if ind is None:
             return {
                 "exists": False,
@@ -97,10 +113,12 @@ def handle(name: str, args: dict[str, Any]) -> dict[str, Any]:
                 "loadedDomains": store.domains}
 
     if name == "curriculum_verify":
-        result = store.verify(args["codes"])
-        bad = [c for c, v in result.items() if not v["exists"]]
+        result = store.verify(args["codes"], args.get("domain"))
+        bad = [c for c, v in result.items() if v.get("exists") is False]
+        ambiguous = [c for c, v in result.items() if v.get("ambiguous")]
         return {"results": result, "invalidCodes": bad,
-                "allValid": not bad,
+                "ambiguousCodes": ambiguous,
+                "allValid": not bad and not ambiguous,
                 "loadedDomains": store.domains}
 
     raise ValueError(f"未知的工具：{name}")
@@ -136,13 +154,21 @@ def selftest() -> int:
 
     checks = [
         ("curriculum_get", {"code": "國-J-B1"}, lambda r: r["exists"]),
-        ("curriculum_get", {"code": "5-IV-2"}, lambda r: r["exists"]),
+        ("curriculum_get", {"code": "5-IV-2", "domain": "國語文"},
+         lambda r: r["exists"]),
         ("curriculum_get", {"code": "語-J-B1"}, lambda r: not r["exists"]),
+        # 跨領域撞號時必須回報歧義，不能任選一個
+        ("curriculum_get", {"code": "1-Ⅱ-1"},
+         lambda r: r.get("ambiguous") and "英語文" in r["domains"]),
+        ("curriculum_get", {"code": "1-Ⅱ-1", "domain": "英語文"},
+         lambda r: r["exists"] and "字母" in r["description"]),
         ("curriculum_lookup", {"domain": "國語文", "level": "J",
                                "kind": "competency"},
          lambda r: r["count"] == 9),
         ("curriculum_verify", {"codes": ["國-J-B1", "語-J-B1"]},
          lambda r: r["invalidCodes"] == ["語-J-B1"]),
+        ("curriculum_verify", {"codes": ["1-Ⅱ-1"]},
+         lambda r: r["ambiguousCodes"] == ["1-Ⅱ-1"]),
     ]
     failed = 0
     for name, args, ok in checks:

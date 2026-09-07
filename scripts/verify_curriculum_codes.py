@@ -50,7 +50,7 @@ def scan_files() -> list[Path]:
 
 def main() -> int:
     try:
-        from twa_curriculum import default_store
+        from twa_curriculum import AmbiguousCode, default_store
     except ImportError as exc:
         print(f"❌ 無法匯入 twa_curriculum：{exc}")
         return 1
@@ -93,26 +93,38 @@ def main() -> int:
                 continue
             code = f"{head}{'S' if s_flag else ''}-{level}-{item}"
             checked += 1
-            if store.get(code) is None:
+            # 素養碼帶領域前綴，不會撞號
+            if store.get(code, prefixes[head]) is None:
                 line = text[:m.start()].count("\n") + 1
                 errors.append(f"{rel}:{line} 代碼 `{code}` 不存在於領綱")
 
         if not marked_domain:
             continue          # 無領域宣告 → 不比對無前綴的代碼
 
+        # 學習表現與學習內容的代碼不帶領域前綴，跨領域必然撞號
+        # （1-Ⅱ-1 在國語文是聆聽、在英語文是聽辨字母，5 個領域中有 268 個重複）。
+        # 因此一律帶著檔案宣告的領域查詢。
+        file_domain = marked_domain.group(1)
+        if file_domain not in store.domains:
+            pending.add(file_domain)
+            continue
+
         for regex, kind in ((PERFORMANCE_RE, "學習表現"), (CONTENT_RE, "學習內容")):
             for m in regex.finditer(text):
                 code = f"{m.group(1)}-{m.group(2)}-{m.group(3)}"
                 checked += 1
-                if store.get(code) is None:
+                found = store.get(code, file_domain)
+                if found is None:
                     line = text[:m.start()].count("\n") + 1
-                    errors.append(f"{rel}:{line} {kind}代碼 `{code}` 不存在於領綱")
+                    errors.append(
+                        f"{rel}:{line} {kind}代碼 `{code}` "
+                        f"不存在於{file_domain}領綱")
                     continue
                 # 代碼後緊接敘述時，敘述必須與領綱一致
                 tail = re.match(DESC_RE, text[m.end():])
                 if tail:
                     claimed = tail.group(1).strip().rstrip("。|").strip()
-                    official = store.get(code).description.rstrip("。")
+                    official = found.description.rstrip("。")
                     if claimed and claimed != official:
                         line = text[:m.start()].count("\n") + 1
                         errors.append(
@@ -129,7 +141,8 @@ def main() -> int:
         return 1
 
     print(f"✅ 已比對 {checked} 處課綱代碼，"
-          f"全部與領綱一致（已載入：{', '.join(store.domains)}）")
+          f"全部與領綱一致（已載入 {len(store)} 筆："
+          f"{'、'.join(store.domains)}）")
     if pending:
         print(f"   ⏳ 尚未載入資料、無法查核的領域前綴：{', '.join(sorted(pending))}")
     return 0

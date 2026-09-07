@@ -159,6 +159,46 @@ def parse_from_tables(tables, pattern: re.Pattern, kind: str,
     return out
 
 
+def parse_from_split_cells(tables, pattern: re.Pattern, kind: str,
+                           domain: str, allow_short: set[str] | None = None) -> dict:
+    """表格抽取 + 儲存格內依代碼切分。
+
+    社會、自然科學、英語文的指標表是「依學習階段並排」的多欄表，
+    **同一個儲存格裡會塞進好幾筆指標**。整格當一筆會得到多筆合併的亂碼，
+    逐行則會被欄位交錯打散。做法是先取儲存格，再依代碼出現位置切段。
+    """
+    out: dict[str, dict] = {}
+    for table in tables:
+        for row in table:
+            for cell in row:
+                if not cell:
+                    continue
+                matches = list(pattern.finditer(cell))
+                for i, m in enumerate(matches):
+                    end = matches[i + 1].start() if i + 1 < len(matches) else len(cell)
+                    stage = norm_roman(m.group(2))
+                    if stage is None:
+                        continue
+                    code = f"{m.group(1)}-{stage}-{m.group(3)}"
+                    desc = clean(cell[m.end():end])
+                    if code in out:
+                        continue
+                    # 短片段通常是雜訊，但跨頁截斷的前半段也會很短——
+                    # 已在 profile 宣告續接的代碼豁免此門檻。
+                    min_len = 1 if (allow_short and code in allow_short) else 4
+                    if len(desc) < min_len:
+                        continue
+                    prefix_text = cell[max(0, m.start() - 2):m.start()]
+                    out[code] = {
+                        "code": code, "kind": kind, "domain": domain,
+                        "stage": stage, "stageLabel": STAGE_LABEL[stage],
+                        "level": STAGE_TO_LEVEL[stage],
+                        "category": m.group(1), "description": desc,
+                        "elective": "◎" in prefix_text or "*" in prefix_text,
+                    }
+    return out
+
+
 def parse_competencies(tables: list[list[list[str]]], domain: str,
                        prefix: str) -> dict:
     """核心素養在 PDF 中是多欄表格，用表格抽取比純文字可靠。"""
@@ -223,15 +263,34 @@ def main() -> int:
         pages = [p.extract_text() or "" for p in pdf.pages]
         tables = [t for p in pdf.pages for t in p.extract_tables()]
 
+    continuations = profile.get("continuations") or {}
+
     if strategy == "tables":
         perf = parse_from_tables(tables, perf_re, "performance", domain)
         cont = parse_from_tables(tables, cont_re, "content", domain)
+    elif strategy == "tables-split":
+        short_ok = set(continuations)
+        perf = parse_from_split_cells(tables, perf_re, "performance",
+                                      domain, short_ok)
+        cont = parse_from_split_cells(tables, cont_re, "content",
+                                      domain, short_ok)
     else:
         perf = parse_indicators(pages, perf_re, "performance", domain, prefix)
         cont = parse_indicators(pages, cont_re, "content", domain, prefix)
         # 逐行模式下，學習內容代碼不該以數字開頭（那是學習表現）
         cont = {k: v for k, v in cont.items() if not k[0].isdigit()}
     comp = parse_competencies(tables, domain, prefix)
+
+    # 跨頁截斷：表格儲存格被頁面切斷時，後半段落在下一頁的續表。
+    # profile 以 `continuations` 明確宣告要接上的後半段，並註明來源頁碼——
+    # 這是把抽取器已經看到的兩個片段接起來，不是憑空補字。
+    for code, tail in continuations.items():
+        for bucket in (perf, cont):
+            if code in bucket:
+                bucket[code]["description"] = clean(
+                    bucket[code]["description"] + tail["text"])
+                bucket[code]["note"] = (
+                    f"敘述跨頁（{tail['source']}），由 profile 的 continuations 接續")
 
     out_dir = REPO / args.out
     out_dir.mkdir(parents=True, exist_ok=True)

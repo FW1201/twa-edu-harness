@@ -10,6 +10,7 @@
 from __future__ import annotations
 
 from .store import (
+    AmbiguousCode,
     CurriculumStore,
     Indicator,
     default_store,
@@ -21,6 +22,6 @@ from .store import (
 
 __version__ = "1.0.0"
 __all__ = [
-    "CurriculumStore", "Indicator", "default_store",
+    "AmbiguousCode", "CurriculumStore", "Indicator", "default_store",
     "lookup", "get_by_code", "list_competencies", "verify_codes",
 ]

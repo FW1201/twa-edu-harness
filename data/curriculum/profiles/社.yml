@@ -1,0 +1,12 @@
+# 社會領綱的抽取設定
+#
+# tables-split：指標表是「依學習階段並排」的多欄表，同一個儲存格裡會塞進
+# 好幾筆指標。整格當一筆會得到合併的亂碼，逐行則會被欄位交錯打散。
+# 做法是先取儲存格，再依代碼出現位置切段。
+domain: 社會
+prefix: 社
+strategy: tables-split
+stageKind: roman
+patterns:
+  performance: '(\d[a-z])-([ⅠⅡⅢⅣⅤ])-(\d+)'
+  content:     '([A-Z][a-z]?)-([ⅠⅡⅢⅣⅤ])-(\d+)'

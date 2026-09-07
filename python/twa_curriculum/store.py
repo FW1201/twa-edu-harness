@@ -70,13 +70,36 @@ class Indicator:
         return d
 
 
+class AmbiguousCode(LookupError):
+    """同一個代碼在多個領域都存在，且呼叫端沒有指定領域。
+
+    學習表現與學習內容的代碼**不帶領域前綴**，跨領域必然撞號——
+    `1-Ⅱ-1` 在國語文是「聆聽時能讓對方充分表達意見」，
+    在英語文是「能聽辨 26 個字母」。目前 5 個領域中有 268 個代碼重複。
+
+    這種情況下靜默選一個是最糟的處理方式：回傳的敘述看起來完全正常，
+    但可能屬於另一個領域，而使用者會把它寫進教案。
+    """
+
+    def __init__(self, code: str, domains: list[str]):
+        self.code, self.domains = code, sorted(domains)
+        super().__init__(
+            f"代碼 `{code}` 在多個領域都存在（{'、'.join(self.domains)}），"
+            f"請指定 domain")
+
+
 class CurriculumStore:
-    """載入 data/curriculum/*.json 並提供查詢。"""
+    """載入 data/curriculum/*.json 並提供查詢。
+
+    以 (領域, 代碼) 為鍵。只用代碼當鍵會讓後載入的領域靜默覆蓋前面的——
+    5 個領域中有 268 個代碼重複。
+    """
 
     def __init__(self, data_dir: Path | None = None):
         self.data_dir = Path(data_dir or DATA_DIR)
-        self._by_code: dict[str, Indicator] = {}
-        self._domains: dict[str, str] = {}   # 領域名 → 前綴
+        self._by_key: dict[tuple[str, str], Indicator] = {}
+        self._code_index: dict[str, list[str]] = {}   # 代碼 → [領域,…]
+        self._domains: dict[str, str] = {}            # 領域名 → 前綴
         self._load()
 
     def _load(self) -> None:
@@ -84,11 +107,14 @@ class CurriculumStore:
             return
         for path in sorted(self.data_dir.glob("*.json")):
             payload = json.loads(path.read_text(encoding="utf-8"))
-            self._domains[payload["domain"]] = payload["prefix"]
+            domain = payload["domain"]
+            self._domains[domain] = payload["prefix"]
             for bucket in ("competencies", "performance", "content"):
                 for raw in (payload.get(bucket) or {}).values():
                     ind = Indicator.from_raw(raw)
-                    self._by_code[normalize_code(ind.code)] = ind
+                    code = normalize_code(ind.code)
+                    self._by_key[(domain, code)] = ind
+                    self._code_index.setdefault(code, []).append(domain)
 
     # ── 查詢 ────────────────────────────────────────────
     @property
@@ -96,21 +122,38 @@ class CurriculumStore:
         return sorted(self._domains)
 
     def __len__(self) -> int:
-        return len(self._by_code)
+        return len(self._by_key)
 
-    def get(self, code: str) -> Indicator | None:
-        """依代碼取得單一指標。查不到回 None——不猜測、不生成。"""
-        return self._by_code.get(normalize_code(code))
+    def domains_for(self, code: str) -> list[str]:
+        """這個代碼存在於哪些領域。"""
+        return sorted(self._code_index.get(normalize_code(code), []))
+
+    def get(self, code: str, domain: str | None = None) -> Indicator | None:
+        """依代碼取得單一指標。
+
+        查不到回 None——不猜測、不生成。
+        代碼在多個領域都存在而未指定 domain 時，丟 `AmbiguousCode`，
+        **不會任選一個**。
+        """
+        code = normalize_code(code)
+        if domain:
+            return self._by_key.get((domain, code))
+        owners = self._code_index.get(code)
+        if not owners:
+            return None
+        if len(owners) > 1:
+            raise AmbiguousCode(code, owners)
+        return self._by_key[(owners[0], code)]
 
     def all(self) -> Iterable[Indicator]:
-        return self._by_code.values()
+        return self._by_key.values()
 
     def search(self, domain: str | None = None, level: str | None = None,
                kind: str | None = None, keyword: str | None = None,
                limit: int = 20) -> list[Indicator]:
         """依領域、教育階段、類型與關鍵詞查詢。"""
         results = []
-        for ind in self._by_code.values():
+        for ind in self._by_key.values():
             if domain and ind.domain != domain:
                 continue
             if level and ind.level != level.upper():
@@ -128,14 +171,24 @@ class CurriculumStore:
         return self.search(domain=domain, level=level,
                            kind="competency", limit=1000)
 
-    def verify(self, codes: Iterable[str]) -> dict[str, dict]:
+    def verify(self, codes: Iterable[str],
+               domain: str | None = None) -> dict[str, dict]:
         """批次查核。回傳每個代碼的存在與否與官方敘述。
 
         給技能在產出前自我檢查用——寫進教案的每一個代碼都應該先過這一關。
+        代碼跨領域重複而未指定 domain 時回報 ambiguous，不任選一個。
         """
         out: dict[str, dict] = {}
         for code in codes:
-            ind = self.get(code)
+            try:
+                ind = self.get(code, domain)
+            except AmbiguousCode as exc:
+                out[code] = {
+                    "exists": None, "ambiguous": True,
+                    "domains": exc.domains, "description": None,
+                    "hint": "此代碼在多個領域都存在，請指定 domain 後重查",
+                }
+                continue
             out[code] = ({"exists": False, "description": None,
                           "hint": "此代碼不存在於已載入的領綱資料中"}
                          if ind is None else
@@ -156,8 +209,8 @@ def lookup(domain: str | None = None, level: str | None = None,
     return default_store().search(domain, level, kind, keyword, limit)
 
 
-def get_by_code(code: str) -> Indicator | None:
-    return default_store().get(code)
+def get_by_code(code: str, domain: str | None = None) -> Indicator | None:
+    return default_store().get(code, domain)
 
 
 def list_competencies(domain: str | None = None,
@@ -165,5 +218,6 @@ def list_competencies(domain: str | None = None,
     return default_store().competencies(domain, level)
 
 
-def verify_codes(codes: Iterable[str]) -> dict[str, dict]:
-    return default_store().verify(codes)
+def verify_codes(codes: Iterable[str],
+                 domain: str | None = None) -> dict[str, dict]:
+    return default_store().verify(codes, domain)
