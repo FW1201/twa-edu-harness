@@ -1,0 +1,16 @@
+# 科技領綱的抽取設定
+#
+# 科技領域從國中才開始，因此只有第四、五學習階段。
+# 學習表現與學習內容都用「中文構面簡稱 + 類別字母」編碼
+# （運t-Ⅳ-1 運算思維、設a-Ⅳ-1 設計思考、資H-Ⅳ-1 資訊科技、生S-Ⅳ-1 生活科技）。
+# ⚠️ 羅馬數字全部使用拉丁字母（IV、V）。
+domain: 科技
+prefix: 科
+strategy: tables-split
+stageKind: roman
+patterns:
+  performance: '([運設][a-z])-([IVXⅠⅡⅢⅣⅤ]+)-(\d+)'
+  content:     '([資生][A-Z])-([IVXⅠⅡⅢⅣⅤ]+)-(\d+)'
+
+# pdfplumber 沒把「設計思考」那一列辨識為表格，需逐行補抓。
+lineFallback: true

@@ -1,0 +1,11 @@
+# 健康與體育領綱的抽取設定
+#
+# tables-split：指標表是「依學習階段並排」的多欄表，同一儲存格塞多筆指標。
+# 代碼格式與社會相同（學習表現 1a-Ⅰ-1、學習內容 Aa-Ⅰ-1）。
+domain: 健康與體育
+prefix: 健體
+strategy: tables-split
+stageKind: roman
+patterns:
+  performance: '(\d[a-z])-([ⅠⅡⅢⅣⅤ])-(\d+)'
+  content:     '([A-Z][a-z]?)-([ⅠⅡⅢⅣⅤ])-(\d+)'

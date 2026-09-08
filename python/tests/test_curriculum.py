@@ -84,13 +84,12 @@ def test_nonexistent_returns_none(code):
     assert get_by_code(code) is None, f"{code} 不該被查到"
 
 
-@pytest.mark.parametrize("code,absent_from,present_in", [
-    ("Da-Ⅳ-1", "國語文", ["社會", "自然科學"]),
-    ("7-Ⅳ-1", "國語文", ["英語文"]),
-    ("Bd-Ⅱ-1", "國語文", []),
+@pytest.mark.parametrize("code,absent_from,also_in", [
+    ("Da-Ⅳ-1", "國語文", "社會"),
+    ("7-Ⅳ-1", "國語文", "英語文"),
 ])
 def test_code_absent_in_one_domain_may_exist_in_another(
-        code, absent_from, present_in):
+        code, absent_from, also_in):
     """無前綴的代碼只在指定領域內才有意義。
 
     `Da-Ⅳ-1` 不存在於國語文，但在社會與自然科學都是合法代碼；
@@ -98,7 +97,8 @@ def test_code_absent_in_one_domain_may_exist_in_another(
     這正是查詢必須帶領域的理由。
     """
     assert get_by_code(code, absent_from) is None
-    assert default_store().domains_for(code) == sorted(present_in)
+    assert get_by_code(code, also_in) is not None
+    assert absent_from not in default_store().domains_for(code)
 
 
 def test_verify_reports_invalid():
@@ -140,11 +140,46 @@ def test_description_matches_official(code, expected):
 
 
 # ── 查詢 ─────────────────────────────────────────────
-@pytest.mark.parametrize("domain", ["國語文", "數學", "社會", "自然科學"])
+@pytest.mark.parametrize("domain", [
+    "國語文", "數學", "社會", "自然科學", "藝術", "健康與體育", "綜合活動"])
 def test_competencies_per_level(domain):
     for level in ("E", "J", "U"):
         items = list_competencies(domain=domain, level=level)
         assert len(items) == 9, f"{domain} {level} 階段應有三面九項共 9 條"
+
+
+def test_technology_starts_at_junior_high():
+    """科技領域從國中才開始，沒有國小階段的素養與指標。"""
+    assert list_competencies(domain="科技", level="E") == []
+    assert len(list_competencies(domain="科技", level="J")) == 9
+    assert all(i.level in ("J", "U") for i in default_store().all()
+               if i.domain == "科技")
+
+
+@pytest.mark.parametrize("domain,code,kind", [
+    ("藝術", "音E-Ⅱ-5", "content"), ("藝術", "1-Ⅱ-5", "performance"),
+    ("健康與體育", "1a-Ⅰ-1", "performance"), ("健康與體育", "Aa-Ⅰ-1", "content"),
+    ("綜合活動", "1a-Ⅱ-1", "performance"), ("綜合活動", "家Aa-Ⅳ-1", "content"),
+    ("科技", "運t-Ⅳ-1", "performance"), ("科技", "資H-Ⅳ-1", "content"),
+])
+def test_final_four_domains(domain, code, kind):
+    """後四個領域的代碼格式各不相同，都要查得到。"""
+    ind = get_by_code(code, domain)
+    assert ind is not None, f"{domain} 的 {code} 應存在"
+    assert ind.kind == kind and ind.domain == domain
+
+
+def test_latin_roman_normalised_in_late_domains():
+    """綜合活動與科技領綱的羅馬數字全用拉丁字母，儲存時正規化為 Unicode。"""
+    assert get_by_code("1a-IV-1", "綜合活動") is get_by_code("1a-Ⅳ-1", "綜合活動")
+    assert get_by_code("運t-IV-1", "科技") is get_by_code("運t-Ⅳ-1", "科技")
+
+
+def test_line_fallback_recorded_its_provenance():
+    """表格辨識遺漏而由逐行補抓的項目要留下註記。"""
+    ind = get_by_code("設k-Ⅳ-1", "科技")
+    assert ind is not None
+    assert "逐行補抓" in ind.extra.get("note", "")
 
 
 def test_bd_starts_at_stage_three():
@@ -184,17 +219,24 @@ def test_lookup_limit():
     assert len(lookup(domain="國語文", limit=5)) == 5
 
 
+EXPECTED_DOMAINS = {
+    "國語文", "英語文", "數學", "社會", "自然科學",
+    "藝術", "健康與體育", "綜合活動", "科技",
+}
+
+
 def test_store_totals():
     store = default_store()
-    assert store.domains == ["國語文", "數學", "社會", "自然科學", "英語文"]
-    assert len(store) > 2000
+    assert set(store.domains) == EXPECTED_DOMAINS
+    assert len(store) > 3400
     kinds = {k: 0 for k in ("competency", "performance", "content")}
     for ind in store.all():
         kinds[ind.kind] += 1
-    # 英語文只有 22 條（部分素養項目在該領域不適用），其餘四領域各 27 條
-    assert kinds["competency"] == 130
-    assert kinds["performance"] > 700
-    assert kinds["content"] > 1300
+    # 七個領域各 27 條；英語文 22 條（部分項目不適用）；
+    # 科技 18 條（國中才開始，無國小階段）
+    assert kinds["competency"] == 27 * 7 + 22 + 18
+    assert kinds["performance"] > 1100
+    assert kinds["content"] > 2000
 
 
 # ── 數學：代碼格式與國語文完全不同 ──────────────────────

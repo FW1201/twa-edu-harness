@@ -1,0 +1,12 @@
+# 藝術領綱的抽取設定
+#
+# 學習表現用單一數字構面（1-Ⅱ-5 表現、2 鑑賞、3 實踐）；
+# 學習內容用「中文科別 + 類別字母」（音E-Ⅱ-5 音樂表現、視A-Ⅱ-1 視覺鑑賞、
+# 表P-Ⅱ-1 表演實踐），高中另有跨科的 藝E/藝A/藝P 與美術科的 美- 前綴。
+domain: 藝術
+prefix: 藝
+strategy: tables-split
+stageKind: roman
+patterns:
+  performance: '(\d)-([IVXⅠⅡⅢⅣⅤ]+)-(\d+)'
+  content:     '([音視表藝美][EAP])-([IVXⅠⅡⅢⅣⅤ]+)-(\d+)'

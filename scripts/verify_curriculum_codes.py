@@ -35,7 +35,10 @@ KNOWN_WRONG_PREFIX = {"語": "國"}
 # 學習表現（`5-Ⅳ-2`）與學習內容（`Ab-Ⅳ-1`）的代碼**不帶領域前綴**，
 # 跨領域會撞號——`3-Ⅲ-1` 在國語文不存在，在別的領域可能合法。
 # 因此只在明確宣告領域的檔案內比對，其餘只檢查帶前綴的素養碼。
-DOMAIN_MARKER = re.compile(r"<!--\s*curriculum-domain:\s*(\S+?)\s*-->")
+# 只認獨立成行的宣告。文件內用反引號說明語法時（`<!-- curriculum-domain: X -->`）
+# 不該被當成真的宣告。
+DOMAIN_MARKER = re.compile(
+    r"^<!--\s*curriculum-domain:\s*(\S+?)\s*-->\s*$", re.M)
 # 刻意引用錯誤範例的文件（例如記錄實測發現）用這個標記豁免。
 # 比對子字串，讓標記後面可以接說明文字。
 IGNORE_MARKER = "curriculum-check: ignore"

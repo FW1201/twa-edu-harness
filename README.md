@@ -155,7 +155,7 @@ shared/                跨技能共用協議（概念對齊、學段適配、引
 python/twa_edu_core/   共用程式碼（Word 版面、色票、CJK 字型）
 python/twa_curriculum/ 108 課綱查詢 + MCP server
 agents/                技能召喚的 subagent 定義
-data/curriculum/       108 課綱權威資料（由領綱 PDF 抽取）
+data/curriculum/       108 課綱權威資料（九大領域 3460 筆，由領綱 PDF 抽取）
 harness/               Bundle 層宣告（中性 schema）
 presets/               Agent Preset：persona + 能力邊界
 scripts/               驗證閘門（gates）
