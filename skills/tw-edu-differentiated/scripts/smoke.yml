@@ -6,3 +6,4 @@
   output_ext: docx
   min_bytes: 20000
   min_tables: 2
+  layout_baseline: layout-baseline.json

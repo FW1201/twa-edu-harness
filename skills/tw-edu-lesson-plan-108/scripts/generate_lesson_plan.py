@@ -16,6 +16,15 @@ from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 import copy
 
+try:
+    from twa_edu_core import (cell_write, header_cell, data_cell,
+                              section_heading, set_cell_bg, set_cell_border)
+except ImportError:  # 未安裝 twa-edu-core 時，從 repo 內的 python/ 載入
+    import pathlib
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[3] / "python"))
+    from twa_edu_core import (cell_write, header_cell, data_cell,
+                              section_heading, set_cell_bg, set_cell_border)
+
 # ── 色彩常數（臺灣教育主題色）──────────────────────────
 BLUE_DARK   = RGBColor(0x1A, 0x52, 0x76)   # #1A5276 深藍（主色）
 BLUE_MID    = RGBColor(0x24, 0x71, 0xA3)   # #2471A3 中藍（表頭）
@@ -27,93 +36,39 @@ TEXT_DARK   = RGBColor(0x1C, 0x2A, 0x35)   # 深色文字
 
 # ── 工具函式 ──────────────────────────────────────────
 
-def set_cell_bg(cell, color: RGBColor):
-    """設定儲存格背景色"""
-    tc = cell._tc
-    tcPr = tc.get_or_add_tcPr()
-    shd = OxmlElement('w:shd')
-    hex_color = '{:02X}{:02X}{:02X}'.format(color[0], color[1], color[2])
-    shd.set(qn('w:val'), 'clear')
-    shd.set(qn('w:color'), 'auto')
-    shd.set(qn('w:fill'), hex_color)
-    tcPr.append(shd)
-
-def set_cell_border(cell, top=True, bottom=True, left=True, right=True,
-                    color='2471A3', size='4'):
-    """設定儲存格框線"""
-    tc = cell._tc
-    tcPr = tc.get_or_add_tcPr()
-    tcBorders = OxmlElement('w:tcBorders')
-    for side, active in [('top', top), ('bottom', bottom),
-                          ('left', left), ('right', right)]:
-        if active:
-            border = OxmlElement(f'w:{side}')
-            border.set(qn('w:val'), 'single')
-            border.set(qn('w:sz'), size)
-            border.set(qn('w:space'), '0')
-            border.set(qn('w:color'), color)
-            tcBorders.append(border)
-    tcPr.append(tcBorders)
+# ── 版面元件：改用 twa_edu_core，行為與原本的行內實作完全相同 ──
+#
+# 原本這裡有五個與共用版邏輯一致的函式（只是名稱不同）。
+# 保留舊名稱作為薄封裝，呼叫端不必改；差異之處以參數表達：
+#   • add_section_title 只設 w:eastAsia，不動 w:ascii（latin=None）
+#   • 教案的表頭框線是深藍粗框（共用版預設值），維持不變
+#
+# 版面等價性由 scripts/docx_fingerprint.py 逐儲存格比對驗證。
 
 def add_cell_text(cell, text, bold=False, font_size=11,
                   color: RGBColor = TEXT_DARK, center=False):
-    """向儲存格加入文字"""
-    para = cell.paragraphs[0]
-    para.clear()
-    run = para.add_run(text)
-    run.bold = bold
-    run.font.name = '標楷體'
-    run.font.size = Pt(font_size)
-    run.font.color.rgb = color
-    if center:
-        para.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    # 設定東亞字型
-    rPr = run._r.get_or_add_rPr()
-    rFonts = OxmlElement('w:rFonts')
-    rFonts.set(qn('w:eastAsia'), '標楷體')
-    rFonts.set(qn('w:ascii'), 'Arial')
-    rPr.insert(0, rFonts)
-    return para
+    """向儲存格加入文字。"""
+    return cell_write(cell, text, bold=bold, size=font_size,
+                      color=color, center=center)
+
 
 def make_header_cell(cell, text):
-    """建立深藍底白字的表頭儲存格"""
-    set_cell_bg(cell, BLUE_MID)
-    set_cell_border(cell, color='1A5276', size='6')
-    add_cell_text(cell, text, bold=True, font_size=11,
-                  color=WHITE, center=True)
+    """深藍底白字的表頭儲存格。"""
+    header_cell(cell, text)
+
 
 def make_data_cell(cell, text, row_idx=0, center=False):
-    """建立資料儲存格（奇偶列交替底色）"""
-    bg = BLUE_LIGHT if row_idx % 2 == 0 else GRAY_LIGHT
-    set_cell_bg(cell, bg)
-    set_cell_border(cell, color='2471A3', size='4')
-    add_cell_text(cell, text, font_size=11,
-                  color=TEXT_DARK, center=center)
+    """資料儲存格（奇偶列交替底色）。"""
+    data_cell(cell, text, row_idx=row_idx, center=center)
 
-def add_section_title(doc, title: str, level: int = 1):
-    """加入帶底線的章節標題"""
-    para = doc.add_paragraph()
-    para.clear()
-    run = para.add_run(f'▌ {title}')
-    run.bold = True
-    run.font.size = Pt(14 if level == 1 else 12)
-    run.font.name = '標楷體'
-    run.font.color.rgb = BLUE_DARK
-    pPr = para._p.get_or_add_pPr()
-    pBdr = OxmlElement('w:pBdr')
-    bottom = OxmlElement('w:bottom')
-    bottom.set(qn('w:val'), 'single')
-    bottom.set(qn('w:sz'), '6')
-    bottom.set(qn('w:color'), '2471A3')
-    pBdr.append(bottom)
-    pPr.append(pBdr)
-    para.paragraph_format.space_before = Pt(12)
-    para.paragraph_format.space_after = Pt(4)
-    # 東亞字型
-    rPr = run._r.get_or_add_rPr()
-    rFonts = OxmlElement('w:rFonts')
-    rFonts.set(qn('w:eastAsia'), '標楷體')
-    rPr.insert(0, rFonts)
+
+def add_section_title(title_doc, title: str, level: int = 1):
+    """帶底線的章節標題。
+
+    本技能一律使用 ▌ 前綴（共用版 level 2 預設為 ▸），且不設定 w:ascii。
+    """
+    section_heading(title_doc, title, level=level, prefix='▌', latin=None)
+
 
 def add_cover_page(doc, subject, title, grade, publisher,
                    periods, teacher, school=''):

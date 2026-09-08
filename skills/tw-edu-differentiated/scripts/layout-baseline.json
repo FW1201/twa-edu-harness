@@ -1,0 +1,2211 @@
+{
+ "section": {
+  "pageWidth": 7560310,
+  "pageHeight": 10692130,
+  "margins": [
+   720090,
+   720090,
+   899795,
+   899795
+  ]
+ },
+ "normalStyle": {
+  "font": null,
+  "size": null
+ },
+ "paragraphs": [
+  {
+   "text": "",
+   "alignment": null,
+   "runs": [],
+   "hasBottomBorder": false
+  },
+  {
+   "text": "差異化教學設計方案",
+   "alignment": "CENTER (1)",
+   "runs": [
+    {
+     "text": "差異化教學設計方案",
+     "bold": true,
+     "size": 24.0,
+     "name": null,
+     "eastAsia": "標楷體",
+     "color": "1A5276"
+    }
+   ],
+   "hasBottomBorder": false
+  },
+  {
+   "text": "《一元一次方程式》｜數學｜國中七年級",
+   "alignment": "CENTER (1)",
+   "runs": [
+    {
+     "text": "《一元一次方程式》｜數學｜國中七年級",
+     "bold": false,
+     "size": 16.0,
+     "name": null,
+     "eastAsia": "標楷體",
+     "color": "2471A3"
+    }
+   ],
+   "hasBottomBorder": false
+  },
+  {
+   "text": "班級特性：含閱讀障礙學生2名、資優生1名",
+   "alignment": "CENTER (1)",
+   "runs": [
+    {
+     "text": "班級特性：含閱讀障礙學生2名、資優生1名",
+     "bold": false,
+     "size": 12.0,
+     "name": "標楷體",
+     "eastAsia": null,
+     "color": "1C2A35"
+    }
+   ],
+   "hasBottomBorder": false
+  },
+  {
+   "text": "",
+   "alignment": null,
+   "runs": [
+    {
+     "text": "",
+     "bold": false,
+     "size": null,
+     "name": null,
+     "eastAsia": null,
+     "color": null
+    }
+   ],
+   "hasBottomBorder": false
+  },
+  {
+   "text": "■ 表格一：三層次學習任務設計",
+   "alignment": null,
+   "runs": [
+    {
+     "text": "■ 表格一：三層次學習任務設計",
+     "bold": true,
+     "size": 13.0,
+     "name": null,
+     "eastAsia": "標楷體",
+     "color": "1A5276"
+    }
+   ],
+   "hasBottomBorder": false
+  },
+  {
+   "text": "",
+   "alignment": null,
+   "runs": [],
+   "hasBottomBorder": false
+  },
+  {
+   "text": "■ 表格二：UDL 通用設計學習應用",
+   "alignment": null,
+   "runs": [
+    {
+     "text": "■ 表格二：UDL 通用設計學習應用",
+     "bold": true,
+     "size": 13.0,
+     "name": null,
+     "eastAsia": "標楷體",
+     "color": "1A5276"
+    }
+   ],
+   "hasBottomBorder": false
+  },
+  {
+   "text": "",
+   "alignment": null,
+   "runs": [],
+   "hasBottomBorder": false
+  },
+  {
+   "text": "■ 表格三：特殊需求學生調整建議",
+   "alignment": null,
+   "runs": [
+    {
+     "text": "■ 表格三：特殊需求學生調整建議",
+     "bold": true,
+     "size": 13.0,
+     "name": null,
+     "eastAsia": "標楷體",
+     "color": "1A5276"
+    }
+   ],
+   "hasBottomBorder": false
+  },
+  {
+   "text": "",
+   "alignment": null,
+   "runs": [],
+   "hasBottomBorder": false
+  }
+ ],
+ "tables": [
+  {
+   "rows": 4,
+   "cols": 5,
+   "style": "Table Grid",
+   "cells": [
+    [
+     {
+      "shadings": [
+       "1A5276"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "學習層次",
+        "alignment": "CENTER (1)",
+        "runs": [
+         {
+          "text": "學習層次",
+          "bold": true,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "FFFFFF"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "1A5276"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "學習目標",
+        "alignment": "CENTER (1)",
+        "runs": [
+         {
+          "text": "學習目標",
+          "bold": true,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "FFFFFF"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "1A5276"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "學習活動",
+        "alignment": "CENTER (1)",
+        "runs": [
+         {
+          "text": "學習活動",
+          "bold": true,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "FFFFFF"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "1A5276"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "支援策略",
+        "alignment": "CENTER (1)",
+        "runs": [
+         {
+          "text": "支援策略",
+          "bold": true,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "FFFFFF"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "1A5276"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "評量調整",
+        "alignment": "CENTER (1)",
+        "runs": [
+         {
+          "text": "評量調整",
+          "bold": true,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "FFFFFF"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     }
+    ],
+    [
+     {
+      "shadings": [
+       "CA6F1E"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "基礎層\n（Essential）",
+        "alignment": "CENTER (1)",
+        "runs": [
+         {
+          "text": "基礎層\n（Essential）",
+          "bold": true,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "FFFFFF"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "F8F9FA"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "依國中七年級課綱調整\n（布魯姆 C1-C2）",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "依國中七年級課綱調整\n（布魯姆 C1-C2）",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "F8F9FA"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "·能說出一元一次方程式的主要內容\n·完成關鍵概念填空",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "·能說出一元一次方程式的主要內容\n·完成關鍵概念填空",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "F8F9FA"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "·提供文章摘要單\n·有鷹架的問題引導\n·允許查閱字典/筆記",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "·提供文章摘要單\n·有鷹架的問題引導\n·允許查閱字典/筆記",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "F8F9FA"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "·降低題目難度\n·延長作答時間\n·允許口頭作答",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "·降低題目難度\n·延長作答時間\n·允許口頭作答",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     }
+    ],
+    [
+     {
+      "shadings": [
+       "2471A3"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "標準層\n（Core）",
+        "alignment": "CENTER (1)",
+        "runs": [
+         {
+          "text": "標準層\n（Core）",
+          "bold": true,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "FFFFFF"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "EBF5FB"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "符合國中七年級課綱標準\n（布魯姆 C2-C4）",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "符合國中七年級課綱標準\n（布魯姆 C2-C4）",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "EBF5FB"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "·能分析一元一次方程式的結構與主旨\n·完成標準學習任務",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "·能分析一元一次方程式的結構與主旨\n·完成標準學習任務",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "EBF5FB"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "·教師提示重點\n·同儕學習配對\n·適度提問引導",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "·教師提示重點\n·同儕學習配對\n·適度提問引導",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "EBF5FB"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "·依課綱標準評量\n·學習單 + 口頭",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "·依課綱標準評量\n·學習單 + 口頭",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     }
+    ],
+    [
+     {
+      "shadings": [
+       "1E8449"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "進階層\n（Advanced）",
+        "alignment": "CENTER (1)",
+        "runs": [
+         {
+          "text": "進階層\n（Advanced）",
+          "bold": true,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "FFFFFF"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "F8F9FA"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "超越課綱深化\n（布魯姆 C4-C6）",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "超越課綱深化\n（布魯姆 C4-C6）",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "F8F9FA"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "·能評鑑一元一次方程式的寫作技巧\n·完成開放性延伸任務",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "·能評鑑一元一次方程式的寫作技巧\n·完成開放性延伸任務",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "F8F9FA"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "·開放性探究任務\n·自主選擇表達方式\n·連結跨域資料",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "·開放性探究任務\n·自主選擇表達方式\n·連結跨域資料",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "F8F9FA"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "·高層次思維題\n·創意作品評量",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "·高層次思維題\n·創意作品評量",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "rows": 4,
+   "cols": 3,
+   "style": "Table Grid",
+   "cells": [
+    [
+     {
+      "shadings": [
+       "1A5276"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "UDL 原則",
+        "alignment": "CENTER (1)",
+        "runs": [
+         {
+          "text": "UDL 原則",
+          "bold": true,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "FFFFFF"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "1A5276"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "設計重點",
+        "alignment": "CENTER (1)",
+        "runs": [
+         {
+          "text": "設計重點",
+          "bold": true,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "FFFFFF"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "1A5276"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "具體做法範例",
+        "alignment": "CENTER (1)",
+        "runs": [
+         {
+          "text": "具體做法範例",
+          "bold": true,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "FFFFFF"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     }
+    ],
+    [
+     {
+      "shadings": [
+       "F8F9FA"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "一、提供多元\n表徵方式\n（What of Learning）",
+        "alignment": "CENTER (1)",
+        "runs": [
+         {
+          "text": "一、提供多元\n表徵方式\n（What of Learning）",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "F8F9FA"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "以不同形式呈現學習內容，確保每位學生都能接收訊息",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "以不同形式呈現學習內容，確保每位學生都能接收訊息",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "F8F9FA"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "·課文文字 + 朗讀音檔\n·提供圖表輔助理解\n·關鍵詞彙視覺化\n·提供注音版輔助讀物",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "·課文文字 + 朗讀音檔\n·提供圖表輔助理解\n·關鍵詞彙視覺化\n·提供注音版輔助讀物",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     }
+    ],
+    [
+     {
+      "shadings": [
+       "EBF5FB"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "二、提供多元\n行動與表達\n（How of Learning）",
+        "alignment": "CENTER (1)",
+        "runs": [
+         {
+          "text": "二、提供多元\n行動與表達\n（How of Learning）",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "EBF5FB"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "讓學生用不同方式展現學習成果，不侷限單一形式",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "讓學生用不同方式展現學習成果，不侷限單一形式",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "EBF5FB"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "·書寫作答 or 口頭報告\n·個人作業 or 小組合作\n·選擇自己擅長的呈現方式\n·允許使用輔助工具",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "·書寫作答 or 口頭報告\n·個人作業 or 小組合作\n·選擇自己擅長的呈現方式\n·允許使用輔助工具",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     }
+    ],
+    [
+     {
+      "shadings": [
+       "F8F9FA"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "三、提供多元\n參與方式\n（Why of Learning）",
+        "alignment": "CENTER (1)",
+        "runs": [
+         {
+          "text": "三、提供多元\n參與方式\n（Why of Learning）",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "F8F9FA"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "透過不同策略維持學習動機與投入感",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "透過不同策略維持學習動機與投入感",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "F8F9FA"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "·連結個人生活經驗\n·提供選擇學習主題的自主權\n·設計小組合作任務\n·建立安全正向的學習氛圍",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "·連結個人生活經驗\n·提供選擇學習主題的自主權\n·設計小組合作任務\n·建立安全正向的學習氛圍",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "rows": 4,
+   "cols": 4,
+   "style": "Table Grid",
+   "cells": [
+    [
+     {
+      "shadings": [
+       "1A5276"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "學生類型",
+        "alignment": "CENTER (1)",
+        "runs": [
+         {
+          "text": "學生類型",
+          "bold": true,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "FFFFFF"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "1A5276"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "主要需求特性",
+        "alignment": "CENTER (1)",
+        "runs": [
+         {
+          "text": "主要需求特性",
+          "bold": true,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "FFFFFF"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "1A5276"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "課堂調整建議",
+        "alignment": "CENTER (1)",
+        "runs": [
+         {
+          "text": "課堂調整建議",
+          "bold": true,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "FFFFFF"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "1A5276"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "評量調整建議",
+        "alignment": "CENTER (1)",
+        "runs": [
+         {
+          "text": "評量調整建議",
+          "bold": true,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "FFFFFF"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     }
+    ],
+    [
+     {
+      "shadings": [
+       "F8F9FA"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "閱讀障礙學生",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "閱讀障礙學生",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "F8F9FA"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "文字解碼困難、閱讀速度慢",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "文字解碼困難、閱讀速度慢",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "F8F9FA"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "·提供大字版或注音版\n·允許使用文字轉語音\n·給予額外時間",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "·提供大字版或注音版\n·允許使用文字轉語音\n·給予額外時間",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "F8F9FA"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "·口頭問答取代筆試\n·減少書寫量\n·允許使用輔具",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "·口頭問答取代筆試\n·減少書寫量\n·允許使用輔具",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     }
+    ],
+    [
+     {
+      "shadings": [
+       "EBF5FB"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "資優/高能力學生",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "資優/高能力學生",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "EBF5FB"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "學習速度快、需要更多挑戰",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "學習速度快、需要更多挑戰",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "EBF5FB"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "·提供延伸思考問題\n·允許獨立探究\n·指定進階讀本",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "·提供延伸思考問題\n·允許獨立探究\n·指定進階讀本",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "EBF5FB"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "·設計開放性評量\n·自選創作形式\n·加分制度",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "·設計開放性評量\n·自選創作形式\n·加分制度",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     }
+    ],
+    [
+     {
+      "shadings": [
+       "F8F9FA"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "新住民/華語學習者",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "新住民/華語學習者",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "F8F9FA"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "中文詞彙量不足",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "中文詞彙量不足",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "F8F9FA"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "·提供關鍵詞彙翻譯對照\n·允許以母語輔助思考\n·提供圖文並茂的輔助材料",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "·提供關鍵詞彙翻譯對照\n·允許以母語輔助思考\n·提供圖文並茂的輔助材料",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     },
+     {
+      "shadings": [
+       "F8F9FA"
+      ],
+      "borderSets": [
+       {
+        "top": [
+         "2471A3",
+         "4"
+        ],
+        "bottom": [
+         "2471A3",
+         "4"
+        ],
+        "left": [
+         "2471A3",
+         "4"
+        ],
+        "right": [
+         "2471A3",
+         "4"
+        ]
+       }
+      ],
+      "paragraphs": [
+       {
+        "text": "·降低語言難度要求\n·允許雙語作答\n·著重內容理解",
+        "alignment": null,
+        "runs": [
+         {
+          "text": "·降低語言難度要求\n·允許雙語作答\n·著重內容理解",
+          "bold": false,
+          "size": 11.0,
+          "name": null,
+          "eastAsia": "標楷體",
+          "color": "1C2A35"
+         }
+        ],
+        "hasBottomBorder": false
+       }
+      ]
+     }
+    ]
+   ]
+  }
+ ],
+ "headerText": ""
+}

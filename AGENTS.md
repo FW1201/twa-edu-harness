@@ -95,8 +95,21 @@ skills/<name>/
 | 主要輸出格式 | `.docx` / `.pptx` / `.xlsx` / `.pdf` |
 | 語言 | 繁體中文（台灣用語），技術術語用英文 |
 
-共用實作一律 `from twa_edu_core import *`，**不得**在 `skills/*/scripts/` 內複製工具檔
-或重新實作 `set_cell_bg()` 這類函式。
+共用實作一律從 `twa_edu_core` import，**不得**在 `skills/*/scripts/` 內複製工具檔
+或重新實作 `set_cell_bg()` 這類函式——**薄封裝也算重複**，要改就改呼叫端。
+
+樣式差異用**參數**表達（`latin` / `border_color` / `border_size` / `prefix`），
+不要另寫一份實作。但若是**不同的視覺元件**（例如 `differentiated` 的 `■` 章節標題
+與共用版的 `▌` 帶底線標題），就維持行內——用參數硬湊會讓共用版變成萬用函式。
+
+### 版面基準
+
+改動任何會影響 .docx 外觀的程式碼時，`scripts/layout-baseline.json` 必須先確認。
+`smoke.yml` 用 `layout_baseline` 登記後，smoke test 會逐儲存格比對底色、框線、
+字型與對齊——只比表格數與檔案大小抓不到「底色換了」這種改動，
+而教師手上已有用這些技能產出的檔案。
+
+版面**刻意**要改時，重新產生基準檔並在 commit 訊息說明。
 
 用 matplotlib 產圖時，繪圖前先呼叫 `register_cjk_fonts()`，且不要在 `ax.text()`
 指定 `fontfamily`——指定拉丁字型會讓所有中文變成空白方框。
@@ -116,6 +129,7 @@ python scripts/verify_agent_deps.py          # SKILL.md 召喚的 subagent 要�
 python scripts/verify_agent_notes.py         # 決策紀錄的路徑與 Status 一致
 python scripts/gen_skill_index.py --check    # README 清單與實際目錄一致
 python scripts/smoke_test_scripts.py         # 動態列舉並實際產出文件
+python scripts/docx_fingerprint.py --diff a.docx b.docx   # 逐儲存格比對版面
 python scripts/verify_bundle_schema.py       # bundle / preset schema 與路徑存在
 python scripts/verify_no_vendor_names.py     # 受限的上游名稱
 python scripts/build_standalone_skills.py    # 內聯版建置

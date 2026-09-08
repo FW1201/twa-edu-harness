@@ -22,16 +22,23 @@ MATPLOTLIB_CJK_CANDIDATES = (
 REPORTLAB_CJK_FONT = "STSong-Light"
 
 
-def set_east_asia_font(run, font: str = DEFAULT_CJK_FONT) -> None:
+def set_east_asia_font(run, font: str = DEFAULT_CJK_FONT,
+                       latin: str | None = DEFAULT_LATIN_FONT) -> None:
     """為 python-docx 的 run 指定東亞字型。
 
     python-docx 的 `run.font.name` 只設 ascii 字型，中文字仍會落到 Word 預設字型。
     必須另外寫入 `w:eastAsia` 才會生效。
+
+    `latin` 決定拉丁字元（英數）用哪個字型：
+    預設 Arial；傳 `None` 則**完全不寫入 `w:ascii`**，讓拉丁字元沿用
+    `run.font.name` 已設的值。既有技能有兩種寫法並存，兩者都要能表達——
+    把 `w:ascii` 強加上去會改變已產出教案的英數字外觀。
     """
     rPr = run._r.get_or_add_rPr()
     rF = OxmlElement("w:rFonts")
     rF.set(qn("w:eastAsia"), font)
-    rF.set(qn("w:ascii"), DEFAULT_LATIN_FONT)
+    if latin is not None:
+        rF.set(qn("w:ascii"), latin)
     rPr.insert(0, rF)
 
 

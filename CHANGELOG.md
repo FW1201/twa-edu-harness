@@ -6,6 +6,51 @@
 
 ---
 
+## [4.6.0] — 2026-09-08
+
+收斂最後一處重複實作。`verify_no_vendored_utils` **不再有既存例外**。
+
+### Changed
+
+`tw-edu-lesson-plan-108` 與 `tw-edu-differentiated` 原本在自己的腳本裡
+**行內重新實作**了 `twa_edu_core` 已提供的邏輯（函式名不同，檔名層級的 gate 抓不到）。
+兩支已改用共用版，**版面逐儲存格完全相同**。
+
+差異用參數表達，不是另寫實作：
+
+| 差異 | 處理 |
+|---|---|
+| 兩支只設 `w:eastAsia`、不設 `w:ascii` | `latin` 參數，傳 `None` 表示不動拉丁字型 |
+| differentiated 的表頭是中藍細框，共用版是深藍粗框 | `header_cell` 開放 `border_color` / `border_size` |
+| lesson-plan 的章節標題一律 `▌` | `section_heading` 開放 `prefix` |
+| differentiated 的 `■` + 13pt + 無底線章節標題 | **維持行內**——這是不同的視覺元件，用參數硬湊會讓共用版變成萬用函式 |
+
+### Added
+
+- **`scripts/docx_fingerprint.py`** — 逐儲存格擷取底色、框線、字型
+  （含 `w:eastAsia` 與 `w:ascii`）、粗體、字級、對齊、段落底線、頁面尺寸。
+  `--diff` 兩份 .docx 會列出差異的確切位置。
+- **版面基準納入 smoke test** — 兩支技能各有 `scripts/layout-baseline.json`，
+  以 `smoke.yml` 的 `layout_baseline` 登記。反向測試確認改動框線顏色會被擋，
+  並指出是哪一個儲存格。
+
+### Fixed
+
+`verify_core_api.py` 原本擋下核心新增的選用參數（只比參數數量）。
+已放寬為「舊參數必須在前且不變，可往後追加**有預設值**的選用參數」，
+並反向測試確認新增無預設值的參數仍會被擋。
+
+### 過程中的兩個發現
+
+**版面指紋工具第一版是壞的。** `set_cell_bg()` 是 append 而非取代，重複套用會留下
+多個 `w:shd`，而工具只讀第一個——改了底色卻回報「完全相同」。
+一個偵測不到目標變更的工具毫無用處，已改為讀取所有 `w:shd` 與 `w:tcBorders`。
+
+**薄封裝不算收斂。** 第一版保留舊函式名當作對 core 的封裝，
+`verify_no_vendored_utils` 照樣判為重複——這是對的。真正的收斂是移除封裝、改呼叫端。
+
+---
+
 ## [4.5.0] — 2026-09-08
 
 **定位收斂：本專案只做教師端。**

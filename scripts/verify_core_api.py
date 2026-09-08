@@ -74,10 +74,17 @@ def main() -> int:
         if fn is None:
             continue  # 上面已回報
         params = list(inspect.signature(fn).parameters.values())
-        if len(params) != len(expected):
+        # 允許在既有參數**之後**追加選用參數（新能力），但前段必須逐一相符：
+        # 舊呼叫端是位置＋關鍵字混用的，順序或預設值一變就會靜默改變行為。
+        if len(params) < len(expected):
             errors.append(
-                f"`{fn_name}` 參數數量 {len(params)}，舊版為 {len(expected)}")
+                f"`{fn_name}` 參數數量 {len(params)}，少於舊版的 {len(expected)}")
             continue
+        for extra in params[len(expected):]:
+            if extra.default is inspect.Parameter.empty:
+                errors.append(
+                    f"`{fn_name}` 新增的參數 `{extra.name}` 沒有預設值，"
+                    f"會讓既有呼叫端壞掉")
         for got, (exp_name, exp_default) in zip(params, expected):
             if got.name != exp_name:
                 errors.append(

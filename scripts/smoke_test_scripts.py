@@ -28,6 +28,18 @@ def load_cases(scripts_dir: Path) -> list[dict]:
     return yaml.safe_load(f.read_text(encoding="utf-8")) or []
 
 
+def layout_fingerprint(path: Path):
+    """版面指紋。用於比對重構前後是否改變了外觀。"""
+    if path.suffix != ".docx":
+        return None
+    sys.path.insert(0, str(REPO / "scripts"))
+    try:
+        from docx_fingerprint import fingerprint
+    except ImportError:
+        return None
+    return fingerprint(path)
+
+
 def count_tables(path: Path) -> int | None:
     if path.suffix != ".docx":
         return None
@@ -69,6 +81,27 @@ def run_case(script: Path, case: dict, out_dir: Path,
         if tables is not None and tables < min_tables:
             errors.append(f"{script.relative_to(REPO)}: 產出 {tables} 個表格，"
                           f"低於門檻 {min_tables}")
+
+    # 版面基準：儲存格底色、框線、字型都要與基準一致。
+    # 只比表格數與檔案大小抓不到「底色換了」這種改動，
+    # 而教師手上已有用這些技能產出的檔案，版面不能悄悄變。
+    baseline = case.get("layout_baseline")
+    if baseline:
+        ref = script.parent / baseline
+        if not ref.exists():
+            errors.append(f"{script.relative_to(REPO)}: 找不到版面基準 {baseline}")
+        else:
+            import json as _json
+            expected = _json.loads(ref.read_text(encoding="utf-8"))
+            actual = _json.loads(_json.dumps(layout_fingerprint(out), default=str))
+            if actual != expected:
+                sys.path.insert(0, str(REPO / "scripts"))
+                from docx_fingerprint import _walk
+                diffs = _walk(expected, actual, "doc")
+                errors.append(
+                    f"{script.relative_to(REPO)}: 版面與基準不符"
+                    f"（{len(diffs)} 項）\n      "
+                    + "\n      ".join(diffs[:5]))
     return errors
 
 

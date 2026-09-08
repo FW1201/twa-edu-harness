@@ -12,7 +12,7 @@ from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Cm, Pt, RGBColor
 
-from .fonts import DEFAULT_CJK_FONT, set_east_asia_font
+from .fonts import DEFAULT_CJK_FONT, DEFAULT_LATIN_FONT, set_east_asia_font
 from .theme import (
     BLUE_DEEP,
     BLUE_LIGHT,
@@ -51,7 +51,8 @@ def set_cell_border(cell, color: str = "2471A3", size: str = "4") -> None:
 
 def cell_write(cell, text, bold: bool = False, size: int = 11,
                color: RGBColor = DARK_TEXT, center: bool = False,
-               font: str = DEFAULT_CJK_FONT):
+               font: str = DEFAULT_CJK_FONT,
+               latin: str | None = DEFAULT_LATIN_FONT):
     """清空儲存格並寫入一段文字。"""
     p = cell.paragraphs[0]
     p.clear()
@@ -62,35 +63,47 @@ def cell_write(cell, text, bold: bool = False, size: int = 11,
     r.font.color.rgb = color
     if center:
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    set_east_asia_font(r, font)
+    set_east_asia_font(r, font, latin)
     return p
 
 
-def header_cell(cell, text, bg: RGBColor = BLUE_MID, size: int = 11) -> None:
-    """表頭儲存格：深色底、白字、置中。"""
+def header_cell(cell, text, bg: RGBColor = BLUE_MID, size: int = 11,
+                border_color: str | None = None, border_size: str = "6",
+                latin: str | None = DEFAULT_LATIN_FONT) -> None:
+    """表頭儲存格：深色底、白字、置中。
+
+    框線顏色與粗細可覆寫——既有技能有兩種樣式（深藍粗框與中藍細框），
+    兩者都要能表達，否則替換會改變已產出文件的外觀。
+    """
     set_cell_bg(cell, bg)
-    set_cell_border(cell, color=rgb_hex(BLUE_DEEP), size="6")
-    cell_write(cell, text, bold=True, size=size, color=WHITE, center=True)
+    set_cell_border(cell, color=border_color or rgb_hex(BLUE_DEEP),
+                    size=border_size)
+    cell_write(cell, text, bold=True, size=size, color=WHITE, center=True,
+               latin=latin)
 
 
-def data_cell(cell, text, row_idx: int = 0, center: bool = False) -> None:
+def data_cell(cell, text, row_idx: int = 0, center: bool = False,
+              latin: str | None = DEFAULT_LATIN_FONT) -> None:
     """資料儲存格：依列號交替底色，提升長表格的可讀性。"""
     set_cell_bg(cell, BLUE_LIGHT if row_idx % 2 == 0 else GRAY_LIGHT)
     set_cell_border(cell, color=rgb_hex(BLUE_MID))
-    cell_write(cell, text, center=center)
+    cell_write(cell, text, center=center, latin=latin)
 
 
-def section_heading(doc, text, level: int = 1) -> None:
-    """帶底線的章節標題。"""
+def section_heading(doc, text, level: int = 1, prefix: str | None = None,
+                    latin: str | None = DEFAULT_LATIN_FONT) -> None:
+    """帶底線的章節標題。
+
+    `prefix` 可覆寫層級符號（預設 level 1 用 ▌、level 2 用 ▸）。"""
     p = doc.add_paragraph()
     p.clear()
-    prefix = "▌" if level == 1 else "▸"
-    r = p.add_run(f"{prefix} {text}")
+    marker = prefix if prefix is not None else ("▌" if level == 1 else "▸")
+    r = p.add_run(f"{marker} {text}")
     r.bold = True
     r.font.size = Pt(14 if level == 1 else 12)
     r.font.name = DEFAULT_CJK_FONT
     r.font.color.rgb = BLUE_DEEP
-    set_east_asia_font(r)
+    set_east_asia_font(r, latin=latin)
 
     pBdr = OxmlElement("w:pBdr")
     bot = OxmlElement("w:bottom")

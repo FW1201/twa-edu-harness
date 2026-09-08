@@ -7,6 +7,17 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 
+try:
+    from twa_edu_core import (cell_write, header_cell, data_cell,
+                              set_cell_bg, set_cell_border,
+                              set_east_asia_font)
+except ImportError:  # 未安裝 twa-edu-core 時，從 repo 內的 python/ 載入
+    import sys, pathlib
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[3] / "python"))
+    from twa_edu_core import (cell_write, header_cell, data_cell,
+                              set_cell_bg, set_cell_border,
+                              set_east_asia_font)
+
 C_BLUE  = RGBColor(0x1A, 0x52, 0x76)
 C_MID   = RGBColor(0x24, 0x71, 0xA3)
 C_LIGHT = RGBColor(0xEB, 0xF5, 0xFB)
@@ -16,61 +27,58 @@ C_ORANGE= RGBColor(0xCA, 0x6F, 0x1E)
 C_WHITE = RGBColor(0xFF, 0xFF, 0xFF)
 C_DARK  = RGBColor(0x1C, 0x2A, 0x35)
 
-def rgb_hex(c): return '{:02X}{:02X}{:02X}'.format(c[0], c[1], c[2])
+# ── 版面元件：改用 twa_edu_core ──
+#
+# 本技能的樣式與教案技能不同，差異以參數表達（不是另一套實作）：
+#   • 表頭框線是中藍細框（2471A3 / sz 4），教案是深藍粗框（1A5276 / sz 6）
+#   • 文字只設 w:eastAsia，不動 w:ascii（latin=None）
+#   • 章節標題用 ■ 前綴、13pt、無底線 —— 與共用版的 ▌ + 底線不同，維持行內
+#
+# 版面等價性由 scripts/docx_fingerprint.py 逐儲存格比對驗證。
+
+_BORDER = '2471A3'
+
 
 def set_bg(cell, color):
-    tc = cell._tc
-    tcPr = tc.get_or_add_tcPr()
-    shd = OxmlElement('w:shd')
-    shd.set(qn('w:val'), 'clear')
-    shd.set(qn('w:color'), 'auto')
-    shd.set(qn('w:fill'), rgb_hex(color))
-    tcPr.append(shd)
+    set_cell_bg(cell, color)
 
-def set_border(cell, color='2471A3'):
-    tc = cell._tc
-    tcPr = tc.get_or_add_tcPr()
-    tcBorders = OxmlElement('w:tcBorders')
-    for side in ['top', 'bottom', 'left', 'right']:
-        b = OxmlElement(f'w:{side}')
-        b.set(qn('w:val'), 'single')
-        b.set(qn('w:sz'), '4')
-        b.set(qn('w:color'), color)
-        tcBorders.append(b)
-    tcPr.append(tcBorders)
+
+def set_border(cell, color=_BORDER):
+    set_cell_border(cell, color=color, size='4')
+
 
 def cell_text(cell, text, bold=False, size=11, color=C_DARK, center=False):
-    p = cell.paragraphs[0]
-    p.clear()
-    r = p.add_run(text)
-    r.bold = bold; r.font.size = Pt(size)
-    r.font.name = '標楷體'; r.font.color.rgb = color
-    if center: p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    rPr = r._r.get_or_add_rPr()
-    rF = OxmlElement('w:rFonts')
-    rF.set(qn('w:eastAsia'), '標楷體')
-    rPr.insert(0, rF)
+    cell_write(cell, text, bold=bold, size=size, color=color,
+               center=center, latin=None)
+
 
 def hdr_cell(cell, text, bg=C_MID):
-    set_bg(cell, bg); set_border(cell)
-    cell_text(cell, text, bold=True, color=C_WHITE, center=True)
+    header_cell(cell, text, bg=bg, border_color=_BORDER, border_size='4',
+                latin=None)
 
-def data_cell(cell, text, row=0, center=False):
-    bg = C_LIGHT if row % 2 == 0 else RGBColor(0xF8, 0xF9, 0xFA)
-    set_bg(cell, bg); set_border(cell)
-    cell_text(cell, text, center=center)
+
+def row_cell(cell, text, row=0, center=False):
+    """資料儲存格。名稱刻意與共用版的 data_cell 區隔——
+    它多帶了 latin=None，是本技能專屬的呼叫方式，不是另一套實作。"""
+    data_cell(cell, text, row_idx=row, center=center, latin=None)
+
 
 def section_title(doc, text, color=C_BLUE):
+    """章節標題：■ 前綴、13pt、無底線。
+
+    與共用版的 section_heading（▌／▸ 前綴、14/12pt、帶底線）是不同的視覺樣式，
+    因此維持行內實作——用參數硬湊只會讓共用版變成什麼都能做的萬用函式。
+    """
     p = doc.add_paragraph()
     r = p.add_run(f'■ {text}')
-    r.bold = True; r.font.size = Pt(13)
-    r.font.name = '標楷體'; r.font.color.rgb = color
-    rPr = r._r.get_or_add_rPr()
-    rF = OxmlElement('w:rFonts')
-    rF.set(qn('w:eastAsia'), '標楷體')
-    rPr.insert(0, rF)
+    r.bold = True
+    r.font.size = Pt(13)
+    r.font.name = '標楷體'
+    r.font.color.rgb = color
+    set_east_asia_font(r, latin=None)
     p.paragraph_format.space_before = Pt(10)
     p.paragraph_format.space_after = Pt(4)
+
 
 def add_level_table(doc, subject, title, grade):
     """三層次學習任務對照表"""
@@ -108,7 +116,7 @@ def add_level_table(doc, subject, title, grade):
             f'超越課綱深化\n（布魯姆 C4-C6）',
             activity, support, assess
         ], 1):
-            data_cell(row.cells[j], text, row=i)
+            row_cell(row.cells[j], text, row=i)
     doc.add_paragraph()
 
 def add_udl_table(doc):
@@ -135,9 +143,9 @@ def add_udl_table(doc):
          '·連結個人生活經驗\n·提供選擇學習主題的自主權\n·設計小組合作任務\n·建立安全正向的學習氛圍'),
     ]
     for i, (principle, focus, example) in enumerate(rows_data, 1):
-        data_cell(tbl.rows[i].cells[0], principle, row=i, center=True)
-        data_cell(tbl.rows[i].cells[1], focus, row=i)
-        data_cell(tbl.rows[i].cells[2], example, row=i)
+        row_cell(tbl.rows[i].cells[0], principle, row=i, center=True)
+        row_cell(tbl.rows[i].cells[1], focus, row=i)
+        row_cell(tbl.rows[i].cells[2], example, row=i)
     doc.add_paragraph()
 
 def add_special_needs_table(doc, needs_text):
@@ -165,7 +173,7 @@ def add_special_needs_table(doc, needs_text):
     ]
     for i, row_data in enumerate(special_data, 1):
         for j, text in enumerate(row_data):
-            data_cell(tbl.rows[i].cells[j], text, row=i)
+            row_cell(tbl.rows[i].cells[j], text, row=i)
     doc.add_paragraph()
 
 def main():

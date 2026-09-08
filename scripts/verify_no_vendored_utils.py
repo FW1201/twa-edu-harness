@@ -26,13 +26,10 @@ BANNED_DEFINITIONS = {
     "add_header_footer", "set_east_asia_font",
 }
 
-# 例外：這兩支在 v3.x 就以行內實作寫成，函式名與參數都和共用版不同，
-# 貿然換掉會改變既有教案 / 學習單的版面。收斂計畫見
-# .agents/notes/proposed/architecture/2026-09-05-inline-docx-helpers.md
-GRANDFATHERED = {
-    "tw-edu-lesson-plan-108",
-    "tw-edu-differentiated",
-}
+# 已無既存例外：lesson-plan-108 與 differentiated 的行內實作已於 2026-09-08
+# 收斂至 twa_edu_core，版面等價性由 scripts/docx_fingerprint.py 逐儲存格驗證。
+# 見 .agents/notes/implemented/architecture/2026-09-08-inline-helpers-converged.md
+GRANDFATHERED: set[str] = set()
 
 
 def main() -> int:
@@ -61,8 +58,9 @@ def main() -> int:
             print(f"  - {e}")
         return 1
 
-    print(f"✅ skills/*/scripts/ 無重複的共用工具"
-          f"（{len(GRANDFATHERED)} 支行內實作已列為既存例外）")
+    note = (f"（{len(GRANDFATHERED)} 支列為既存例外）"
+            if GRANDFATHERED else "，無既存例外")
+    print(f"✅ skills/*/scripts/ 無重複的共用工具{note}")
     return 0
 
 
