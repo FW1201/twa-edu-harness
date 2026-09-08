@@ -3,7 +3,8 @@ name: twa-teacher
 displayName: 教師模式
 description: >-
   臺灣 K-12 教師的備課夥伴。內建 108 課綱素養導向教學設計、素養命題、評量規準、
-  學習單、教學簡報、班級經營與親師溝通共 21 項技能，輸出 .docx / .pptx / .xlsx。
+  學習單、教學簡報、班級經營、親師溝通與校內行政共 21 項技能，
+  輸出 .docx / .pptx / .xlsx。本專案唯一的 preset——服務對象只有教師。
 order: 10
 locale: zh-TW
 persona: ./persona.md

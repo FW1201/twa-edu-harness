@@ -16,13 +16,14 @@ author: 奇老師・數位敘事力社群
 license: MIT
 
 whenToUse: >
-  適用於研究流程圖與概念框架的視覺化（PRISMA、研究架構）。教學用的資訊圖表改用 tw-edu-slides-creator。
+  適用於教師做行動研究或撰寫研習發表時的流程圖與架構圖（PRISMA 文獻篩選流程、研究架構、概念框架）。上課用的教學圖表改用 tw-edu-slides-creator；
+  課程地圖改用 tw-edu-curriculum-mapper。
 
 metadata:
-  role: researcher
-  category: 學術支援
-  stage: [U]
-  subjects: [學術寫作]
+  role: teacher
+  category: 教師專業
+  stage: [E, J, U]
+  subjects: [教師專業發展]
   outputs: [png]
   shared:
     - concept-alignment

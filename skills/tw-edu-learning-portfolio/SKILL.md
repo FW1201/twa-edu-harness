@@ -13,13 +13,14 @@ author: 奇老師・數位敘事力社群
 license: MIT
 
 whenToUse: >
-  適用於高中生的學習歷程檔案（大學申請入學用）。教師端的學生評語改用 tw-edu-feedback-writer。
+  適用於高中導師指導學生製作學習歷程檔案（大學申請入學用）——課程學習成果的撰寫指引、多元表現的敘述框架、自我評述的引導問題。教師端寫給個別學生的評語改用 tw-edu-feedback-writer；
+  與家長溝通改用 tw-edu-parent-communication。
 
 metadata:
-  role: student
+  role: teacher
   category: 學生表現
   stage: [U]
-  subjects: [全領域]
+  subjects: [生涯輔導]
   outputs: [docx]
   shared:
     - concept-alignment

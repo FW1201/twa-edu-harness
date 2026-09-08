@@ -75,6 +75,14 @@ def check(skill_dir: Path, errors: list[str], warnings: list[str]) -> None:
         if tool not in VALID_TOOLS and not tool.startswith("mcp__"):
             errors.append(f"{name_hint}: 非法工具名 `{tool}`（MCP 工具應為 mcp__*）")
 
+    # 本專案只做教師端。想不出教師端使用情境的技能不屬於這個 repo。
+    # 理由見 .agents/notes/rejected/architecture/2026-09-08-no-student-or-research-suites.md
+    role = (fm.get("metadata") or {}).get("role")
+    if role is not None and role != "teacher":
+        errors.append(
+            f"{name_hint}: metadata.role 為 `{role}`，本專案只收 `teacher`"
+            f"（學生與學術研究技能留在各自的 repo）")
+
     missing_v1 = [f for f in REQUIRED_V1 if f not in fm]
     if missing_v1:
         warnings.append(f"{name_hint}: 尚未補齊契約 v1 欄位 {missing_v1}")

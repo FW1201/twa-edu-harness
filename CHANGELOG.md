@@ -6,6 +6,50 @@
 
 ---
 
+## [4.5.0] — 2026-09-08
+
+**定位收斂：本專案只做教師端。**
+
+服務對象是現場教師——備課、命題、評量、班級經營、親師溝通、校內行政，
+以及教師自己的專業發展（行動研究、研習教材、投稿）。
+學生自學工具（`tw-stu-*`）與學術研究工具（`tw-research-*`）留在各自的 repo，
+**不整併**。
+
+### Removed
+
+- **`presets/twa-researcher/`** — 研究者模式 preset。它服務的是非教師對象，
+  與本專案定位直接衝突。內容保留在 git 歷史，必要時可還原。
+
+  原本把它留著的理由是「共用同一套基座」，但 **preset 的價值在於限制，
+  而限制是隨服務對象而定的**：`twa-teacher` 關掉 `subagent`（教案生成是線性
+  工作流、成本對教師不透明），這個判斷對研究者並不成立。一個 repo 裡放兩種
+  互相矛盾的邊界設定，等於沒有邊界設定。
+
+`twa-teacher` 現在是唯一的 preset。
+
+### Changed
+
+三支原本標為 `researcher` / `student` 的技能**保留**，改標 `role: teacher`
+並重寫 `whenToUse` 為教師情境：
+
+| 技能 | 教師端定位 |
+|---|---|
+| `tw-edu-learning-portfolio` | 高中導師指導學生製作學習歷程檔案 |
+| `tw-edu-citation-checker` | 教師檢核研習教材、投稿、課程計畫的引用 |
+| `tw-edu-research-viz` | 教師行動研究的流程圖與架構圖 |
+
+分類「學術支援」改為「教師專業」。21 支技能的 `metadata.role` 現在一律為 `teacher`。
+
+### Added
+
+- `verify_skill_frontmatter.py` 新增 **role 限制**：`metadata.role` 只接受
+  `teacher`。新增技能的判準是「想不出教師端的使用情境，就不屬於這個 repo」。
+- README 與 `AGENTS.md` 明寫服務對象與明確不納入的範圍。
+- Agent Note（rejected 類）記錄為何不整併另外兩組套件，
+  避免未來重複討論。
+
+---
+
 ## [4.4.0] — 2026-09-08
 
 課綱資料達成**九大領域全覆蓋**：3460 筆指標。

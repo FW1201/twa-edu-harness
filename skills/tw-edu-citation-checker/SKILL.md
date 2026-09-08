@@ -16,14 +16,14 @@ author: 奇老師・數位敘事力社群
 license: MIT
 
 whenToUse: >
-  適用於查核既有引用的真實性與格式。3 筆以上會並行召喚 citation-checker-worker（定義在本 repo 的 agents/，需另行安裝）。
-  本技能不生成引用，只查核。
+  適用於教師檢核自己要用的引用是否真實、格式是否正確——撰寫研習教材、投稿教育刊物、製作課程計畫的參考文獻時使用，也可用於檢核學生專題報告的引用。3 筆以上會並行召喚 citation-checker-worker（定義在本 repo 的 agents/，
+  需另行安裝）。本技能只查核，不生成引用。
 
 metadata:
-  role: researcher
-  category: 學術支援
-  stage: [U]
-  subjects: [學術寫作]
+  role: teacher
+  category: 教師專業
+  stage: [E, J, U]
+  subjects: [教師專業發展]
   shared:
     - concept-alignment
     - guided-collection

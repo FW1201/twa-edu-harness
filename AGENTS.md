@@ -17,7 +17,7 @@
 | **twa-edu-harness**（本 repo） | 教學技能的基座與發佈載體 | 上游，提供能力 |
 | `confucius`（private） | 校園職務入口的講座 demo，伏羲思維層 × tw-edu 任務層 | **下游消費者**。應引用本 repo 的 skills，不自建第二份 |
 | `fuxi-education-skills`（private） | 伏羲思維層技能 | 內容不公開，**不得**併入本 public repo |
-| `tw-stu-skills` / `tw-research-skills` | 學生 / 研究者技能 | 未來才整併為 preset，現階段不動 |
+| `tw-stu-skills` / `tw-research-skills` | 學生 / 研究者技能 | **不整併**。服務對象不同，各自維護 |
 
 ---
 

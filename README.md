@@ -6,8 +6,12 @@
 [![Version](https://img.shields.io/badge/Version-4.0.0--alpha.1-blue)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 
-給臺灣現場教師的 AI 備課工具組。依 108 課綱設計素養導向教案、素養命題、評量規準、
-學習單與教學簡報，輸出 `.docx` / `.pptx` / `.xlsx` 教學文件。
+**給臺灣現場教師的 AI 備課工具組。** 依 108 課綱設計素養導向教案、素養命題、
+評量規準、學習單與教學簡報，輸出 `.docx` / `.pptx` / `.xlsx` 教學文件。
+
+服務對象是**教師**：備課、命題、評量、班級經營、親師溝通、校內行政，
+以及教師自己的專業發展（行動研究、研習教材）。
+學生自學工具與學術研究工具**不在本專案範圍內**。
 
 **本 repo 是 [`FW1201/tw-edu-skills`](https://github.com/FW1201/tw-edu-skills) 的後繼者。**
 Skill 名稱維持 `tw-edu-*` 不變，既有的呼叫方式與教學講義完全沿用。
@@ -50,15 +54,12 @@ npx skills add FW1201/twa-edu-harness/skills/tw-edu-lesson-plan-108 -a claude-co
 
 ### 方式三：Preset（完整的 Agent 人格與能力邊界）
 
-| Preset | 給誰 | 技能 | 特點 |
-|---|---|---|---|
-| `twa-teacher` | K-12 教師 | 全部 21 支 | 關閉自我修改、子代理、持久終端機 |
-| `twa-researcher` | 研究者 | 查核 / 視覺化 / 學習歷程 | 開放子代理以支援批次查核 |
+`twa-teacher` 是本專案**唯一**的 preset：臺灣 K-12 教師的備課夥伴，
+掛載全部 21 支技能，關閉自我修改、子代理、持久終端機等對教師不必要的能力。
 
-每個 preset 的 `DENIED.md` 逐項寫明**為什麼**否決某項能力——
-限制跟能力一樣是設計的一部分。
+`DENIED.md` 逐項寫明**為什麼**否決某項能力——限制跟能力一樣是設計的一部分。
 
-⚠️ 同樣尚未實機驗證（需要 harness runtime）。
+⚠️ 尚未實機驗證（需要 harness runtime）。
 
 ---
 
@@ -128,7 +129,7 @@ npx skills add FW1201/twa-edu-harness/skills/tw-edu-lesson-plan-108 -a claude-co
 | `tw-edu-school-document` | 1.0.0 | 協助撰寫校園行政公文與教育文書，包含簽呈、計畫書、成果報告、 研習申請、課程計畫，符合教育部公文格式。 |
 | `tw-edu-meeting-facilitator` | 2.1.0 | 為教師專業學習社群(PLC)、課發會、行政會議、共同備課設計議程與記錄模板， 並透過 Google Calendar MCP 建立會議提醒、Google Drive MCP 儲存紀錄、 Gmail MCP 發送摘要給與會者。 |
 
-#### 學術支援
+#### 教師專業
 
 | Skill | 版本 | 說明 |
 |---|---|---|

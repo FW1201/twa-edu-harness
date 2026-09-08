@@ -26,7 +26,7 @@ CATEGORIES = [
     ("學生表現", ["feedback-writer", "learning-portfolio"]),
     ("班級行政", ["classroom-culture", "parent-communication",
                   "school-document", "meeting-facilitator"]),
-    ("學術支援", ["citation-checker", "research-viz"]),
+    ("教師專業", ["citation-checker", "research-viz"]),
     ("套組設定", ["synchronizer"]),
 ]
 
