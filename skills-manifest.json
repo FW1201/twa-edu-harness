@@ -1,10 +1,10 @@
 {
-  "version": "4.1.0",
+  "version": "4.1.1",
   "schema_version": 1,
   "skills": [
     {
       "name": "tw-edu-lesson-plan-108",
-      "version": "4.1.0",
+      "version": "4.1.1",
       "title": "108 課綱教案",
       "purpose": "依課程目標安排活動、時間與評量",
       "entrypoint": "scripts/generate_lesson_plan.py",
@@ -13,13 +13,7 @@
         "python-docx>=1.1,<2",
         "jsonschema>=4.20,<5"
       ],
-      "path": "skills/tw-edu-lesson-plan-108",
-      "entrypoints": [
-        "scripts/generate_lesson_plan.py"
-      ],
-      "required_resources": [
-        "references/common/workflow.md"
-      ]
+      "path": "skills/tw-edu-lesson-plan-108"
     },
     {
       "name": "tw-edu-curriculum-mapper",
@@ -32,13 +26,7 @@
         "openpyxl>=3.1,<4",
         "jsonschema>=4.20,<5"
       ],
-      "path": "skills/tw-edu-curriculum-mapper",
-      "entrypoints": [
-        "scripts/generate_curriculum_map.py"
-      ],
-      "required_resources": [
-        "references/common/workflow.md"
-      ]
+      "path": "skills/tw-edu-curriculum-mapper"
     },
     {
       "name": "tw-edu-differentiated",
@@ -51,13 +39,7 @@
         "python-docx>=1.1,<2",
         "jsonschema>=4.20,<5"
       ],
-      "path": "skills/tw-edu-differentiated",
-      "entrypoints": [
-        "scripts/generate_differentiated.py"
-      ],
-      "required_resources": [
-        "references/common/workflow.md"
-      ]
+      "path": "skills/tw-edu-differentiated"
     },
     {
       "name": "tw-edu-interdisciplinary",
@@ -70,13 +52,7 @@
         "python-docx>=1.1,<2",
         "jsonschema>=4.20,<5"
       ],
-      "path": "skills/tw-edu-interdisciplinary",
-      "entrypoints": [
-        "scripts/generate_interdisciplinary.py"
-      ],
-      "required_resources": [
-        "references/common/workflow.md"
-      ]
+      "path": "skills/tw-edu-interdisciplinary"
     },
     {
       "name": "tw-edu-exam-generator",
@@ -89,13 +65,7 @@
         "python-docx>=1.1,<2",
         "jsonschema>=4.20,<5"
       ],
-      "path": "skills/tw-edu-exam-generator",
-      "entrypoints": [
-        "scripts/generate_exam.py"
-      ],
-      "required_resources": [
-        "references/common/workflow.md"
-      ]
+      "path": "skills/tw-edu-exam-generator"
     },
     {
       "name": "tw-edu-rubric-designer",
@@ -108,13 +78,7 @@
         "python-docx>=1.1,<2",
         "jsonschema>=4.20,<5"
       ],
-      "path": "skills/tw-edu-rubric-designer",
-      "entrypoints": [
-        "scripts/generate_rubric.py"
-      ],
-      "required_resources": [
-        "references/common/workflow.md"
-      ]
+      "path": "skills/tw-edu-rubric-designer"
     },
     {
       "name": "tw-edu-formative-assessment",
@@ -127,13 +91,7 @@
         "python-docx>=1.1,<2",
         "jsonschema>=4.20,<5"
       ],
-      "path": "skills/tw-edu-formative-assessment",
-      "entrypoints": [
-        "scripts/generate_formative.py"
-      ],
-      "required_resources": [
-        "references/common/workflow.md"
-      ]
+      "path": "skills/tw-edu-formative-assessment"
     },
     {
       "name": "tw-edu-worksheet-creator",
@@ -146,13 +104,7 @@
         "python-docx>=1.1,<2",
         "jsonschema>=4.20,<5"
       ],
-      "path": "skills/tw-edu-worksheet-creator",
-      "entrypoints": [
-        "scripts/generate_worksheet.py"
-      ],
-      "required_resources": [
-        "references/common/workflow.md"
-      ]
+      "path": "skills/tw-edu-worksheet-creator"
     },
     {
       "name": "tw-edu-slides-creator",
@@ -166,13 +118,7 @@
         "Pillow>=10,<13",
         "jsonschema>=4.20,<5"
       ],
-      "path": "skills/tw-edu-slides-creator",
-      "entrypoints": [
-        "scripts/generate_slides.py"
-      ],
-      "required_resources": [
-        "references/common/workflow.md"
-      ]
+      "path": "skills/tw-edu-slides-creator"
     },
     {
       "name": "tw-edu-feedback-writer",
@@ -185,13 +131,7 @@
         "python-docx>=1.1,<2",
         "jsonschema>=4.20,<5"
       ],
-      "path": "skills/tw-edu-feedback-writer",
-      "entrypoints": [
-        "scripts/generate_feedback.py"
-      ],
-      "required_resources": [
-        "references/common/workflow.md"
-      ]
+      "path": "skills/tw-edu-feedback-writer"
     },
     {
       "name": "tw-edu-learning-portfolio",
@@ -204,13 +144,7 @@
         "python-docx>=1.1,<2",
         "jsonschema>=4.20,<5"
       ],
-      "path": "skills/tw-edu-learning-portfolio",
-      "entrypoints": [
-        "scripts/generate_portfolio.py"
-      ],
-      "required_resources": [
-        "references/common/workflow.md"
-      ]
+      "path": "skills/tw-edu-learning-portfolio"
     },
     {
       "name": "tw-edu-parent-communication",
@@ -223,13 +157,7 @@
         "python-docx>=1.1,<2",
         "jsonschema>=4.20,<5"
       ],
-      "path": "skills/tw-edu-parent-communication",
-      "entrypoints": [
-        "scripts/generate_parent_comm.py"
-      ],
-      "required_resources": [
-        "references/common/workflow.md"
-      ]
+      "path": "skills/tw-edu-parent-communication"
     },
     {
       "name": "tw-edu-classroom-culture",
@@ -242,13 +170,7 @@
         "python-docx>=1.1,<2",
         "jsonschema>=4.20,<5"
       ],
-      "path": "skills/tw-edu-classroom-culture",
-      "entrypoints": [
-        "scripts/generate_classroom.py"
-      ],
-      "required_resources": [
-        "references/common/workflow.md"
-      ]
+      "path": "skills/tw-edu-classroom-culture"
     },
     {
       "name": "tw-edu-school-document",
@@ -261,13 +183,7 @@
         "python-docx>=1.1,<2",
         "jsonschema>=4.20,<5"
       ],
-      "path": "skills/tw-edu-school-document",
-      "entrypoints": [
-        "scripts/generate_school_doc.py"
-      ],
-      "required_resources": [
-        "references/common/workflow.md"
-      ]
+      "path": "skills/tw-edu-school-document"
     },
     {
       "name": "tw-edu-meeting-facilitator",
@@ -280,13 +196,7 @@
         "python-docx>=1.1,<2",
         "jsonschema>=4.20,<5"
       ],
-      "path": "skills/tw-edu-meeting-facilitator",
-      "entrypoints": [
-        "scripts/generate_meeting.py"
-      ],
-      "required_resources": [
-        "references/common/workflow.md"
-      ]
+      "path": "skills/tw-edu-meeting-facilitator"
     },
     {
       "name": "tw-edu-pbl-designer",
@@ -299,13 +209,7 @@
         "python-docx>=1.1,<2",
         "jsonschema>=4.20,<5"
       ],
-      "path": "skills/tw-edu-pbl-designer",
-      "entrypoints": [
-        "scripts/generate_pbl.py"
-      ],
-      "required_resources": [
-        "references/common/workflow.md"
-      ]
+      "path": "skills/tw-edu-pbl-designer"
     },
     {
       "name": "tw-edu-mini-app",
@@ -317,13 +221,7 @@
       "dependencies": [
         "jsonschema>=4.20,<5"
       ],
-      "path": "skills/tw-edu-mini-app",
-      "entrypoints": [
-        "scripts/generate_mini_app.py"
-      ],
-      "required_resources": [
-        "references/common/workflow.md"
-      ]
+      "path": "skills/tw-edu-mini-app"
     },
     {
       "name": "tw-edu-research-viz",
@@ -336,13 +234,7 @@
         "matplotlib>=3.8,<4",
         "jsonschema>=4.20,<5"
       ],
-      "path": "skills/tw-edu-research-viz",
-      "entrypoints": [
-        "scripts/generate_prisma.py"
-      ],
-      "required_resources": [
-        "references/common/workflow.md"
-      ]
+      "path": "skills/tw-edu-research-viz"
     },
     {
       "name": "tw-edu-citation-checker",
@@ -352,11 +244,7 @@
       "entrypoint": null,
       "format": "markdown",
       "dependencies": [],
-      "path": "skills/tw-edu-citation-checker",
-      "entrypoints": [],
-      "required_resources": [
-        "references/common/workflow.md"
-      ]
+      "path": "skills/tw-edu-citation-checker"
     },
     {
       "name": "tw-edu-anti-ai-assessment",
@@ -369,13 +257,7 @@
         "python-docx>=1.1,<2",
         "jsonschema>=4.20,<5"
       ],
-      "path": "skills/tw-edu-anti-ai-assessment",
-      "entrypoints": [
-        "scripts/generate_anti_ai_report.py"
-      ],
-      "required_resources": [
-        "references/common/workflow.md"
-      ]
+      "path": "skills/tw-edu-anti-ai-assessment"
     },
     {
       "name": "tw-edu-synchronizer",
@@ -385,11 +267,7 @@
       "entrypoint": null,
       "format": "markdown",
       "dependencies": [],
-      "path": "skills/tw-edu-synchronizer",
-      "entrypoints": [],
-      "required_resources": [
-        "references/common/workflow.md"
-      ]
+      "path": "skills/tw-edu-synchronizer"
     },
     {
       "name": "tw-edu-learning-evidence-analyzer",
@@ -402,13 +280,7 @@
         "python-docx>=1.1,<2",
         "jsonschema>=4.20,<5"
       ],
-      "path": "skills/tw-edu-learning-evidence-analyzer",
-      "entrypoints": [
-        "scripts/generate_evidence.py"
-      ],
-      "required_resources": [
-        "references/common/workflow.md"
-      ]
+      "path": "skills/tw-edu-learning-evidence-analyzer"
     },
     {
       "name": "tw-edu-material-reviewer",
@@ -421,13 +293,7 @@
         "python-docx>=1.1,<2",
         "jsonschema>=4.20,<5"
       ],
-      "path": "skills/tw-edu-material-reviewer",
-      "entrypoints": [
-        "scripts/generate_review.py"
-      ],
-      "required_resources": [
-        "references/common/workflow.md"
-      ]
+      "path": "skills/tw-edu-material-reviewer"
     }
   ]
 }

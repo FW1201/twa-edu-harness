@@ -90,7 +90,7 @@ npx skills add FW1201/twa-edu-harness/skills/tw-edu-lesson-plan-108 -a claude-co
 
 | Skill | 版本 | 說明 |
 |---|---|---|
-| `tw-edu-lesson-plan-108` | 4.1.0 | 依課程目標安排活動、時間與評量。 |
+| `tw-edu-lesson-plan-108` | 4.1.1 | 依課程目標安排活動、時間與評量。 |
 | `tw-edu-curriculum-mapper` | 4.1.0 | 跨單元安排學期目標、進度與課綱對應。 |
 | `tw-edu-differentiated` | 4.1.0 | 依學習證據調整任務與支持。 |
 | `tw-edu-interdisciplinary` | 4.1.0 | 整合不同學科的概念與探究任務。 |

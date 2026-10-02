@@ -1,18 +1,29 @@
 {
   "source": "FW1201/tw-edu-skills",
-  "commit": "d4d6d37ffabcdd4bac25636ef997dc1bef1c0d22",
-  "suite_version": "4.1.0",
+  "commit": "a66848e1e092f78681d7dacf77e1a2d0f32b6b52",
+  "suite_version": "4.1.1",
   "skills": {
     "tw-edu-lesson-plan-108": {
       "version": "4.1.0",
       "files": {
-        "SKILL.md": "ace81fe8fd6a657dd51261d308d50449c7f361d115ea2c52e887340203d0c7ee",
+        "SKILL.md": "ca985d6e6e019b7414da816b0970f540aded9a7023d5ec7641d2f3c4502c9dbe",
         "examples/example.json": "c773a288b5eb42b58027cfab5649f8eb6fd22b0f2a68ee7c6a9d342d371f54ba",
-        "references/108_core_competencies.md": "f0bbcc988291ba26e63987fb8a94470312663a82a263c3d5a258938e7cb7f096",
-        "references/108_subject_indicators.md": "c6726c9068f613998c82b70262cfd97f05ae5feb265a284c149b72bb8ed6880d",
+        "references/108_core_competencies.md": "d2de669b23f07b49078ea68f058b95a730948077e78a9af9034d77c176196ed1",
+        "references/108_subject_indicators.md": "eede85e3010035c89d7d543165e894ce76a988f29575364b347a93ae1f2ca1b1",
         "references/bloom_taxonomy_tw.md": "e52f37b6c0acb053198e8237ab35062d32ecf78c2d477cfe5826cccfe4d2a0e5",
         "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
         "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "references/curriculum/README.md": "9303436149f73f61d7c764ccbc5a9ca72368ffc45f53e27da5e39fab7e8b67fb",
+        "references/curriculum/snapshot-manifest.json": "5834ca473279f4c2ae4652a721bd63de0c8aa6daf3c91cdbf65f700c61e6a8b1",
+        "references/curriculum/健體.json": "f2f86e7ae037bf935030b10abaf86fbbcdac12d0f06bc402a61a85756d97cd85",
+        "references/curriculum/國.json": "d8c8afae4cc223907acfd450c0467a07644bb8f28b3c92aef0edf6fd3b5d9e43",
+        "references/curriculum/數.json": "375b2f92840b6875e4f4a3d6fa20bd2ac5ac060e9aa109914a71769308d7689c",
+        "references/curriculum/社.json": "8510a46047c2c082e4d8c737ac55438aa005451f6f8b47cc8cdb5c6fc0fa143b",
+        "references/curriculum/科.json": "ca2a1ad02a5d4f27eb47147b30386dfd70b2ad44968c92c3cbe5b4f5c94d11b4",
+        "references/curriculum/綜.json": "11ce3a21771fe4966339baad1a3c3c582c7e51d978eab1d616f7f7ad518d1175",
+        "references/curriculum/自.json": "2e3ba64e7e923673cb244d2d400fa3f3eddcbbcc69daae0f705022ad83cf312c",
+        "references/curriculum/英.json": "352f57336ed36438d1c9de1a7a3b06f89cd699ee1a5787e051f332d97b9ef09e",
+        "references/curriculum/藝.json": "36499a4d8063d2529809e5a19341bbabd3749aa596e968b4952a576b90ac6788",
         "references/lesson_plan_format.md": "9ffddd03ac7b82f185e8b43c0eb24f40c0bf10690b6428c564bd1ac3f49794f5",
         "requirements.txt": "e5452f40917de20cc1fc1656094d965e5aacfd3d37b27a4ec000bc3783297596",
         "schemas/input.schema.json": "4ac35c70400398d71dde82ea89cb617f373d5126b62162ab8cc110663e17d5e8",
@@ -21,7 +32,8 @@
         "scripts/edu_runtime/learning_evidence.py": "3ead6d9a5100f20d2ca8dbdffd1583b98210d9fa1910a7127021c3cc447a9d93",
         "scripts/edu_runtime/miniapp.js": "99af105f2afed22742781ae3d2bcb9c233ca54f168657fae8aaf1106d893a5eb",
         "scripts/edu_runtime/slides.py": "9f117f00442595da23b0a7ae62994b7c37320c422d23cc93ccdfe06880b882da",
-        "scripts/generate_lesson_plan.py": "9043ab228dcbd61919f634cc444ef17abc484e5ac18e0075386f5632a56297c4"
+        "scripts/generate_lesson_plan.py": "9043ab228dcbd61919f634cc444ef17abc484e5ac18e0075386f5632a56297c4",
+        "scripts/lookup_curriculum.py": "239fbf42c8e48f10be3207522386f86568dfaddc046f7ba9a62d4835fcd10221"
       }
     },
     "tw-edu-curriculum-mapper": {
@@ -417,5 +429,6 @@
         "scripts/generate_review.py": "f25f28b87f2a03f9f193cbd3c4c5d1857a3f69d0edd5b25a849d63276376b20f"
       }
     }
-  }
+  },
+  "source_commit": "a66848e1e092f78681d7dacf77e1a2d0f32b6b52"
 }

@@ -61,6 +61,9 @@ jobs:
 
       # 腳本從檔案系統動態列舉，測試參數由 canonical manifest 與各技能 --example 提供。
       # 不硬編碼清單——v3.x 的 CI 寫死腳本路徑，其中一支被刪除後 CI 就永遠是紅的。
+      - name: Install CJK fonts for image generation
+        run: sudo apt-get update && sudo apt-get install -y fonts-noto-cjk
+
       - name: 動態列舉並實際執行所有生成腳本
         run: python scripts/smoke_test_scripts.py
 
