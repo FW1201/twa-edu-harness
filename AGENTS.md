@@ -14,8 +14,8 @@
 
 | Repo | 定位 | 關係 |
 |---|---|---|
-| **twa-edu-harness**（本 repo） | 教學技能的基座與發佈載體 | 上游，提供能力 |
-| `confucius`（private） | 校園職務入口的講座 demo，伏羲思維層 × tw-edu 任務層 | **下游消費者**。應引用本 repo 的 skills，不自建第二份 |
+| **twa-edu-harness**（本 repo） | 課綱服務與選用整合消費端 | 選用消費端，固定使用獨立套組發行版本 |
+| `confucius`（private） | 校園職務入口的講座 demo，伏羲思維層 × tw-edu 任務層 | **下游消費者**。應引用獨立 tw-edu-skills 的固定發行版本 |
 | `fuxi-education-skills`（private） | 伏羲思維層技能 | 內容不公開，**不得**併入本 public repo |
 | `tw-stu-skills` / `tw-research-skills` | 學生 / 研究者技能 | **不整併**。服務對象不同，各自維護 |
 
@@ -158,3 +158,9 @@ python scripts/gen_harness_adapter.py        # runtime 設定產生（輸出到 
 ## 8. 編輯本文件
 
 `CLAUDE.md` 是 `AGENTS.md` 的 symlink。**改真檔 `AGENTS.md`。**
+
+## 2026-10-02 獨立套組同步規範（優先於舊 Skill 開發條款）
+
+使用者已決定核心技能獨立於任何 Harness。skills/ 現為 FW1201/tw-edu-skills 的23個固定、自足、生成副本，真源與檔案hash見 independent-skills-lock.json。不可手改；更新需重取整包，移除舊目錄並回讀。舊版共享import、smoke.yml、license頂層與metadata.shared規範僅適用歷史adapter，不再要求canonical Skills。新的gates驗證相同能力的不變量：metadata、資源、語法、原包hash、單支隔離、內容CLI与實際生成。
+
+本repo的 python/課綱服務、preset與adapter仍可獨立維護，不成為Skills必要依賴。Fuxi私有內容不得進public repo。獨立套組與消費端各保有自己的版本，不稱本repo為獨立技能上游。

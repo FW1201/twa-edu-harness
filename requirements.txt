@@ -10,3 +10,5 @@ PyYAML>=6.0             # frontmatter 與 smoke.yml 解析
 
 # 只有重建課綱資料時需要（scripts/build_curriculum_data.py）
 pdfplumber>=0.11.0
+
+jsonschema>=4.20,<5

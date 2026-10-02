@@ -14,7 +14,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
         with:
-          python-version: '3.11'
+          python-version: '3.12'
       - run: pip install pyyaml python-docx jsonschema
 
       # 每一道 gate 各自一個 step，這樣 CI 頁面直接看得出是哪一項失敗。
@@ -54,12 +54,12 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
         with:
-          python-version: '3.11'
+          python-version: '3.12'
       - run: |
           pip install -r requirements.txt
           pip install -e ./python
 
-      # 腳本從檔案系統動態列舉，測試參數由各 skill 的 scripts/smoke.yml 提供。
+      # 腳本從檔案系統動態列舉，測試參數由 canonical manifest 與各技能 --example 提供。
       # 不硬編碼清單——v3.x 的 CI 寫死腳本路徑，其中一支被刪除後 CI 就永遠是紅的。
       - name: 動態列舉並實際執行所有生成腳本
         run: python scripts/smoke_test_scripts.py
@@ -71,7 +71,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
         with:
-          python-version: '3.11'
+          python-version: '3.12'
       - run: pip install pyyaml
 
       # 單支安裝時 shared/ 不存在，協議必須已內聯進 SKILL.md。
@@ -79,13 +79,8 @@ jobs:
         run: python scripts/build_standalone_skills.py --out dist/skills
       - name: 驗證內聯版無外部依賴
         run: python scripts/verify_skill_links.py --root dist/skills --standalone
-      - name: 確認四份協議真的在檔案裡
-        run: |
-          f=dist/skills/tw-edu-lesson-plan-108/SKILL.md
-          for t in 概念對齊協議 學段適配協議 引導式資訊收集協議 "MCP 使用策略"; do
-            grep -q "$t" "$f" || { echo "::error::內聯版缺少 $t"; exit 1; }
-          done
-          echo "四份協議齊全"
+      - name: 驗證已自足的技能副本
+        run: python scripts/verify_independent_skills.py
 
   core-install-modes:
     name: twa_edu_core 兩種安裝模式
@@ -94,7 +89,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
         with:
-          python-version: '3.11'
+          python-version: '3.12'
       - run: pip install -r requirements.txt
 
       # 腳本必須在「已安裝套件」與「僅有 repo 內 python/」兩種情境都能跑。
@@ -104,14 +99,14 @@ jobs:
           for f in $(find skills -path '*/scripts/generate_*.py' | sort); do
             python "$f" --help > /dev/null || { echo "::error::$f"; exit 1; }
           done
-          echo "18 支腳本在已安裝模式下正常"
+          echo "manifest 生成腳本在已安裝模式下正常"
       - name: 模式 B — sys.path fallback
         run: |
           pip uninstall -y twa-edu-core
           for f in $(find skills -path '*/scripts/generate_*.py' | sort); do
             python "$f" --help > /dev/null || { echo "::error::$f"; exit 1; }
           done
-          echo "18 支腳本在 fallback 模式下正常"
+          echo "manifest 生成腳本在 fallback 模式下正常"
 
   curriculum:
     name: 課綱查詢測試
@@ -120,7 +115,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
         with:
-          python-version: '3.11'
+          python-version: '3.12'
       - run: |
           pip install pytest
           pip install -e ./python

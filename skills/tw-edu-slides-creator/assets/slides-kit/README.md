@@ -1,12 +1,3 @@
-> **依賴安裝**：本工具組的 `node_modules` 不納入版控。要使用這裡的 `.mjs` 渲染器前，
-> 先在本目錄執行 `npm ci`（唯一依賴 `pptxgenjs`，已鎖定於 `package-lock.json`）。
->
-> ⚠️ `tw-edu-slides-creator` v4.0 的**實際工作流程不使用本工具組** —— v4.0 走
-> `scripts/assemble_image_pptx.py` 的圖片式 PPTX 組裝（Python + python-pptx）。
-> 本目錄保留作為版面詞彙與 schema 驗證的參考，以及舊版可編輯簡報工作的 fallback。
-
----
-
 # slides-kit — tw-edu-slides-creator v3.0 渲染套件
 
 投影片結構 schema（JSON）→ 原生可編輯 `.pptx`。純 node、零 build。

@@ -1,3 +1,9 @@
+# Changelog
+
+## 4.7.0 — 2026-10-02
+
+固定消費教師獨立套組4.1的23個套件，移除舊技能副本與core import耦合；驗證改為上游包一致性及實際內容CLI。課綱服務／舊core API保留獨立驗證。
+
 <!-- curriculum-check: ignore：本文記錄的是修正前的錯誤範例 -->
 
 # CHANGELOG

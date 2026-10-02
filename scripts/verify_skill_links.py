@@ -7,10 +7,11 @@
 """
 from __future__ import annotations
 import argparse, re, sys
+from urllib.parse import unquote
 from pathlib import Path
 
 PATTERNS = [
-    re.compile(r"\[[^\]]*\]\((\.{1,2}/[^)\s]+)\)"),                       # markdown 連結
+    re.compile(r"\[[^\]]*\]\(([^)\s]+)\)"),                       # markdown 連結
     re.compile(r"`(\.{1,2}/[^`\s]+\.(?:md|py|json|ya?ml|txt|tsx|mjs))`"),  # 反引號路徑
 ]
 
@@ -31,21 +32,23 @@ def main() -> int:
         text = md.read_text(encoding="utf-8")
         targets = {t for pat in PATTERNS for t in pat.findall(text)}
         for target in sorted(targets):
+            if "://" in target or target.startswith("#"):
+                continue
+            target = unquote(target.split("#",1)[0])
             if any(ch in target for ch in "*?["):
                 continue  # glob 樣式（例如 ../tw-edu-*/SKILL.md）不是實際路徑
             checked += 1
             resolved = (md.parent / target).resolve()
-            rel = md.relative_to(repo_root) if md.is_absolute() else md
+            rel = md.relative_to(repo_root) if md.is_absolute() and md.is_relative_to(repo_root) else md
 
             if not resolved.exists():
                 errors.append(f"{rel}: `{target}` 指向不存在的檔案")
                 continue
 
             if args.standalone:
-                # 技能安裝後彼此是同層目錄，指向姊妹技能是合法的；
-                # 不合法的是指向 skill 集合之外的東西（例如 repo 的 shared/）。
-                boundary = md.parent.parent.resolve()
-                where = "技能集合"
+                # 獨立安裝的必要資源必須位於單一技能目錄內。
+                boundary = md.parent.resolve()
+                where = "單一技能目錄"
             else:
                 boundary = repo_root
                 where = "repo 根"

@@ -39,7 +39,7 @@ def load(skill_dir: Path) -> dict:
     summary = re.split(r"(?<=[。．])", desc)[0].strip() or desc[:60]
     return {
         "name": skill_dir.name,
-        "version": str(fm.get("version", "—")),
+        "version": str(fm.get("version", (fm.get("metadata") or {}).get("version", "—"))),
         "summary": summary,
     }
 

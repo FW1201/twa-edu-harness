@@ -1,0 +1,421 @@
+{
+  "source": "FW1201/tw-edu-skills",
+  "commit": "d4d6d37ffabcdd4bac25636ef997dc1bef1c0d22",
+  "suite_version": "4.1.0",
+  "skills": {
+    "tw-edu-lesson-plan-108": {
+      "version": "4.1.0",
+      "files": {
+        "SKILL.md": "ace81fe8fd6a657dd51261d308d50449c7f361d115ea2c52e887340203d0c7ee",
+        "examples/example.json": "c773a288b5eb42b58027cfab5649f8eb6fd22b0f2a68ee7c6a9d342d371f54ba",
+        "references/108_core_competencies.md": "f0bbcc988291ba26e63987fb8a94470312663a82a263c3d5a258938e7cb7f096",
+        "references/108_subject_indicators.md": "c6726c9068f613998c82b70262cfd97f05ae5feb265a284c149b72bb8ed6880d",
+        "references/bloom_taxonomy_tw.md": "e52f37b6c0acb053198e8237ab35062d32ecf78c2d477cfe5826cccfe4d2a0e5",
+        "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
+        "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "references/lesson_plan_format.md": "9ffddd03ac7b82f185e8b43c0eb24f40c0bf10690b6428c564bd1ac3f49794f5",
+        "requirements.txt": "e5452f40917de20cc1fc1656094d965e5aacfd3d37b27a4ec000bc3783297596",
+        "schemas/input.schema.json": "4ac35c70400398d71dde82ea89cb617f373d5126b62162ab8cc110663e17d5e8",
+        "scripts/edu_runtime/__init__.py": "92d6d6bb6547eb0fd2c7bbfa420635da218f566573b7f62039d12f41dd635f22",
+        "scripts/edu_runtime/cli.py": "3e757ec418a891a3da427f1d6d9a406216266975d9f3321879918ca3cb92e381",
+        "scripts/edu_runtime/learning_evidence.py": "3ead6d9a5100f20d2ca8dbdffd1583b98210d9fa1910a7127021c3cc447a9d93",
+        "scripts/edu_runtime/miniapp.js": "99af105f2afed22742781ae3d2bcb9c233ca54f168657fae8aaf1106d893a5eb",
+        "scripts/edu_runtime/slides.py": "9f117f00442595da23b0a7ae62994b7c37320c422d23cc93ccdfe06880b882da",
+        "scripts/generate_lesson_plan.py": "9043ab228dcbd61919f634cc444ef17abc484e5ac18e0075386f5632a56297c4"
+      }
+    },
+    "tw-edu-curriculum-mapper": {
+      "version": "4.1.0",
+      "files": {
+        "SKILL.md": "70b924eb74df2a5630e970d96ad7ba35ea42a8ae6d56f66bd642aaf8956106a3",
+        "examples/example.json": "062e24d86784fb1ff9996a86cc92fde2b9bf74ba0918821b1ab0869103bd89dc",
+        "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
+        "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "requirements.txt": "60e1a1767b1e4cc7da4b15824b491874ce18c486c169f8dd16b72959c86054b6",
+        "schemas/input.schema.json": "87da20574bd8ab9b0a428d20254be4b1d0e597e34df9cb4149f2230828555c52",
+        "scripts/edu_runtime/__init__.py": "92d6d6bb6547eb0fd2c7bbfa420635da218f566573b7f62039d12f41dd635f22",
+        "scripts/edu_runtime/cli.py": "3e757ec418a891a3da427f1d6d9a406216266975d9f3321879918ca3cb92e381",
+        "scripts/edu_runtime/learning_evidence.py": "3ead6d9a5100f20d2ca8dbdffd1583b98210d9fa1910a7127021c3cc447a9d93",
+        "scripts/edu_runtime/miniapp.js": "99af105f2afed22742781ae3d2bcb9c233ca54f168657fae8aaf1106d893a5eb",
+        "scripts/edu_runtime/slides.py": "9f117f00442595da23b0a7ae62994b7c37320c422d23cc93ccdfe06880b882da",
+        "scripts/generate_curriculum_map.py": "d02c112798b4f94d01c75c6b50847303e9ab7f940814172f05d1e0a74facf8dc"
+      }
+    },
+    "tw-edu-differentiated": {
+      "version": "4.1.0",
+      "files": {
+        "SKILL.md": "8a17ad2d84c9607a126f10d229caa8cb6b875069bdd78dbf22c1ac53070b9c83",
+        "examples/example.json": "5b7ff1ff531690d0e06347ce59bf0430ab402dcf9fc78a09abc1f72197e8709f",
+        "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
+        "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "requirements.txt": "e5452f40917de20cc1fc1656094d965e5aacfd3d37b27a4ec000bc3783297596",
+        "schemas/input.schema.json": "feaf88962141037e8bdc63a1f641a5e2b1e6d36cb40a0ed434ee4f6641e2dab1",
+        "scripts/edu_runtime/__init__.py": "92d6d6bb6547eb0fd2c7bbfa420635da218f566573b7f62039d12f41dd635f22",
+        "scripts/edu_runtime/cli.py": "3e757ec418a891a3da427f1d6d9a406216266975d9f3321879918ca3cb92e381",
+        "scripts/edu_runtime/learning_evidence.py": "3ead6d9a5100f20d2ca8dbdffd1583b98210d9fa1910a7127021c3cc447a9d93",
+        "scripts/edu_runtime/miniapp.js": "99af105f2afed22742781ae3d2bcb9c233ca54f168657fae8aaf1106d893a5eb",
+        "scripts/edu_runtime/slides.py": "9f117f00442595da23b0a7ae62994b7c37320c422d23cc93ccdfe06880b882da",
+        "scripts/generate_differentiated.py": "b2e54c54cc09bcaa85feab0956ff1efe14322890aa7398d6ebc791959c865f8c"
+      }
+    },
+    "tw-edu-interdisciplinary": {
+      "version": "4.1.0",
+      "files": {
+        "SKILL.md": "92a17967bccc667d924c6579313b0289b6594155360d7e66a67cea3b1fa41fb1",
+        "examples/example.json": "980c84c3578c440b299cb54cdb62c9e1b1f538677ac61207f401aa3c92f0e254",
+        "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
+        "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "requirements.txt": "e5452f40917de20cc1fc1656094d965e5aacfd3d37b27a4ec000bc3783297596",
+        "schemas/input.schema.json": "d196bfd8d0c0228cf6a59535d2480fe08b75904e01ff08bb74d0588015620f56",
+        "scripts/edu_runtime/__init__.py": "92d6d6bb6547eb0fd2c7bbfa420635da218f566573b7f62039d12f41dd635f22",
+        "scripts/edu_runtime/cli.py": "3e757ec418a891a3da427f1d6d9a406216266975d9f3321879918ca3cb92e381",
+        "scripts/edu_runtime/learning_evidence.py": "3ead6d9a5100f20d2ca8dbdffd1583b98210d9fa1910a7127021c3cc447a9d93",
+        "scripts/edu_runtime/miniapp.js": "99af105f2afed22742781ae3d2bcb9c233ca54f168657fae8aaf1106d893a5eb",
+        "scripts/edu_runtime/slides.py": "9f117f00442595da23b0a7ae62994b7c37320c422d23cc93ccdfe06880b882da",
+        "scripts/generate_interdisciplinary.py": "b204be20ef29e755d606c8aa6a3b9d80853deb86b21cbb67061a93ea6504615d"
+      }
+    },
+    "tw-edu-exam-generator": {
+      "version": "4.1.0",
+      "files": {
+        "SKILL.md": "a7469ac089ebe854f3696f1cdcb347907bbad4ec6d395632d6b5699fe2ef2da9",
+        "examples/example.json": "58cda1b6e8705ade91eb6c84c2d582244112043411857302d2b2122791e2eb16",
+        "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
+        "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "references/competency_exam_guide.md": "8ab63c5e42e1e5077ea6b6b2dfc85f9b9bab6b6b15b34ce1c2c8795c011ea276",
+        "requirements.txt": "e5452f40917de20cc1fc1656094d965e5aacfd3d37b27a4ec000bc3783297596",
+        "schemas/input.schema.json": "3b87c7e482738f0b95c4d3edf3c2f0a30c1f1435a6a9652feae6400617173955",
+        "scripts/edu_runtime/__init__.py": "92d6d6bb6547eb0fd2c7bbfa420635da218f566573b7f62039d12f41dd635f22",
+        "scripts/edu_runtime/cli.py": "3e757ec418a891a3da427f1d6d9a406216266975d9f3321879918ca3cb92e381",
+        "scripts/edu_runtime/learning_evidence.py": "3ead6d9a5100f20d2ca8dbdffd1583b98210d9fa1910a7127021c3cc447a9d93",
+        "scripts/edu_runtime/miniapp.js": "99af105f2afed22742781ae3d2bcb9c233ca54f168657fae8aaf1106d893a5eb",
+        "scripts/edu_runtime/slides.py": "9f117f00442595da23b0a7ae62994b7c37320c422d23cc93ccdfe06880b882da",
+        "scripts/generate_exam.py": "83d611b73561d6a8131c5f4f4f446fa8fb924b49db13f2d6e4f9ae6c2fa88f0e"
+      }
+    },
+    "tw-edu-rubric-designer": {
+      "version": "4.1.0",
+      "files": {
+        "SKILL.md": "e90c7dade8deb747fa1da390830d751aa895d3d33e03007d2b3fd770c5b03d0e",
+        "examples/example.json": "564162a64f09412c662e3891198b24ffd30efc3db687e0197a6d5fe711565a6a",
+        "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
+        "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "requirements.txt": "e5452f40917de20cc1fc1656094d965e5aacfd3d37b27a4ec000bc3783297596",
+        "schemas/input.schema.json": "fb331bcc383c1ee6458d5e38d2715d81f02401f0e1dd0553bfaa97b48f1ab8e2",
+        "scripts/edu_runtime/__init__.py": "92d6d6bb6547eb0fd2c7bbfa420635da218f566573b7f62039d12f41dd635f22",
+        "scripts/edu_runtime/cli.py": "3e757ec418a891a3da427f1d6d9a406216266975d9f3321879918ca3cb92e381",
+        "scripts/edu_runtime/learning_evidence.py": "3ead6d9a5100f20d2ca8dbdffd1583b98210d9fa1910a7127021c3cc447a9d93",
+        "scripts/edu_runtime/miniapp.js": "99af105f2afed22742781ae3d2bcb9c233ca54f168657fae8aaf1106d893a5eb",
+        "scripts/edu_runtime/slides.py": "9f117f00442595da23b0a7ae62994b7c37320c422d23cc93ccdfe06880b882da",
+        "scripts/generate_rubric.py": "151ec428df710d448f541434d787f789a5e3f8a0c9410c35e081b44b6d41135f"
+      }
+    },
+    "tw-edu-formative-assessment": {
+      "version": "4.1.0",
+      "files": {
+        "SKILL.md": "e822c3b56ec399763df7e75abde2efbce6e9e9d15b5fd318caf4c4776efbcb0c",
+        "examples/example.json": "50eab86cb758ba501b2d14b78afc701045025c4f04b114a9bc355defd6fc4b00",
+        "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
+        "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "requirements.txt": "e5452f40917de20cc1fc1656094d965e5aacfd3d37b27a4ec000bc3783297596",
+        "schemas/input.schema.json": "44e4bef00d4830294cc949a650f573aa936d77b7f39b134ae078dafd55836e72",
+        "scripts/edu_runtime/__init__.py": "92d6d6bb6547eb0fd2c7bbfa420635da218f566573b7f62039d12f41dd635f22",
+        "scripts/edu_runtime/cli.py": "3e757ec418a891a3da427f1d6d9a406216266975d9f3321879918ca3cb92e381",
+        "scripts/edu_runtime/learning_evidence.py": "3ead6d9a5100f20d2ca8dbdffd1583b98210d9fa1910a7127021c3cc447a9d93",
+        "scripts/edu_runtime/miniapp.js": "99af105f2afed22742781ae3d2bcb9c233ca54f168657fae8aaf1106d893a5eb",
+        "scripts/edu_runtime/slides.py": "9f117f00442595da23b0a7ae62994b7c37320c422d23cc93ccdfe06880b882da",
+        "scripts/generate_formative.py": "eb4111e825a7f49e9fcb88915f96ea13f57d8dab2243304b788c80e994321c0d"
+      }
+    },
+    "tw-edu-worksheet-creator": {
+      "version": "4.1.0",
+      "files": {
+        "SKILL.md": "cbe51112947130aaea914de7937c6cfca1b9ca7cf549d13698a87b3c608f9c04",
+        "examples/example.json": "c62d828bc9b2db21e8be7e7ca9781b198f589a1d9785cb765ef30a6ffd571368",
+        "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
+        "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "requirements.txt": "e5452f40917de20cc1fc1656094d965e5aacfd3d37b27a4ec000bc3783297596",
+        "schemas/input.schema.json": "ec62f025e80621c7a459ef20f9f2c4831ed12cd9fce285ed5e954250b7cb2e88",
+        "scripts/edu_runtime/__init__.py": "92d6d6bb6547eb0fd2c7bbfa420635da218f566573b7f62039d12f41dd635f22",
+        "scripts/edu_runtime/cli.py": "3e757ec418a891a3da427f1d6d9a406216266975d9f3321879918ca3cb92e381",
+        "scripts/edu_runtime/learning_evidence.py": "3ead6d9a5100f20d2ca8dbdffd1583b98210d9fa1910a7127021c3cc447a9d93",
+        "scripts/edu_runtime/miniapp.js": "99af105f2afed22742781ae3d2bcb9c233ca54f168657fae8aaf1106d893a5eb",
+        "scripts/edu_runtime/slides.py": "9f117f00442595da23b0a7ae62994b7c37320c422d23cc93ccdfe06880b882da",
+        "scripts/generate_worksheet.py": "22d041fa0ad5643252423d22e9f7088d3dc002acde387c3c8c560b8dd6e2ea67"
+      }
+    },
+    "tw-edu-slides-creator": {
+      "version": "5.1.0",
+      "files": {
+        "SKILL.md": "0ef58255d1cd03099b00980c0afeac52f6dc10223337e8740ad9c08339f71f3e",
+        "assets/slides-kit/.gitignore": "f3e6ba7e0e8ea9d6cc2c80df00c37be984c758356ba05c2149cc02cb5b56cd08",
+        "assets/slides-kit/README.md": "7c0c82d4caef73842a47095830e42b35cc2039ccf9eb55a46a328cd679b629b8",
+        "assets/slides-kit/build.mjs": "2e6463256494f747c8036c5570ddb103584a167c976c15846ad4d2d7027bdded",
+        "assets/slides-kit/examples/agent-skills.json": "03f091e1e536cd1df479065aeef3d2d030f7f7284c78cf55131b7d0c243e18ad",
+        "assets/slides-kit/examples/guoyu-7.json": "6b4a672b239e7da2d683182c93365f75bc8ddd8f70c4cd1d22c3affdc9526191",
+        "assets/slides-kit/grid.mjs": "7b61c68637f777a3d2306f81fef00d512c72a077063854ef71d5f00806f543aa",
+        "assets/slides-kit/layouts.mjs": "c5955d8c6a26cf431f9b2495e598f27584956fc70a89a637282c135d24bcad68",
+        "assets/slides-kit/masters.mjs": "2fb9b362ddfda8671e683181c3b5e2960547e37123a4212db4e5264ab4da4a1c",
+        "assets/slides-kit/package.json": "e2959ecb258b837f7cd7f004b8c1613a63da31c48ef282dc3ad39d93d84a989f",
+        "assets/slides-kit/render-preview.mjs": "71d6aacecd765d36b5624a9241564b9b494c3a758565b2d453723f57b9c3232c",
+        "assets/slides-kit/tokens.mjs": "562c371477abca03f9e55efb9fc2a595d2b9db638c137434d19fe6b8488be590",
+        "assets/slides-kit/validate-deck.mjs": "c7f6ebcf4542b26e641f94256e1286ab8756b08dbe47d6b7a050045255bed4a7",
+        "docs/outline-style-sample.md": "0f4bd42de045c788d5908f12010807d0b002fd521e7c88e340a20d67fd8d6dcc",
+        "docs/project-assembly-and-reporting.md": "0940c56adce9c4276ed7bf4254a22cf60f0feda2610420135cf83810b14cc471",
+        "docs/slide-generation-state.md": "4bbba5e546f425ac26847b35154b93267f3884ff66f24f074e767f9c082ba4a0",
+        "docs/workflow-gates-and-progress.md": "1a3ef024253f433de7ce3d5bb7ab84ffb72eaa10bacf7992566238f892f02d8d",
+        "examples/example.json": "cfe7438743e29b7d9d2fafb900777da7ca000d92828ba83b5055880d3a38aa70",
+        "prompts/slide-worker.md": "7a9ab16330ebc4137cd75494f41d22e735d6c9582da26f8de276677243f6f9f8",
+        "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
+        "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "references/layout-grid.md": "c8bf2073e23a72291142fe2b3a198949dc162cfb5ea8b9f184029c9e3300be61",
+        "references/palette-library.md": "f7ea1e283c07534c886a13841df74ba7c9bae715f462ab75b75e2006f3a4b0d8",
+        "references/pptx-layout-templates.md": "35860518f5270ebe290d36b03f2c05163c425207641c297d29f90cad7cd4af14",
+        "references/presentation-style-library.md": "40584e0ef59a076caac06fda0b8a7ddcbb05688c5f790ac0cd68571bacd417ed",
+        "references/sample-approval-template.md": "c85f04658d8d75c976bf053b0bd5357ab15ae7db469a2419af6378b1418ff760",
+        "references/slide_design_principles.md": "e2e992731c8f649510dd5bbf0ee87aea5e6d3f07ae3361b8f4f8b223dad304eb",
+        "requirements.txt": "29be50bf72f0f6d3df57ec57461f3baba07ccf5e82404135157c622b1c7febd8",
+        "schemas/input.schema.json": "6cd3a56b3747cd9c9aa610b38215bed53516ccc3e8a785f2c1f09ba53687dbad",
+        "scripts/assemble_image_pptx.py": "a9de9fe95e78580990932a4f45b478cc422ef39c71a4015da7830b5a53a6f41e",
+        "scripts/edu_runtime/__init__.py": "92d6d6bb6547eb0fd2c7bbfa420635da218f566573b7f62039d12f41dd635f22",
+        "scripts/edu_runtime/cli.py": "3e757ec418a891a3da427f1d6d9a406216266975d9f3321879918ca3cb92e381",
+        "scripts/edu_runtime/learning_evidence.py": "3ead6d9a5100f20d2ca8dbdffd1583b98210d9fa1910a7127021c3cc447a9d93",
+        "scripts/edu_runtime/miniapp.js": "99af105f2afed22742781ae3d2bcb9c233ca54f168657fae8aaf1106d893a5eb",
+        "scripts/edu_runtime/slides.py": "9f117f00442595da23b0a7ae62994b7c37320c422d23cc93ccdfe06880b882da",
+        "scripts/generate_slides.py": "7c6a8331888fd7ea1f923f91fedb486b16b71060c440038aa9cfbe394db232fd",
+        "scripts/init_slide_jobs.py": "f84131faeb4a1fc913bf9de017c7abb507dbbd9e74c97319d91269fefb4085ab",
+        "scripts/record_slide_result.py": "2903aefe8c005efcf0ce6063f55f8e14f23d4b714f08930fe8847f36942bd51d",
+        "scripts/slide_job_status.py": "44cb05c6a7b0a533514504f991e26b5b0bca6c33f9d0532238b168113f88f720"
+      }
+    },
+    "tw-edu-feedback-writer": {
+      "version": "4.1.0",
+      "files": {
+        "SKILL.md": "9ecb5654e250ce7ee042c7ae4cc9354d994b6806aeedb1a132f8e65e37932090",
+        "examples/example.json": "92a1631229c3242f02504da1b9bf39e3c03b8e527ac5ad56be5f9d3b9bfb4c67",
+        "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
+        "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "requirements.txt": "e5452f40917de20cc1fc1656094d965e5aacfd3d37b27a4ec000bc3783297596",
+        "schemas/input.schema.json": "062c31cb3dc0a2a7b050ff4bed50985c1197448bc0b743904f0f74f367275de4",
+        "scripts/edu_runtime/__init__.py": "92d6d6bb6547eb0fd2c7bbfa420635da218f566573b7f62039d12f41dd635f22",
+        "scripts/edu_runtime/cli.py": "3e757ec418a891a3da427f1d6d9a406216266975d9f3321879918ca3cb92e381",
+        "scripts/edu_runtime/learning_evidence.py": "3ead6d9a5100f20d2ca8dbdffd1583b98210d9fa1910a7127021c3cc447a9d93",
+        "scripts/edu_runtime/miniapp.js": "99af105f2afed22742781ae3d2bcb9c233ca54f168657fae8aaf1106d893a5eb",
+        "scripts/edu_runtime/slides.py": "9f117f00442595da23b0a7ae62994b7c37320c422d23cc93ccdfe06880b882da",
+        "scripts/generate_feedback.py": "0bb6c55fa93268198d5417cb3d30bbbb2800b99a0ea015bd4f4968f230ea22bb"
+      }
+    },
+    "tw-edu-learning-portfolio": {
+      "version": "4.1.0",
+      "files": {
+        "SKILL.md": "b40c47898b06514f886dbb7cb94b35cf2026f2c6ed29f33f7e030ee6e344ba0a",
+        "examples/example.json": "f0cb8980483d66c0e95793bf1531a8f9b6d564b8a5417cdcffad84f4bfb1e915",
+        "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
+        "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "requirements.txt": "e5452f40917de20cc1fc1656094d965e5aacfd3d37b27a4ec000bc3783297596",
+        "schemas/input.schema.json": "91c46fee46152a6522110b8497724547fcf6d40526221e16aa9f9979db389183",
+        "scripts/edu_runtime/__init__.py": "92d6d6bb6547eb0fd2c7bbfa420635da218f566573b7f62039d12f41dd635f22",
+        "scripts/edu_runtime/cli.py": "3e757ec418a891a3da427f1d6d9a406216266975d9f3321879918ca3cb92e381",
+        "scripts/edu_runtime/learning_evidence.py": "3ead6d9a5100f20d2ca8dbdffd1583b98210d9fa1910a7127021c3cc447a9d93",
+        "scripts/edu_runtime/miniapp.js": "99af105f2afed22742781ae3d2bcb9c233ca54f168657fae8aaf1106d893a5eb",
+        "scripts/edu_runtime/slides.py": "9f117f00442595da23b0a7ae62994b7c37320c422d23cc93ccdfe06880b882da",
+        "scripts/generate_portfolio.py": "d31043d9be4dfb91fbd2c05ceb08852d2f8935a33b0180fdc9008e9111107175"
+      }
+    },
+    "tw-edu-parent-communication": {
+      "version": "4.1.0",
+      "files": {
+        "SKILL.md": "27f4c43d5757dd10d287cc27c63605572d3d8b160ba19ef892925d5aef9f8d56",
+        "examples/example.json": "5eada3126f754bd553a22efdee3015b5c81478f1df34b9ebfad3f344c61e8054",
+        "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
+        "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "requirements.txt": "e5452f40917de20cc1fc1656094d965e5aacfd3d37b27a4ec000bc3783297596",
+        "schemas/input.schema.json": "6feb5b625668edef020ea06cdaf474b1a0021b19e865fc9e18a63433e83c6c96",
+        "scripts/edu_runtime/__init__.py": "92d6d6bb6547eb0fd2c7bbfa420635da218f566573b7f62039d12f41dd635f22",
+        "scripts/edu_runtime/cli.py": "3e757ec418a891a3da427f1d6d9a406216266975d9f3321879918ca3cb92e381",
+        "scripts/edu_runtime/learning_evidence.py": "3ead6d9a5100f20d2ca8dbdffd1583b98210d9fa1910a7127021c3cc447a9d93",
+        "scripts/edu_runtime/miniapp.js": "99af105f2afed22742781ae3d2bcb9c233ca54f168657fae8aaf1106d893a5eb",
+        "scripts/edu_runtime/slides.py": "9f117f00442595da23b0a7ae62994b7c37320c422d23cc93ccdfe06880b882da",
+        "scripts/generate_parent_comm.py": "8f2a14b1a4fc3bc5d829edac29e270702ad3bf2c6edc667d046456fb1dde3ab9"
+      }
+    },
+    "tw-edu-classroom-culture": {
+      "version": "4.1.0",
+      "files": {
+        "SKILL.md": "aae28302ec9e246c807a84902f2104e5b8dd96eeada40a3631592edfa7f1ed49",
+        "examples/example.json": "1b84167b563bcc5aeff135a1be12d6f21e657cf251d3dec49f4b95faeccfc3da",
+        "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
+        "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "requirements.txt": "e5452f40917de20cc1fc1656094d965e5aacfd3d37b27a4ec000bc3783297596",
+        "schemas/input.schema.json": "9ebdd6ee3da830cdc3379841a95e4908aa1d3eebb15e103de3152651992d9ae8",
+        "scripts/edu_runtime/__init__.py": "92d6d6bb6547eb0fd2c7bbfa420635da218f566573b7f62039d12f41dd635f22",
+        "scripts/edu_runtime/cli.py": "3e757ec418a891a3da427f1d6d9a406216266975d9f3321879918ca3cb92e381",
+        "scripts/edu_runtime/learning_evidence.py": "3ead6d9a5100f20d2ca8dbdffd1583b98210d9fa1910a7127021c3cc447a9d93",
+        "scripts/edu_runtime/miniapp.js": "99af105f2afed22742781ae3d2bcb9c233ca54f168657fae8aaf1106d893a5eb",
+        "scripts/edu_runtime/slides.py": "9f117f00442595da23b0a7ae62994b7c37320c422d23cc93ccdfe06880b882da",
+        "scripts/generate_classroom.py": "a1f1e90d957299af72be4bf7523b1f46937adc87840b4229677357b443a0b308"
+      }
+    },
+    "tw-edu-school-document": {
+      "version": "4.1.0",
+      "files": {
+        "SKILL.md": "1d88ee1a60b0179e667d533eb12d7c3a88813d7316688b4187685aa18bdcee51",
+        "examples/example.json": "f896f90c8945b3adae79cd531745db3cbb6abc23c302ce3ea52a45b7e721876f",
+        "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
+        "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "requirements.txt": "e5452f40917de20cc1fc1656094d965e5aacfd3d37b27a4ec000bc3783297596",
+        "schemas/input.schema.json": "2ec7d4c4eeaf544606fc4fdf6d1fba8003ab724875fe4bc9198d2745c86e58b3",
+        "scripts/edu_runtime/__init__.py": "92d6d6bb6547eb0fd2c7bbfa420635da218f566573b7f62039d12f41dd635f22",
+        "scripts/edu_runtime/cli.py": "3e757ec418a891a3da427f1d6d9a406216266975d9f3321879918ca3cb92e381",
+        "scripts/edu_runtime/learning_evidence.py": "3ead6d9a5100f20d2ca8dbdffd1583b98210d9fa1910a7127021c3cc447a9d93",
+        "scripts/edu_runtime/miniapp.js": "99af105f2afed22742781ae3d2bcb9c233ca54f168657fae8aaf1106d893a5eb",
+        "scripts/edu_runtime/slides.py": "9f117f00442595da23b0a7ae62994b7c37320c422d23cc93ccdfe06880b882da",
+        "scripts/generate_school_doc.py": "69bf17025083a249ca3381fdb574d86f4a4ece4f10b6a5137af8b1ab98d6a539"
+      }
+    },
+    "tw-edu-meeting-facilitator": {
+      "version": "4.1.0",
+      "files": {
+        "SKILL.md": "fb998723a1d71989c0a490b54a3965b2f0dff027e4b07ca1ad2d767bd147e466",
+        "examples/example.json": "4b52f4340bec83153bf5cec9a569e1f166750bb3a7c52a02f5528952b357a9cb",
+        "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
+        "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "references/ics_template.md": "ba7726a06e620ee0e7d0a2622c099263a86106fd1da74730df154deb8b86ad0e",
+        "requirements.txt": "e5452f40917de20cc1fc1656094d965e5aacfd3d37b27a4ec000bc3783297596",
+        "schemas/input.schema.json": "ec434340c377b940d9c9a9f70bab73355e4465788f800045d7d290f213cf16e6",
+        "scripts/edu_runtime/__init__.py": "92d6d6bb6547eb0fd2c7bbfa420635da218f566573b7f62039d12f41dd635f22",
+        "scripts/edu_runtime/cli.py": "3e757ec418a891a3da427f1d6d9a406216266975d9f3321879918ca3cb92e381",
+        "scripts/edu_runtime/learning_evidence.py": "3ead6d9a5100f20d2ca8dbdffd1583b98210d9fa1910a7127021c3cc447a9d93",
+        "scripts/edu_runtime/miniapp.js": "99af105f2afed22742781ae3d2bcb9c233ca54f168657fae8aaf1106d893a5eb",
+        "scripts/edu_runtime/slides.py": "9f117f00442595da23b0a7ae62994b7c37320c422d23cc93ccdfe06880b882da",
+        "scripts/generate_meeting.py": "bc059636cea28d3c1ebd71fbf07e2034a79e2af8bd2a66b5f8047e7c0ad2d3b0"
+      }
+    },
+    "tw-edu-pbl-designer": {
+      "version": "4.1.0",
+      "files": {
+        "SKILL.md": "a0bd68d2b215863e903c27884e574ad14b849d757aadfa8eb2e662398bffe7c9",
+        "examples/example.json": "469cafc6a8a55d67fc74f261c833e44fb3aa9856f09fadf47312891b8d8ce943",
+        "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
+        "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "requirements.txt": "e5452f40917de20cc1fc1656094d965e5aacfd3d37b27a4ec000bc3783297596",
+        "schemas/input.schema.json": "13f2ad34026b8ae5fff377660c79c318cc7eb61d078139e6dddc658447801d77",
+        "scripts/edu_runtime/__init__.py": "92d6d6bb6547eb0fd2c7bbfa420635da218f566573b7f62039d12f41dd635f22",
+        "scripts/edu_runtime/cli.py": "3e757ec418a891a3da427f1d6d9a406216266975d9f3321879918ca3cb92e381",
+        "scripts/edu_runtime/learning_evidence.py": "3ead6d9a5100f20d2ca8dbdffd1583b98210d9fa1910a7127021c3cc447a9d93",
+        "scripts/edu_runtime/miniapp.js": "99af105f2afed22742781ae3d2bcb9c233ca54f168657fae8aaf1106d893a5eb",
+        "scripts/edu_runtime/slides.py": "9f117f00442595da23b0a7ae62994b7c37320c422d23cc93ccdfe06880b882da",
+        "scripts/generate_pbl.py": "b11ab74ae451c01b0d6d1f2a7c188a2bd7a6a08827fd9acae56bf5f4cc968bb2"
+      }
+    },
+    "tw-edu-mini-app": {
+      "version": "4.1.0",
+      "files": {
+        "SKILL.md": "577c448e21cca6baf5270e7c64afa70003fd91ddb9371c04a5fcfbf8a32f019e",
+        "examples/example.json": "069bb1bd510046b3aca395712fd0da2f4653d2c9417864ca2e246f9eeed0a2b5",
+        "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
+        "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "references/deployment_guide.md": "cea0fdc10d974d20354e3d46204291b56a3faa2ab7fd73b9467c78840c199a01",
+        "requirements.txt": "9984fa6ad6d35d2468011c4c278583e9bb4983d83be6bb3f5aabcef9c99b19b7",
+        "schemas/input.schema.json": "eee5813eef4e1d39c83ba979bebe01b50db4af4eb7725f892aab9f04429fb579",
+        "scripts/edu_runtime/__init__.py": "92d6d6bb6547eb0fd2c7bbfa420635da218f566573b7f62039d12f41dd635f22",
+        "scripts/edu_runtime/cli.py": "3e757ec418a891a3da427f1d6d9a406216266975d9f3321879918ca3cb92e381",
+        "scripts/edu_runtime/learning_evidence.py": "3ead6d9a5100f20d2ca8dbdffd1583b98210d9fa1910a7127021c3cc447a9d93",
+        "scripts/edu_runtime/miniapp.js": "99af105f2afed22742781ae3d2bcb9c233ca54f168657fae8aaf1106d893a5eb",
+        "scripts/edu_runtime/slides.py": "9f117f00442595da23b0a7ae62994b7c37320c422d23cc93ccdfe06880b882da",
+        "scripts/generate_mini_app.py": "b9ae74b685f25291abf1acdf3992cd2d5691fdcc67b9b4f9e6e26babc2a62731"
+      }
+    },
+    "tw-edu-research-viz": {
+      "version": "4.1.0",
+      "files": {
+        "SKILL.md": "daaf2ce44c55f5373208a1bc42f2f83c0dbb11c34b849eb3e82bcb89cc2a65d3",
+        "examples/example.json": "903a5f385b1cf8e4f643b236a57e304106589acecaa02ad30809a3804e372e4a",
+        "references/academic_viz_types.md": "59971de10df74553d0581966e1cb66156d18dccf5b6e148d59c8166cd016ea7f",
+        "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
+        "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "requirements.txt": "543019e401cfae054ff5877eb6ae1ae359fa2e6f3eda3b6066282327634de589",
+        "schemas/input.schema.json": "b37ddce2289e3bd76c7b84975ea58c70b25372686ced3cf5f8f11675b2fe87ac",
+        "scripts/edu_runtime/__init__.py": "92d6d6bb6547eb0fd2c7bbfa420635da218f566573b7f62039d12f41dd635f22",
+        "scripts/edu_runtime/cli.py": "3e757ec418a891a3da427f1d6d9a406216266975d9f3321879918ca3cb92e381",
+        "scripts/edu_runtime/learning_evidence.py": "3ead6d9a5100f20d2ca8dbdffd1583b98210d9fa1910a7127021c3cc447a9d93",
+        "scripts/edu_runtime/miniapp.js": "99af105f2afed22742781ae3d2bcb9c233ca54f168657fae8aaf1106d893a5eb",
+        "scripts/edu_runtime/slides.py": "9f117f00442595da23b0a7ae62994b7c37320c422d23cc93ccdfe06880b882da",
+        "scripts/generate_prisma.py": "58befbb8a154056ed26822dbc323fdc1d411a3822363c2c92f467355e90d8913"
+      }
+    },
+    "tw-edu-citation-checker": {
+      "version": "2.1.0",
+      "files": {
+        "SKILL.md": "15b1eb8f0b9bc76e7c366d4116b69bbac2172b0e37b1070694a0558830b3a93d",
+        "references/citation_formats.md": "f6e9a9b155cb54d94c3fecd24d2acd2609568f991968f2a5ae22545acd805894",
+        "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
+        "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "requirements.txt": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    "tw-edu-anti-ai-assessment": {
+      "version": "4.1.0",
+      "files": {
+        "SKILL.md": "4fc541a5cdc79a9e44c0df1c5478b8229cbbd9d92cde1c07bc6a370a8f97e4b8",
+        "examples/example.json": "ac043c94271e3ea57e414afb58b1cd31ce816a883e3bd65fe6c8da71a712ce66",
+        "references/ai_vulnerability_rubric.md": "389ebdd2f00036ff516ba703f903bcd5161ed8dbc45d8d301a76febad7b54523",
+        "references/anti_ai_strategies.md": "6b08900eb7894e8d6f6e8b17e42b8eeed54e34b70fc604d749965877707dc0cd",
+        "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
+        "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "requirements.txt": "e5452f40917de20cc1fc1656094d965e5aacfd3d37b27a4ec000bc3783297596",
+        "schemas/input.schema.json": "896cbbb454e9eb717edca1a3140b960429d7716e7aa78d644cf8d572d003f135",
+        "scripts/edu_runtime/__init__.py": "92d6d6bb6547eb0fd2c7bbfa420635da218f566573b7f62039d12f41dd635f22",
+        "scripts/edu_runtime/cli.py": "3e757ec418a891a3da427f1d6d9a406216266975d9f3321879918ca3cb92e381",
+        "scripts/edu_runtime/learning_evidence.py": "3ead6d9a5100f20d2ca8dbdffd1583b98210d9fa1910a7127021c3cc447a9d93",
+        "scripts/edu_runtime/miniapp.js": "99af105f2afed22742781ae3d2bcb9c233ca54f168657fae8aaf1106d893a5eb",
+        "scripts/edu_runtime/slides.py": "9f117f00442595da23b0a7ae62994b7c37320c422d23cc93ccdfe06880b882da",
+        "scripts/generate_anti_ai_report.py": "ee79f7a2136418faf9650569291e61e81e1c07701474abe7c75b1b3c5cd370a1"
+      }
+    },
+    "tw-edu-synchronizer": {
+      "version": "2.1.0",
+      "files": {
+        "SKILL.md": "dcc8bd69d2282bb29b05d3eaa7f70da2cf76667ea8216fc9b813a1ce3da5adda",
+        "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
+        "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "requirements.txt": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    "tw-edu-learning-evidence-analyzer": {
+      "version": "1.0.0",
+      "files": {
+        "SKILL.md": "ae4974a631c713157e13ef28edcba830981be050a59822bd32780bcbd623bbe1",
+        "examples/example.json": "2b01ebb6ce5e0ba5ecf7204242a474f46843c1b17ec2a37eb88874f34aa2a22c",
+        "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
+        "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "requirements.txt": "e5452f40917de20cc1fc1656094d965e5aacfd3d37b27a4ec000bc3783297596",
+        "schemas/input.schema.json": "e5f95b26080977225f618355cc6d5ab44220b97bcc7ce8e204f3fc589be80d14",
+        "scripts/edu_runtime/__init__.py": "92d6d6bb6547eb0fd2c7bbfa420635da218f566573b7f62039d12f41dd635f22",
+        "scripts/edu_runtime/cli.py": "3e757ec418a891a3da427f1d6d9a406216266975d9f3321879918ca3cb92e381",
+        "scripts/edu_runtime/learning_evidence.py": "3ead6d9a5100f20d2ca8dbdffd1583b98210d9fa1910a7127021c3cc447a9d93",
+        "scripts/edu_runtime/miniapp.js": "99af105f2afed22742781ae3d2bcb9c233ca54f168657fae8aaf1106d893a5eb",
+        "scripts/edu_runtime/slides.py": "9f117f00442595da23b0a7ae62994b7c37320c422d23cc93ccdfe06880b882da",
+        "scripts/generate_evidence.py": "39c74320b1840bd5a5bc6bcf1f468ff28c2c77d7cccbf644337239942e45da65",
+        "scripts/import_responses.py": "567e660c4bdd4b441e90fb0471c4943484f727fa8e1a3e541d822849746cf746"
+      }
+    },
+    "tw-edu-material-reviewer": {
+      "version": "1.0.0",
+      "files": {
+        "SKILL.md": "26c859ae52074995ce6cec5a285b5ab90a4bd2236c39ff6f185526e09a059992",
+        "examples/example.json": "13315c9aeeb140651e8ed29f0b283d7a735c5b6fc395b8508e2cb68ac6fb3f7f",
+        "references/common/evidence-contracts.md": "ef871d3670014fd73a3a80e87d3729037fa65b599af115a7b95ccf240309d712",
+        "references/common/workflow.md": "eaf824023f68e6fd9c7071f9de54cd3d0a8ddfd5c4d94ff387126b3373480d41",
+        "requirements.txt": "e5452f40917de20cc1fc1656094d965e5aacfd3d37b27a4ec000bc3783297596",
+        "schemas/input.schema.json": "7f94ea14b7bf544bd2ebe9b7de7e377ffb973e19f9ed1c778dae9d4b9c587d02",
+        "scripts/edu_runtime/__init__.py": "92d6d6bb6547eb0fd2c7bbfa420635da218f566573b7f62039d12f41dd635f22",
+        "scripts/edu_runtime/cli.py": "3e757ec418a891a3da427f1d6d9a406216266975d9f3321879918ca3cb92e381",
+        "scripts/edu_runtime/learning_evidence.py": "3ead6d9a5100f20d2ca8dbdffd1583b98210d9fa1910a7127021c3cc447a9d93",
+        "scripts/edu_runtime/miniapp.js": "99af105f2afed22742781ae3d2bcb9c233ca54f168657fae8aaf1106d893a5eb",
+        "scripts/edu_runtime/slides.py": "9f117f00442595da23b0a7ae62994b7c37320c422d23cc93ccdfe06880b882da",
+        "scripts/generate_review.py": "f25f28b87f2a03f9f193cbd3c4c5d1857a3f69d0edd5b25a849d63276376b20f"
+      }
+    }
+  }
+}
